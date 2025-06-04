@@ -2,6 +2,7 @@ import React from 'react';
 import { LuBrain as LuBrainRaw } from 'react-icons/lu';
 import { LuHouse as LuHouseRaw } from "react-icons/lu";
 import { LuBookmark as LuBookmarkRaw} from "react-icons/lu";
+import NavLink from './components/NavLink';
 
 
 
@@ -25,18 +26,9 @@ export default function Header() {
                     </div>
                 </div>
                 <div className='flex items-center gap-x-10'>
-                    <div className='flex'>
-                        <LuHouse />
-                        Home
-                    </div>
-                    <div className='flex'>
-                        <LuBrain fontSize={20} />
-                        Technique Explorer
-                    </div>
-                    <div className='flex'>
-                        <LuBookmark />
-                        Saved Technique
-                    </div>
+                    <NavLink Icon={LuHouse} name="Home" isActive={false} />
+                    <NavLink Icon={LuBrain} name="Technique Explorer" fontSize={20} isActive={false} />
+                    <NavLink Icon={LuBookmark} name="Saved Technique" isActive={false}/>
                     <button className='bg-[#4f45e4] text-white px-4 py-2 rounded-md'>
                         Sign In
                     </button>
