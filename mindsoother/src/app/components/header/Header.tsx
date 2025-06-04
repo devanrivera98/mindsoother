@@ -3,6 +3,8 @@ import React from 'react';
 import { LuBrain as LuBrainRaw } from 'react-icons/lu';
 import { LuHouse as LuHouseRaw } from "react-icons/lu";
 import { LuBookmark as LuBookmarkRaw} from "react-icons/lu";
+import { IoIosInformationCircleOutline as IoIosInformationCircleOutlineRaw } from "react-icons/io";
+import { RxHamburgerMenu as RxHamburgerMenuRaw } from "react-icons/rx";
 import NavLink from './components/NavLink';
 import { useState } from 'react';
 
@@ -20,24 +22,31 @@ export default function Header() {
     const LuBrain = (props: React.ComponentProps<'svg'>) => <>{LuBrainRaw({...props})}</>
     const LuHouse = (props: React.ComponentProps<'svg'>) => <>{LuHouseRaw({...props})}</>
     const LuBookmark = (props: React.ComponentProps<'svg'>) => <>{LuBookmarkRaw({...props})}</>
+    const InformationCircle = (props: React.ComponentProps<'svg'>) => <>{IoIosInformationCircleOutlineRaw({...props})}</>
+    const RxHamburgerMenu = (props: React.ComponentProps<'svg'>) => <>{RxHamburgerMenuRaw({...props})}</> 
 
     return (
         <header className="shadow-md/10">
             <div className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4">
-                <div className='flex items-center'>
+                <div className='flex items-center cursor-pointer'>
                     <LuBrain fontSize={35} color={'#4f45e4'} />
                     <div className='pl-2 font-bold text-xl'>
                         MindSoother
                     </div>
                 </div>
-                <div className='flex items-center gap-x-10'>
+                <div className='hidden lg:flex items-center gap-x-7'>
                     <NavLink Icon={LuHouse} name="Home" fontSize={20} isActive={activeIndex === 0} onClick={() => handleNavClick(0)}  />
                     <NavLink Icon={LuBrain} name="Technique Explorer" fontSize={20} isActive={activeIndex === 1} onClick={() => handleNavClick(1)} />
                     <NavLink Icon={LuBookmark} name="Saved Technique" fontSize={20} isActive={activeIndex === 2} onClick={() => handleNavClick(2)}/>
+                    <NavLink Icon={InformationCircle} name="About" fontSize={20} isActive={activeIndex === 3} onClick={() => handleNavClick(3)}/>                    
                     <button className='bg-[#4f45e4] text-white px-4 py-2 rounded-md'>
                         Sign In
                     </button>
                 </div>
+
+
+                {/* Mobile Menu Button */}
+
             </div>
         </header>
     )

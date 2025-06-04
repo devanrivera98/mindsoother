@@ -11,8 +11,8 @@ interface IconInterface {
 export default function NavLink({isActive, onClick, Icon, name, fontSize} :  IconInterface) {
 
     return (
-        <div className={`cursor-pointer p-1.5 rounded  ${isActive ? 'bg-indigo-50' : 'hover:bg-gray-50'}`} onClick={onClick}>
-            <a className="flex pointer">
+        <div className={`cursor-pointer p-2 rounded  ${isActive ? 'bg-indigo-50' : 'hover:bg-gray-50'}`} onClick={onClick}>
+            <a className="flex">
             <Icon size={fontSize} />
             <span className={`pl-2 hover:text-indigo-600 ${isActive ? 'text-indigo-600' : ''}`}>{name}</span>
             </a>
