@@ -4,16 +4,17 @@ interface IconInterface {
     Icon: React.ElementType;
     name: string;
     fontSize?: number;
+    strokeWidth?: number;
     isActive: boolean;
     onClick: () => void;
 }
 
-export default function NavLink({isActive, onClick, Icon, name, fontSize} :  IconInterface) {
+export default function NavLink({isActive, onClick, Icon, name, fontSize, strokeWidth} :  IconInterface) {
 
     return (
         <div className={`cursor-pointer p-2 rounded  ${isActive ? 'bg-indigo-50' : 'hover:bg-gray-50'}`} onClick={onClick}>
-            <a className="flex">
-            <Icon size={fontSize} />
+            <a className="flex items-center">
+            <Icon size={fontSize} strokeWidth={strokeWidth} />
             <span className={`pl-2 hover:text-indigo-600 ${isActive ? 'text-indigo-600' : ''}`}>{name}</span>
             </a>
         </div>
