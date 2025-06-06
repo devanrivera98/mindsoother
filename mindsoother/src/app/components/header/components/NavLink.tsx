@@ -12,7 +12,7 @@ interface IconInterface {
 export default function NavLink({isActive, onClick, Icon, name, fontSize, strokeWidth} :  IconInterface) {
 
     return (
-        <div className={`cursor-pointer p-2 rounded  ${isActive ? 'bg-indigo-50' : 'hover:bg-gray-50'}`} onClick={onClick}>
+        <div className={`cursor-pointer p-2 rounded hover:text-brand-purple  ${isActive ? 'bg-indigo-50 text-brand-purple' : 'hover:bg-gray-50'}`} onClick={onClick}>
             <a className="flex items-center">
             <Icon size={fontSize} strokeWidth={strokeWidth} />
             <span className={`pl-2 hover:text-indigo-600 ${isActive ? 'text-indigo-600' : ''}`}>{name}</span>
