@@ -2,7 +2,7 @@
 import React from 'react';
 import { LuBrain, LuHouse, LuBookmark, InformationCircle } from '../icons';
 import NavLink from './components/NavLink';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import MobileMenu from './components/MobileMenu';
 
 
@@ -12,6 +12,7 @@ import MobileMenu from './components/MobileMenu';
 export default function Header() {
     const [activeIndex, setActiveIndex] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+    const headerRef = useRef<HTMLDivElement>(null);
 
 
     useEffect(() => {
@@ -20,10 +21,18 @@ export default function Header() {
                 setIsMenuOpen(false)
             }
         }
+
+        const handleClickOutside = (event: MouseEvent) => {
+            if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+                setIsMenuOpen(false)
+            }
+        }
         window.addEventListener('resize', windowWatcher)
+        window.addEventListener('mousedown', handleClickOutside)
 
         return () => {
             window.removeEventListener('resize', windowWatcher)
+            window.removeEventListener('mousedown', handleClickOutside)
         }
     }, [])
 
@@ -34,7 +43,7 @@ export default function Header() {
 
 
     return (
-        <header className="shadow-md/10 w-full">
+        <header ref={headerRef} className="shadow-md/10 w-full">
             <div className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4 ">
                 <div className='flex items-center cursor-pointer'>
                     <LuBrain fontSize={35} color={'#4f45e4'} />
@@ -57,7 +66,7 @@ export default function Header() {
                 <MobileMenu onClick={() => 1} isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
             </div>
             {/* Mobile Dropdown */}
-            <div className={`lg:hidden flex flex-col gap-y-2 px-2 ${isMenuOpen ? ' block ' : 'hidden'} `}>
+            <div className={`lg:hidden flex flex-col gap-y-2 px-2 overflow-hidden transition-all duration-300 ease-in ${isMenuOpen ? ' max-h-96 opacity-100' : 'max-h-0 opacity-0 ease-out'} `} aria-hidden={!isMenuOpen}>
                     <NavLink Icon={LuHouse} name="Home" fontSize={20} strokeWidth={1.5} isActive={activeIndex === 0} onClick={() => handleNavClick(0)}  />
                     <NavLink Icon={LuBrain} name="Technique Explorer" fontSize={20} strokeWidth={1.5} isActive={activeIndex === 1} onClick={() => handleNavClick(1)} />
                     <NavLink Icon={LuBookmark} name="Saved Technique" fontSize={20} strokeWidth={1.5} isActive={activeIndex === 2} onClick={() => handleNavClick(2)}/>
