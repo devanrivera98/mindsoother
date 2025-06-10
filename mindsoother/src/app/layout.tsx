@@ -4,8 +4,8 @@ import "./globals.css";
 
 const lora = Lora({
   variable: "--font-lora",
-  subsets: ["latin"]
-})
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${lora.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${lora.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
