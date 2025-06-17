@@ -5,6 +5,7 @@ import { LuBookmark as LuBookmarkRaw } from "react-icons/lu";
 import { IoIosInformationCircleOutline as IoIosInformationCircleOutlineRaw } from "react-icons/io";
 import { GiHamburgerMenu as GiHamburgerMenuRaw } from "react-icons/gi";
 import { AiOutlineClose as AiOutlineCloseRaw } from "react-icons/ai";
+import { IoArrowForwardSharp as  IoArrowForwardSharpRaw} from "react-icons/io5";
 import React from "react";
 
 const LuBrain = (props: React.ComponentProps<"svg">) => (
@@ -25,6 +26,9 @@ const GiHamburgerMenu = (props: React.ComponentProps<"svg">) => (
 const AiOutlineClose = (props: React.ComponentProps<"svg">) => (
   <>{AiOutlineCloseRaw({ ...props })}</>
 );
+
+const IoArrowForwardSharp = (props: React.ComponentProps<"svg">) => (<>
+{IoArrowForwardSharpRaw({...props})}</>)
 
 export {
   LuBrain,
