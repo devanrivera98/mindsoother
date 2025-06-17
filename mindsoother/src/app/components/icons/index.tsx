@@ -37,4 +37,5 @@ export {
   InformationCircle,
   GiHamburgerMenu,
   AiOutlineClose,
+  IoArrowForwardSharp
 };
