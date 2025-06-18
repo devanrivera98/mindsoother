@@ -6,7 +6,7 @@ import { IoArrowForwardSharp } from "../components/icons";
 export default function Homepage() {
     return (
       <>
-      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 min-h-36 w-screen">
+      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 min-h-36 w-full">
         <div className="max-w-7xl mx-auto lg:px-8 sm:px-6 px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 py-20 items-stretch">
             <div className="pr-5 flex flex-col flex-grow order-2 md:order-1">
@@ -22,8 +22,10 @@ export default function Homepage() {
                 </a>
             </div>
             </div>
-            <div className="relative my-auto w-full h-full min-h-[300px] overflow-hidden rounded order-1 md:order-2">
-              <Image className="object-contain" src="/images/squid-smile.jpg" alt="Illustration of brain power " fill/>
+            <div className="pb-5 md:pb-0 order-1 md:order-2">
+              <div className="relative my-auto mx-auto md:mx-0 md:ml-auto w-full md:w-[90%] h-full min-h-[300px] overflow-hidden rounded">
+                <Image className="object-cover" src="/images/squid-smile.jpg" alt="Illustration of brain power " fill/>
+              </div>
             </div>
           </div>
         </div>
