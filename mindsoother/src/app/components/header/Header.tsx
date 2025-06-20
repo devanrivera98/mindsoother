@@ -39,8 +39,8 @@ export default function Header() {
   };
 
   return (
-    <header ref={headerRef} className="shadow-md/10 w-full">
-      <div className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4 ">
+    <header ref={headerRef} className="shadow-md/10 w-full fixed z-50 bg-white">
+      <div className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4">
         <div className="flex items-center cursor-pointer">
           <LuBrain fontSize={35} color={"#4f45e4"} />
           <div className="pl-2 font-bold hover:text-hover-purple text-xl">MindSoother</div>

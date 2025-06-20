@@ -6,7 +6,11 @@ import { IoIosInformationCircleOutline as IoIosInformationCircleOutlineRaw } fro
 import { GiHamburgerMenu as GiHamburgerMenuRaw } from "react-icons/gi";
 import { AiOutlineClose as AiOutlineCloseRaw } from "react-icons/ai";
 import { IoArrowForwardSharp as  IoArrowForwardSharpRaw} from "react-icons/io5";
-import React from "react";
+import { RiPsychotherapyLine as  RiPsychotherapyLineRaw } from "react-icons/ri";
+import { IoBookOutline as IoBookOutlineRaw} from "react-icons/io5";
+
+
+import React, { ComponentProps } from "react";
 
 const LuBrain = (props: React.ComponentProps<"svg">) => (
   <>{LuBrainRaw({ ...props })}</>
@@ -30,6 +34,10 @@ const AiOutlineClose = (props: React.ComponentProps<"svg">) => (
 const IoArrowForwardSharp = (props: React.ComponentProps<"svg">) => (<>
 {IoArrowForwardSharpRaw({...props})}</>)
 
+const RiPsychotherapyLine = (props: React.ComponentProps<'svg'>) => (<>{RiPsychotherapyLineRaw({...props})}</>)
+
+const IoBookOutline = (props: ComponentProps<'svg'>) => (<>{IoBookOutlineRaw({...props})}</>)
+
 export {
   LuBrain,
   LuHouse,
@@ -37,5 +45,7 @@ export {
   InformationCircle,
   GiHamburgerMenu,
   AiOutlineClose,
-  IoArrowForwardSharp
+  IoArrowForwardSharp,
+  RiPsychotherapyLine,
+  IoBookOutline
 };

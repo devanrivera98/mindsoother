@@ -32,7 +32,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lora.variable} ${geistMono.variable} antialiased`}>
         <Header />
+        <main className="pt-[80px]">
         {children}
+        </main>
       </body>
     </html>
   );
