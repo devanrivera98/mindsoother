@@ -5,10 +5,9 @@ import { LuBookmark as LuBookmarkRaw } from "react-icons/lu";
 import { IoIosInformationCircleOutline as IoIosInformationCircleOutlineRaw } from "react-icons/io";
 import { GiHamburgerMenu as GiHamburgerMenuRaw } from "react-icons/gi";
 import { AiOutlineClose as AiOutlineCloseRaw } from "react-icons/ai";
-import { IoArrowForwardSharp as  IoArrowForwardSharpRaw} from "react-icons/io5";
-import { RiPsychotherapyLine as  RiPsychotherapyLineRaw } from "react-icons/ri";
-import { IoBookOutline as IoBookOutlineRaw} from "react-icons/io5";
-
+import { IoArrowForwardSharp as IoArrowForwardSharpRaw } from "react-icons/io5";
+import { RiPsychotherapyLine as RiPsychotherapyLineRaw } from "react-icons/ri";
+import { IoBookOutline as IoBookOutlineRaw } from "react-icons/io5";
 
 import React, { ComponentProps } from "react";
 
@@ -31,12 +30,17 @@ const AiOutlineClose = (props: React.ComponentProps<"svg">) => (
   <>{AiOutlineCloseRaw({ ...props })}</>
 );
 
-const IoArrowForwardSharp = (props: React.ComponentProps<"svg">) => (<>
-{IoArrowForwardSharpRaw({...props})}</>)
+const IoArrowForwardSharp = (props: React.ComponentProps<"svg">) => (
+  <>{IoArrowForwardSharpRaw({ ...props })}</>
+);
 
-const RiPsychotherapyLine = (props: React.ComponentProps<'svg'>) => (<>{RiPsychotherapyLineRaw({...props})}</>)
+const RiPsychotherapyLine = (props: React.ComponentProps<"svg">) => (
+  <>{RiPsychotherapyLineRaw({ ...props })}</>
+);
 
-const IoBookOutline = (props: ComponentProps<'svg'>) => (<>{IoBookOutlineRaw({...props})}</>)
+const IoBookOutline = (props: ComponentProps<"svg">) => (
+  <>{IoBookOutlineRaw({ ...props })}</>
+);
 
 export {
   LuBrain,
@@ -47,5 +51,5 @@ export {
   AiOutlineClose,
   IoArrowForwardSharp,
   RiPsychotherapyLine,
-  IoBookOutline
+  IoBookOutline,
 };

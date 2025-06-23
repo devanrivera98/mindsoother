@@ -1,11 +1,11 @@
-import HowItWorks from "./HowItWorks"
-import IntroHome from "./IntroHome"
+import HowItWorks from "./HowItWorks";
+import IntroHome from "./IntroHome";
 
 export default function Homepage() {
-    return (
-      <>
+  return (
+    <>
       <IntroHome />
       <HowItWorks />
-      </>  
-    )
+    </>
+  );
 }
