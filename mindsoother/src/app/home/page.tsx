@@ -1,3 +1,4 @@
+import Disclaimer from "./Disclaimer";
 import HowItWorks from "./HowItWorks";
 import IntroHome from "./IntroHome";
 import TherapeuticApproaches from "./TherapeuticApproaches";
@@ -10,6 +11,7 @@ export default function Homepage() {
       <HowItWorks />
       <TherapeuticApproaches />
       <TryTheExplorer />
+      <Disclaimer />
     </>
   );
 }
