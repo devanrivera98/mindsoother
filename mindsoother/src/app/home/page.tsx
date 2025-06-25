@@ -1,6 +1,7 @@
 import HowItWorks from "./HowItWorks";
 import IntroHome from "./IntroHome";
 import TherapeuticApproaches from "./TherapeuticApproaches";
+import TryTheExplorer from "./TryTheExplorer";
 
 export default function Homepage() {
   return (
@@ -8,6 +9,7 @@ export default function Homepage() {
       <IntroHome />
       <HowItWorks />
       <TherapeuticApproaches />
+      <TryTheExplorer />
     </>
   );
 }
