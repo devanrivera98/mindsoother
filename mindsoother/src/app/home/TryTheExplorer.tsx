@@ -6,7 +6,7 @@ export default function TryTheExplorer() {
         <section className="bg-indigo-900 text-white py-12">
             <div className="mx-auto max-w-7xl lg:px-8 sm:px-6 px-4">
                 <div className="text-center">
-                    <h2 className="text-[30px]">Ready to find techniques that work for you?</h2>
+                    <h2 className="text-[30px] font-bold">Ready to find techniques that work for you?</h2>
                     <p className="pt-5 text-indigo-200 text-lg max-w-3xl mx-auto">Start your journey to better mental well-being with personalized, evidence-based techniques.</p>
                 </div>
                 <div className="flex pt-10">
