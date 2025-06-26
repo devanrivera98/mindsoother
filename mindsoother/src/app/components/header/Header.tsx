@@ -54,6 +54,7 @@ export default function Header() {
           <NavLink
             Icon={LuHouse}
             name="Home"
+            href="/"
             fontSize={20}
             strokeWidth={1.5}
             isActive={activeIndex === 0}
@@ -62,6 +63,7 @@ export default function Header() {
           <NavLink
             Icon={LuBrain}
             name="Technique Explorer"
+            href="/explorer"
             fontSize={20}
             strokeWidth={1.5}
             isActive={activeIndex === 1}
@@ -70,6 +72,7 @@ export default function Header() {
           <NavLink
             Icon={LuBookmark}
             name="Saved Technique"
+            href="/"
             fontSize={20}
             strokeWidth={1.5}
             isActive={activeIndex === 2}
@@ -78,6 +81,7 @@ export default function Header() {
           <NavLink
             Icon={InformationCircle}
             name="About"
+            href="/"
             fontSize={20}
             strokeWidth={5}
             isActive={activeIndex === 3}
@@ -104,6 +108,7 @@ export default function Header() {
         <NavLink
           Icon={LuHouse}
           name="Home"
+          href="/"
           fontSize={20}
           strokeWidth={1.5}
           isActive={activeIndex === 0}
@@ -112,6 +117,7 @@ export default function Header() {
         <NavLink
           Icon={LuBrain}
           name="Technique Explorer"
+          href="/"
           fontSize={20}
           strokeWidth={1.5}
           isActive={activeIndex === 1}
@@ -120,6 +126,7 @@ export default function Header() {
         <NavLink
           Icon={LuBookmark}
           name="Saved Technique"
+          href="/"
           fontSize={20}
           strokeWidth={1.5}
           isActive={activeIndex === 2}
@@ -128,6 +135,7 @@ export default function Header() {
         <NavLink
           Icon={InformationCircle}
           name="About"
+          href="/"
           fontSize={20}
           strokeWidth={5}
           isActive={activeIndex === 3}
