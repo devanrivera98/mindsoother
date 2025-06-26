@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lora, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 const lora = Lora({
   variable: "--font-lora",
@@ -10,12 +11,13 @@ const lora = Lora({
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"]
-})
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "MindSoother",
-  description: "A tool that recommends users psychologic techniques dependent on their situation.",
+  description:
+    "A tool that recommends users psychologic techniques dependent on their situation.",
 };
 
 export default function RootLayout({
@@ -28,6 +30,7 @@ export default function RootLayout({
       <body className={`${lora.variable} ${inter.variable} antialiased`}>
         <Header />
         <main className="pt-[80px]">{children}</main>
+        <Footer />
       </body>
     </html>
   );
