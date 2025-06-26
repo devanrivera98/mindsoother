@@ -8,8 +8,7 @@ import { AiOutlineClose as AiOutlineCloseRaw } from "react-icons/ai";
 import { IoArrowForwardSharp as IoArrowForwardSharpRaw } from "react-icons/io5";
 import { RiPsychotherapyLine as RiPsychotherapyLineRaw } from "react-icons/ri";
 import { IoBookOutline as IoBookOutlineRaw } from "react-icons/io5";
-import { FiShield as  FiShieldRaw } from "react-icons/fi";
-
+import { FiShield as FiShieldRaw } from "react-icons/fi";
 
 import React, { ComponentProps } from "react";
 
@@ -44,7 +43,9 @@ const IoBookOutline = (props: ComponentProps<"svg">) => (
   <>{IoBookOutlineRaw({ ...props })}</>
 );
 
-const FiShield = (props: ComponentProps<"svg">) => (<>{FiShieldRaw({...props})}</>)
+const FiShield = (props: ComponentProps<"svg">) => (
+  <>{FiShieldRaw({ ...props })}</>
+);
 
 export {
   LuBrain,
@@ -56,5 +57,5 @@ export {
   IoArrowForwardSharp,
   RiPsychotherapyLine,
   IoBookOutline,
-  FiShield
+  FiShield,
 };
