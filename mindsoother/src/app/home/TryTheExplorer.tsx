@@ -14,7 +14,10 @@ export default function TryTheExplorer() {
           </p>
         </div>
         <div className="flex pt-10">
-          <a className="flex inline-flex mx-auto items-center bg-white hover:bg-indigo-50 py-4 px-6 text-indigo-900 font-bold rounded-xl cursor-pointer">
+          <a
+            href="/explorer"
+            className="flex inline-flex mx-auto items-center bg-white hover:bg-indigo-50 py-4 px-6 text-indigo-900 font-bold rounded-xl cursor-pointer"
+          >
             Try the Explorer
             <IoArrowForwardSharp
               className="ml-2 text-indigo-900"

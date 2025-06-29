@@ -4,11 +4,13 @@ import { LuBrain, LuHouse, LuBookmark, InformationCircle } from "../icons";
 import NavLink from "./components/NavLink";
 import { useState, useEffect, useRef } from "react";
 import MobileMenu from "./components/MobileMenu";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const headerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const windowWatcher = () => {
@@ -36,6 +38,9 @@ export default function Header() {
 
   const handleNavClick = (index: number) => {
     setActiveIndex(index);
+    if (window.innerWidth < 1023) {
+      setIsMenuOpen(false);
+    }
   };
 
   return (
@@ -54,22 +59,25 @@ export default function Header() {
           <NavLink
             Icon={LuHouse}
             name="Home"
+            href="/"
             fontSize={20}
             strokeWidth={1.5}
-            isActive={activeIndex === 0}
+            isActive={pathname === "/"}
             onClick={() => handleNavClick(0)}
           />
           <NavLink
             Icon={LuBrain}
             name="Technique Explorer"
+            href="/explorer"
             fontSize={20}
             strokeWidth={1.5}
-            isActive={activeIndex === 1}
+            isActive={pathname === "/explorer"}
             onClick={() => handleNavClick(1)}
           />
           <NavLink
             Icon={LuBookmark}
             name="Saved Technique"
+            href="/"
             fontSize={20}
             strokeWidth={1.5}
             isActive={activeIndex === 2}
@@ -78,6 +86,7 @@ export default function Header() {
           <NavLink
             Icon={InformationCircle}
             name="About"
+            href="/"
             fontSize={20}
             strokeWidth={5}
             isActive={activeIndex === 3}
@@ -98,28 +107,31 @@ export default function Header() {
       </div>
       {/* Mobile Dropdown */}
       <div
-        className={`lg:hidden flex flex-col gap-y-2 px-2 overflow-hidden transition-all duration-300 ease-in ${isMenuOpen ? " max-h-96 opacity-100" : "max-h-0 opacity-0 ease-out"} `}
+        className={`lg:hidden flex flex-col gap-y-2 px-2 overflow-hidden transition-all duration-300 ease-in bg-white ${isMenuOpen ? " max-h-96 opacity-100" : "max-h-0 opacity-0 ease-out"} `}
         aria-hidden={!isMenuOpen}
       >
         <NavLink
           Icon={LuHouse}
           name="Home"
+          href="/"
           fontSize={20}
           strokeWidth={1.5}
-          isActive={activeIndex === 0}
+          isActive={pathname === "/"}
           onClick={() => handleNavClick(0)}
         />
         <NavLink
           Icon={LuBrain}
           name="Technique Explorer"
+          href="/explorer"
           fontSize={20}
           strokeWidth={1.5}
-          isActive={activeIndex === 1}
+          isActive={pathname === "/explorer"}
           onClick={() => handleNavClick(1)}
         />
         <NavLink
           Icon={LuBookmark}
           name="Saved Technique"
+          href="/"
           fontSize={20}
           strokeWidth={1.5}
           isActive={activeIndex === 2}
@@ -128,6 +140,7 @@ export default function Header() {
         <NavLink
           Icon={InformationCircle}
           name="About"
+          href="/"
           fontSize={20}
           strokeWidth={5}
           isActive={activeIndex === 3}

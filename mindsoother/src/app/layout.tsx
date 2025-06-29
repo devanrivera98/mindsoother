@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lora.variable} ${inter.variable} antialiased`}>
         <Header />
-        <main className="pt-[80px]">{children}</main>
+        <main className="pt-[80px] min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>
