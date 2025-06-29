@@ -11,7 +11,6 @@ import { IoBookOutline as IoBookOutlineRaw } from "react-icons/io5";
 import { FiShield as FiShieldRaw } from "react-icons/fi";
 import { FaMagnifyingGlass as FaMagnifyingGlassRaw } from "react-icons/fa6";
 
-
 import React, { ComponentProps } from "react";
 
 const LuBrain = (props: React.ComponentProps<"svg">) => (
@@ -49,9 +48,9 @@ const FiShield = (props: ComponentProps<"svg">) => (
   <>{FiShieldRaw({ ...props })}</>
 );
 
-const FaMagnifyingGlass = (props: ComponentProps<'svg'>) => (
-  <>{FaMagnifyingGlassRaw({...props})}</>
-)
+const FaMagnifyingGlass = (props: ComponentProps<"svg">) => (
+  <>{FaMagnifyingGlassRaw({ ...props })}</>
+);
 
 export {
   LuBrain,
@@ -64,5 +63,5 @@ export {
   RiPsychotherapyLine,
   IoBookOutline,
   FiShield,
-  FaMagnifyingGlass
+  FaMagnifyingGlass,
 };

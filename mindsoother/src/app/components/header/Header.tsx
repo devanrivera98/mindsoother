@@ -62,7 +62,7 @@ export default function Header() {
             href="/"
             fontSize={20}
             strokeWidth={1.5}
-            isActive={pathname === '/'}
+            isActive={pathname === "/"}
             onClick={() => handleNavClick(0)}
           />
           <NavLink
@@ -71,7 +71,7 @@ export default function Header() {
             href="/explorer"
             fontSize={20}
             strokeWidth={1.5}
-            isActive={pathname === '/explorer'}
+            isActive={pathname === "/explorer"}
             onClick={() => handleNavClick(1)}
           />
           <NavLink
@@ -116,7 +116,7 @@ export default function Header() {
           href="/"
           fontSize={20}
           strokeWidth={1.5}
-          isActive={pathname === '/'}
+          isActive={pathname === "/"}
           onClick={() => handleNavClick(0)}
         />
         <NavLink
@@ -125,7 +125,7 @@ export default function Header() {
           href="/explorer"
           fontSize={20}
           strokeWidth={1.5}
-          isActive={pathname === '/explorer'}
+          isActive={pathname === "/explorer"}
           onClick={() => handleNavClick(1)}
         />
         <NavLink

@@ -1,5 +1,5 @@
 import React from "react";
-import Link from 'next/link'
+import Link from "next/link";
 
 interface IconInterface {
   Icon: React.ElementType;
@@ -18,7 +18,7 @@ export default function NavLink({
   name,
   fontSize,
   strokeWidth,
-  href
+  href,
 }: IconInterface) {
   return (
     <Link
