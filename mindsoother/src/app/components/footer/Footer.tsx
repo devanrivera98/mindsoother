@@ -5,10 +5,12 @@ export default function Footer() {
     <footer className="bg-[#0F172A] text-gray-300 px-6 py-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <LuBrain className="text-indigo-400" fontSize={25} />
-            <a className="text-white hover:text-indigo-400 text-xl font-bold cursor-pointer">
-              MindSoother
+          <div className="flex items-center mb-4">
+            <a href="/" className="flex items-center gap-2">
+              <LuBrain className="text-indigo-400" fontSize={25} />
+              <p className="text-white hover:text-indigo-400 text-xl font-bold cursor-pointer">
+                MindSoother
+              </p>
             </a>
           </div>
           <p className="text-sm">
@@ -20,12 +22,12 @@ export default function Footer() {
           <h3 className="text-white font-semibold mb-3 text-md">Navigation</h3>
           <ul className="space-y-2 ">
             <li>
-              <a href="#" className="hover:text-indigo-400 text-md">
+              <a href="/" className="hover:text-indigo-400 text-md">
                 Home
               </a>
             </li>
             <li>
-              <a href="/" className="hover:text-indigo-400 text-md">
+              <a href="/explorer" className="hover:text-indigo-400 text-md">
                 Technique Explorer
               </a>
             </li>
@@ -35,7 +37,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="/" className="hover:text-indigo-400 text-md">
+              <a href="/about" className="hover:text-indigo-400 text-md">
                 About Us
               </a>
             </li>

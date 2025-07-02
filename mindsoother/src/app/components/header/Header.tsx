@@ -50,10 +50,12 @@ export default function Header() {
     >
       <div className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4">
         <div className="flex items-center cursor-pointer">
-          <LuBrain fontSize={35} color={"#4f45e4"} />
-          <div className="pl-2 font-bold hover:text-hover-purple text-xl">
-            MindSoother
-          </div>
+          <a href="/" className="flex items-center">
+            <LuBrain fontSize={35} color={"#4f45e4"} />
+            <div className="pl-2 font-bold hover:text-hover-purple text-xl">
+              MindSoother
+            </div>
+          </a>
         </div>
         <div className={`hidden lg:flex items-center gap-x-7 `}>
           <NavLink
