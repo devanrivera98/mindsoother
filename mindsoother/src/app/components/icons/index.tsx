@@ -10,6 +10,7 @@ import { RiPsychotherapyLine as RiPsychotherapyLineRaw } from "react-icons/ri";
 import { IoBookOutline as IoBookOutlineRaw } from "react-icons/io5";
 import { FiShield as FiShieldRaw } from "react-icons/fi";
 import { FaMagnifyingGlass as FaMagnifyingGlassRaw } from "react-icons/fa6";
+import { IoMdCheckmark as IoMdCheckmarkRaw } from "react-icons/io";
 
 import React, { ComponentProps } from "react";
 
@@ -52,6 +53,10 @@ const FaMagnifyingGlass = (props: ComponentProps<"svg">) => (
   <>{FaMagnifyingGlassRaw({ ...props })}</>
 );
 
+const IoMdCheckmark = (props: React.ComponentProps<"svg">) => (
+  <>{IoMdCheckmarkRaw({ ...props })}</>
+);
+
 export {
   LuBrain,
   LuHouse,
@@ -64,4 +69,5 @@ export {
   IoBookOutline,
   FiShield,
   FaMagnifyingGlass,
+  IoMdCheckmark,
 };
