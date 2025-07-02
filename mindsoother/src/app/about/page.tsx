@@ -1,4 +1,5 @@
 import { IoMdCheckmark, InformationCircle } from "../components/icons";
+import Link from "next/link";
 
 export default function About() {
   return (
@@ -76,7 +77,7 @@ export default function About() {
                   </li>
                 </ul>
               </div>
-              <div className="mt-10">
+              <div id="disclaimer" className="mt-10 scroll-mt-[90px]">
                 <h2 className="font-bold text-2xl">Important Disclaimer</h2>
                 <div className="flex bg-orange-100 flex border-l-4 border-orange-400 gap-x-2 p-4 mt-4">
                   <InformationCircle
@@ -118,12 +119,12 @@ export default function About() {
               </div>
             </div>
             <div className="mt-10 text-center">
-              <a
+              <Link
                 href="/explorer"
                 className="p-4 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white text-lg font-semibold duration-300 focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 focus:ring-offset-white"
               >
                 Try the Explorer
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
-import { LuBrain } from "../icons";
+import { LuBrain, InformationCircle } from "../icons";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -6,12 +7,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <div className="flex items-center mb-4">
-            <a href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2">
               <LuBrain className="text-indigo-400" fontSize={25} />
-              <p className="text-white hover:text-indigo-400 text-xl font-bold cursor-pointer">
+              <span className="text-white hover:text-indigo-400 text-xl font-bold cursor-pointer">
                 MindSoother
-              </p>
-            </a>
+              </span>
+            </Link>
           </div>
           <p className="text-sm">
             Connecting you to evidence-based therapeutic techniques personalized
@@ -19,32 +20,41 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <h3 className="text-white font-semibold mb-3 text-md">Navigation</h3>
+          <h2 className="text-white font-semibold mb-3 text-md">Navigation</h2>
           <ul className="space-y-2 ">
             <li>
-              <a href="/" className="hover:text-indigo-400 text-md">
+              <Link href="/" className="hover:text-indigo-400 text-md">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/explorer" className="hover:text-indigo-400 text-md">
+              <Link href="/explorer" className="hover:text-indigo-400 text-md">
                 Technique Explorer
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/" className="hover:text-indigo-400 text-md">
+              <Link href="/" className="hover:text-indigo-400 text-md">
                 Saved Techniques
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/about" className="hover:text-indigo-400 text-md">
+              <Link href="/about" className="hover:text-indigo-400 text-md">
                 About Us
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
-        <div className="text-sm text-gray-400 flex flex-col justify-between">
+        <div className="text-sm text-gray-400 flex flex-col gap-y-4">
           <p>&copy; 2025 Devan Rivera. All rights reserved.</p>
+          <div>
+            <Link
+              href="/about#disclaimer"
+              className="flex items-center hover:text-indigo-400"
+            >
+              <InformationCircle className="mr-1" />
+              <span>Disclaimer</span>
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
