@@ -79,10 +79,10 @@ export default function Header() {
           <NavLink
             Icon={LuBookmark}
             name="Saved Technique"
-            href="/"
+            href="/saved-technique"
             fontSize={20}
             strokeWidth={1.5}
-            isActive={activeIndex === 2}
+            isActive={pathname === "/saved-technique"}
             onClick={() => handleNavClick(2)}
           />
           <NavLink
@@ -133,10 +133,10 @@ export default function Header() {
         <NavLink
           Icon={LuBookmark}
           name="Saved Technique"
-          href="/"
+          href="/saved-technique"
           fontSize={20}
           strokeWidth={1.5}
-          isActive={activeIndex === 2}
+          isActive={pathname === "/saved-technique"}
           onClick={() => handleNavClick(2)}
         />
         <NavLink
