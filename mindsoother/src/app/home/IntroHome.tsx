@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { IoArrowForwardSharp } from "../components/icons";
 
 export default function IntroHome() {
@@ -17,16 +18,20 @@ export default function IntroHome() {
                 therapeutic approaches.
               </p>
               <div className="pt-5 flex gap-x-5">
-                <a className="hover:bg-gray-100 bg-white rounded-lg px-6 py-3 flex items-center">
+                <Link
+                  href="/explorer"
+                  className="hover:bg-gray-100 bg-white rounded-lg px-6 py-3 flex items-center"
+                >
                   <span className="pr-2 cursor-pointer">Try the Explorer</span>
                   <IoArrowForwardSharp fontSize={20} aria-hidden="true" />
-                </a>
-                <a
+                </Link>
+                <Link
+                  href="/about"
                   className="hover:bg-indigo-600 border border-white text-white rounded-lg px-6 py-3 cursor-pointer text-center"
                   type="button"
                 >
                   Learn More
-                </a>
+                </Link>
               </div>
             </div>
             <div className="pb-5 md:pb-0 order-1 md:order-2">

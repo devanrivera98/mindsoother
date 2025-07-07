@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { LuBrain, LuHouse, LuBookmark, InformationCircle } from "../icons";
 import NavLink from "./components/NavLink";
 import { useState, useEffect, useRef } from "react";
@@ -50,12 +51,12 @@ export default function Header() {
     >
       <div className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4">
         <div className="flex items-center cursor-pointer">
-          <a href="/" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <LuBrain fontSize={35} color={"#4f45e4"} />
             <div className="pl-2 font-bold hover:text-hover-purple text-xl">
               MindSoother
             </div>
-          </a>
+          </Link>
         </div>
         <div className={`hidden lg:flex items-center gap-x-7 `}>
           <NavLink
@@ -79,10 +80,10 @@ export default function Header() {
           <NavLink
             Icon={LuBookmark}
             name="Saved Technique"
-            href="/"
+            href="/saved-technique"
             fontSize={20}
             strokeWidth={1.5}
-            isActive={activeIndex === 2}
+            isActive={pathname === "/saved-technique"}
             onClick={() => handleNavClick(2)}
           />
           <NavLink
@@ -102,9 +103,10 @@ export default function Header() {
         </div>
         {/* Mobile Menu Button */}
         <MobileMenu
-          onClick={() => 1}
+          // onClick={() => 1}
           isMenuOpen={isMenuOpen}
           setIsMenuOpen={setIsMenuOpen}
+          aria-label="Toggle menu"
         />
       </div>
       {/* Mobile Dropdown */}
@@ -133,10 +135,10 @@ export default function Header() {
         <NavLink
           Icon={LuBookmark}
           name="Saved Technique"
-          href="/"
+          href="/saved-technique"
           fontSize={20}
           strokeWidth={1.5}
-          isActive={activeIndex === 2}
+          isActive={pathname === "/saved-technique"}
           onClick={() => handleNavClick(2)}
         />
         <NavLink

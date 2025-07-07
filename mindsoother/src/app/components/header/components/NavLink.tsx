@@ -26,7 +26,7 @@ export default function NavLink({
       className={`flex items-center cursor-pointer p-2 rounded hover:text-brand-purple  ${isActive ? "bg-indigo-50 text-brand-purple" : "hover:bg-gray-50"}`}
       onClick={onClick}
     >
-      <Icon size={fontSize} strokeWidth={strokeWidth} />
+      <Icon size={fontSize} strokeWidth={strokeWidth} aria-hidden="true" />
       <span
         className={`pl-2 hover:text-indigo-600 ${isActive ? "text-indigo-600" : ""}`}
       >
