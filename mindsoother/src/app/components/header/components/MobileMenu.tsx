@@ -3,11 +3,9 @@ import { useState } from "react";
 import { GiHamburgerMenu, AiOutlineClose } from "../../icons";
 
 export default function MobileMenu({
-  onClick,
   isMenuOpen,
   setIsMenuOpen,
 }: {
-  onClick: () => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (arg: boolean) => void;
 }) {

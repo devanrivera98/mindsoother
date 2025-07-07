@@ -8,7 +8,11 @@ export default function Footer() {
         <div>
           <div className="flex items-center mb-4">
             <Link href="/" className="flex items-center gap-2">
-              <LuBrain className="text-indigo-400" fontSize={25} />
+              <LuBrain
+                className="text-indigo-400"
+                fontSize={25}
+                aria-hidden="true"
+              />
               <span className="text-white hover:text-indigo-400 text-xl font-bold cursor-pointer">
                 MindSoother
               </span>
@@ -33,7 +37,10 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/" className="hover:text-indigo-400 text-md">
+              <Link
+                href="/saved-technique"
+                className="hover:text-indigo-400 text-md"
+              >
                 Saved Techniques
               </Link>
             </li>
