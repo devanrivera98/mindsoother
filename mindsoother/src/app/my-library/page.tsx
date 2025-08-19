@@ -1,7 +1,21 @@
 import { IoBookOutline } from "../components/icons";
 import Link from "next/link";
+import { createClient } from "../utils/supabase/server";
+export default async function MyLibrary() {
 
-export default function MyLibrary() {
+  // const supabase = await createClient();
+  // console.log(supabase)
+  // const {data: article} =  await supabase.from("article").select('*');
+  // console.log(article)
+
+  // return <pre>{JSON.stringify(article)}</pre>
+
+  const data = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/search`, {
+    method: 'POST'
+  })
+  const test = await data.json()
+  console.log(test)
+
   return (
     <section className="bg-gray-50 min-h-screen">
       <div className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-center text-white  px-4 sm:px-6 lg:px-8">
