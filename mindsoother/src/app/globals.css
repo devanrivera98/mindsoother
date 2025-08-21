@@ -6,6 +6,7 @@
   --brand-purple: #4f45e4;
   --faded-gray: #4b5563;
   --hover-purple: #3e37c9;
+  --faded-purple: #f2f3ff;
 }
 
 @theme inline {
@@ -14,6 +15,7 @@
   --color-brand-purple: var(--brand-purple);
   --color-faded-gray: var(--faded-gray);
   --color-hover-purple: var(--hover-purple);
+  --color-faded-purple: var(--faded-purple);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

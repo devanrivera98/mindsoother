@@ -4,6 +4,7 @@ import React, { FormEvent, useState } from "react";
 import { searchRequest } from "./searchRequest";
 import LoadingIcon from "./LoadingIcon";
 import { MoonLoader } from 'react-spinners';
+import SearchSummary from "./SearchSummary";
 
 export default function TechniqueExplorer() {
   const [textValue, setTextValue] = useState<string>("");
@@ -121,10 +122,11 @@ export default function TechniqueExplorer() {
               </div>
             </div>
           </div>
-          <div className="p-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="py-5 max-w-7xl mx-auto ">
             <div className="flex justify-center">
             <LoadingIcon loading={isLoading} />
             </div>
+            <SearchSummary />
           </div>
         </div>
       </section>

@@ -11,6 +11,7 @@ import { IoBookOutline as IoBookOutlineRaw } from "react-icons/io5";
 import { FiShield as FiShieldRaw } from "react-icons/fi";
 import { FaMagnifyingGlass as FaMagnifyingGlassRaw } from "react-icons/fa6";
 import { IoMdCheckmark as IoMdCheckmarkRaw } from "react-icons/io";
+import { BsStars as BsStarsRaw } from "react-icons/bs";
 
 import React, { ComponentProps } from "react";
 
@@ -57,6 +58,8 @@ const IoMdCheckmark = (props: React.ComponentProps<"svg">) => (
   <>{IoMdCheckmarkRaw({ ...props })}</>
 );
 
+const BsStars = (props: React.ComponentProps<'svg'>) => <>{BsStarsRaw({...props})}</>
+
 export {
   LuBrain,
   LuHouse,
@@ -70,4 +73,5 @@ export {
   FiShield,
   FaMagnifyingGlass,
   IoMdCheckmark,
+  BsStars
 };
