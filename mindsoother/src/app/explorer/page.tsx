@@ -2,9 +2,12 @@
 import { FaMagnifyingGlass } from "../components/icons";
 import React, { FormEvent, useState } from "react";
 import { searchRequest } from "./searchRequest";
+import LoadingIcon from "./LoadingIcon";
+import { MoonLoader } from 'react-spinners';
 
 export default function TechniqueExplorer() {
   const [textValue, setTextValue] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleRecButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     const value = event.currentTarget.dataset.value;
@@ -24,7 +27,10 @@ export default function TechniqueExplorer() {
 
   const formHandler = (e: FormEvent) => {
     e.preventDefault()
-    searchRequest(textValue)
+    setIsLoading(true)
+    // searchRequest(textValue)
+
+    setTimeout(() => setIsLoading(false), 5000,)
   }
 
   return (
@@ -64,8 +70,17 @@ export default function TechniqueExplorer() {
               <span className="text-xs">{textValue.length}/200</span>
             </div>
             <button className="flex items-center justify-center gap-x-2 text-white bg-indigo-600 hover:bg-indigo-700 opacity-70 w-full mt-5 p-2 rounded-md cursor-pointer" type="submit">
-              <FaMagnifyingGlass />
-              <span className="font-semibold">Find Techniques</span>
+              {isLoading ? 
+                <>
+                  <MoonLoader size={18} color="white" />
+                  <span className="font-semibold">Searching Research Database</span>
+                </>
+                :
+                <>
+                <FaMagnifyingGlass />
+                <span className="font-semibold">Find Techniques</span>
+                </>
+              }
             </button>
             </form>
             <div className="pt-5">
@@ -104,6 +119,11 @@ export default function TechniqueExplorer() {
                   anxiety disorder
                 </button>
               </div>
+            </div>
+          </div>
+          <div className="p-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-center">
+            <LoadingIcon loading={isLoading} />
             </div>
           </div>
         </div>
