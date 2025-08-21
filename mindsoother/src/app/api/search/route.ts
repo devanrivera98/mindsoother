@@ -9,7 +9,7 @@ export async function POST(req: Request ) {
     const response = await client.responses.create({
         model: "gpt-5-nano",
         input: body.prompt,
-        instructions: "Conduct yourself professionally like a psychology teacher and use the input given and provide a paragraph summary."
+        instructions: "Conduct yourself professionally like a psychology teacher and use the input given and provide a paragraph summary on the topic."
     })
 
         // console.log(response.output_text)
