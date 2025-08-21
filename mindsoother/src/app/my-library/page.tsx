@@ -1,7 +1,8 @@
 import { IoBookOutline } from "../components/icons";
 import Link from "next/link";
+import { createClient } from "../utils/supabase/server";
+export default async function MyLibrary() {
 
-export default function SavedTechniques() {
   return (
     <section className="bg-gray-50 min-h-screen">
       <div className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-center text-white  px-4 sm:px-6 lg:px-8">

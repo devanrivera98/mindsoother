@@ -54,7 +54,7 @@ export default function Header() {
           <Link href="/" className="flex items-center">
             <LuBrain fontSize={35} color={"#4f45e4"} />
             <div className="pl-2 font-bold hover:text-hover-purple text-xl">
-              MindSoother
+              PsychSearch
             </div>
           </Link>
         </div>
@@ -79,11 +79,11 @@ export default function Header() {
           />
           <NavLink
             Icon={LuBookmark}
-            name="Saved Technique"
-            href="/saved-technique"
+            name="My Library"
+            href="/my-library"
             fontSize={20}
             strokeWidth={1.5}
-            isActive={pathname === "/saved-technique"}
+            isActive={pathname === "/my-library"}
             onClick={() => handleNavClick(2)}
           />
           <NavLink
@@ -134,11 +134,11 @@ export default function Header() {
         />
         <NavLink
           Icon={LuBookmark}
-          name="Saved Technique"
+          name="My Library"
           href="/saved-technique"
           fontSize={20}
           strokeWidth={1.5}
-          isActive={pathname === "/saved-technique"}
+          isActive={pathname === "/my-library"}
           onClick={() => handleNavClick(2)}
         />
         <NavLink

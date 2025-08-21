@@ -1,6 +1,7 @@
 "use client";
 import { FaMagnifyingGlass } from "../components/icons";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
+import { searchRequest } from "./searchRequest";
 
 export default function TechniqueExplorer() {
   const [textValue, setTextValue] = useState<string>("");
@@ -20,6 +21,11 @@ export default function TechniqueExplorer() {
       setTextValue(value);
     }
   };
+
+  const formHandler = (e: FormEvent) => {
+    e.preventDefault()
+    searchRequest(textValue)
+  }
 
   return (
     <>
@@ -43,24 +49,26 @@ export default function TechniqueExplorer() {
             <label htmlFor="experience" className="sr-only">
               Describe what you're experiencing
             </label>
-            <textarea
-              id="experience"
-              className="w-full shadow-sm pl-2 pt-1 resize-none"
-              rows={4}
-              placeholder="E.g., I feel overwhelmed at work and find myself procrastinating important tasks..."
-              value={textValue}
-              onChange={handleTextArea}
-            ></textarea>
+            <form onSubmit={(e) => formHandler(e)}>
+              <textarea
+                id="experience"
+                className="w-full shadow-sm pl-2 pt-1 resize-none"
+                rows={4}
+                placeholder="E.g., I feel overwhelmed at work and find myself procrastinating important tasks..."
+                value={textValue}
+                onChange={handleTextArea}
+              ></textarea>
             <div className="flex justify-between text-gray-500">
               <span className="text-xs">
                 Be specific about thoughts, feelings, and situations
               </span>
               <span className="text-xs">{textValue.length}/200</span>
             </div>
-            <button className="flex items-center justify-center gap-x-2 text-white bg-indigo-600 hover:bg-indigo-700 opacity-70 w-full mt-5 p-2 rounded-md cursor-pointer">
+            <button className="flex items-center justify-center gap-x-2 text-white bg-indigo-600 hover:bg-indigo-700 opacity-70 w-full mt-5 p-2 rounded-md cursor-pointer" type="submit">
               <FaMagnifyingGlass />
               <span className="font-semibold">Find Techniques</span>
             </button>
+            </form>
             <div className="pt-5">
               <h2>Try an example:</h2>
               <div className="flex flex-wrap gap-x-5 gap-y-2.5">

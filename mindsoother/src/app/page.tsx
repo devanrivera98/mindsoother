@@ -1,6 +1,6 @@
 import Homepage from "./home/page";
+export default async function Home() {
 
-export default function Home() {
   return (
     <div>
       <Homepage />
