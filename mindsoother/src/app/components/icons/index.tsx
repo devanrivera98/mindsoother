@@ -12,6 +12,7 @@ import { FiShield as FiShieldRaw } from "react-icons/fi";
 import { FaMagnifyingGlass as FaMagnifyingGlassRaw } from "react-icons/fa6";
 import { IoMdCheckmark as IoMdCheckmarkRaw } from "react-icons/io";
 import { BsStars as BsStarsRaw } from "react-icons/bs";
+import { TfiNewWindow as TfiNewWindowRaw } from "react-icons/tfi";
 
 import React, { ComponentProps } from "react";
 
@@ -60,6 +61,8 @@ const IoMdCheckmark = (props: React.ComponentProps<"svg">) => (
 
 const BsStars = (props: React.ComponentProps<'svg'>) => <>{BsStarsRaw({...props})}</>
 
+const TfiNewWindow = (props: React.ComponentProps<'svg'>) => <>{TfiNewWindowRaw({...props})}</>
+
 export {
   LuBrain,
   LuHouse,
@@ -73,5 +76,6 @@ export {
   FiShield,
   FaMagnifyingGlass,
   IoMdCheckmark,
-  BsStars
+  BsStars,
+  TfiNewWindow
 };

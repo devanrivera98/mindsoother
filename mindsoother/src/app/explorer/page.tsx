@@ -5,10 +5,12 @@ import { searchRequest } from "./searchRequest";
 import LoadingIcon from "./LoadingIcon";
 import { MoonLoader } from 'react-spinners';
 import SearchSummary from "./SearchSummary";
+import SearchResults from "./SearchResults";
 
 export default function TechniqueExplorer() {
   const [textValue, setTextValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [data, setData] = useState(null);
 
   const handleRecButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     const value = event.currentTarget.dataset.value;
@@ -126,7 +128,14 @@ export default function TechniqueExplorer() {
             <div className="flex justify-center">
             <LoadingIcon loading={isLoading} />
             </div>
+            {data && 
+            <>
+            {/* <SearchSummary />
+            <SearchResults /> */}
+            </>
+            }
             <SearchSummary />
+            <SearchResults />
           </div>
         </div>
       </section>
