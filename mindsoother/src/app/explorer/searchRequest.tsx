@@ -11,7 +11,8 @@ export async function searchRequest( prompt: string) {
             throw new Error(`Search request failed with status ${res.status}`)
         }
 
-        console.log(data)
+        return data
+
     }
     catch (err: any) {
         console.error(err.message);

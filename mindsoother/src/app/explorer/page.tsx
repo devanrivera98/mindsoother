@@ -1,16 +1,17 @@
 "use client";
 import { FaMagnifyingGlass } from "../components/icons";
-import React, { FormEvent, useState } from "react";
-import { searchRequest } from "./searchRequest";
+import React, { useEffect, useState } from "react";
 import LoadingIcon from "./LoadingIcon";
 import { MoonLoader } from 'react-spinners';
 import SearchSummary from "./SearchSummary";
 import SearchResults from "./SearchResults";
+import formHandler from "./helpers/formHandler";
 
 export default function TechniqueExplorer() {
   const [textValue, setTextValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<object | null>(null);
+
 
   const handleRecButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     const value = event.currentTarget.dataset.value;
@@ -27,14 +28,6 @@ export default function TechniqueExplorer() {
       setTextValue(value);
     }
   };
-
-  const formHandler = (e: FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    // searchRequest(textValue)
-
-    setTimeout(() => setIsLoading(false), 5000,)
-  }
 
   return (
     <>
@@ -57,7 +50,7 @@ export default function TechniqueExplorer() {
             <label htmlFor="experience" className="sr-only">
               Describe a topic you'd like to learn more about.
             </label>
-            <form onSubmit={(e) => formHandler(e)}>
+            <form onSubmit={(e) => formHandler(e, {setIsLoading, setData, textValue}) }>
               <textarea
                 id="experience"
                 className="w-full shadow-sm pl-2 pt-1 resize-none"
@@ -130,12 +123,10 @@ export default function TechniqueExplorer() {
             </div>
             {data && 
             <>
-            {/* <SearchSummary />
-            <SearchResults /> */}
-            </>
-            }
             <SearchSummary />
             <SearchResults />
+            </>
+            }
           </div>
         </div>
       </section>

@@ -7,7 +7,7 @@ interface SearchResultDataInterface {
     url?: string
 }
 
-export default function SearchResults({}) {
+export default function SearchResults() {
 
     return (
         <div className="py-7.5 px-5 sm:px-6 lg:px-8">

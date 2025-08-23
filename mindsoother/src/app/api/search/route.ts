@@ -12,7 +12,7 @@ export async function POST(req: Request ) {
         instructions: "Conduct yourself professionally like a psychology teacher and use the input given and provide a paragraph summary on the topic."
     })
 
-        // console.log(response.output_text)
+        console.log('chatgpt response', response.output_text)
 
     const alexRes = await fetch (`https://api.openalex.org/works?search=${body.prompt}&per-page=20`, {method: 'GET'})
 
@@ -20,7 +20,7 @@ export async function POST(req: Request ) {
 
     const alexData = await alexRes.json();
 
-    return new Response(JSON.stringify({name: 'John Doe'}), {
+    return new Response(JSON.stringify({chatResponse: response.output_text, alexData: alexData}), {
         headers: {'Content-Type': 'application/json'},
         status: 200
     })
