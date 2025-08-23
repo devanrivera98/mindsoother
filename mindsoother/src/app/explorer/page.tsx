@@ -123,7 +123,7 @@ export default function TechniqueExplorer() {
             {data && 
             <>
             <SearchSummary chatSummary={data.chatResponse} />
-            <SearchResults />
+            <SearchResults results={data.alexData.results} />
             </>
             }
           </div>

@@ -14,7 +14,7 @@ export async function POST(req: Request ) {
 
         console.log('chatgpt response', response.output_text)
 
-    const alexRes = await fetch (`https://api.openalex.org/works?search=${body.prompt}&per-page=20`, {method: 'GET'})
+    const alexRes = await fetch (`https://api.openalex.org/works?search=${body.prompt}&per-page=20&filter=open_access.is_oa:true`, {method: 'GET'})
 
     if (!alexRes.ok) throw new Error(`OpenAlex request failed: ${alexRes.status}`);
 

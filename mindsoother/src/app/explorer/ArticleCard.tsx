@@ -3,9 +3,10 @@ import { LuBookmark, TfiNewWindow } from "../components/icons";
 interface ArticleCardInterface {
     description: string;
     title: string;
+    url: string;
 }
 
-export default function ArticleCard({description, title} : ArticleCardInterface) {
+export default function ArticleCard({description, title, url} : ArticleCardInterface) {
     return (
         <div className="p-5 bg-white shadow-lg rounded flex flex-col">
             <div className="flex justify-end">
@@ -16,7 +17,7 @@ export default function ArticleCard({description, title} : ArticleCardInterface)
                 <p>{description.length > 30 ? description.substring(0, 125) + '...' : description} </p>
             </div>
             <div className="text-brand-purple">
-                <a href="#placeholder" target="_blank" className="flex items-center gap-x-1">
+                <a href={url} target="_blank" className="flex items-center gap-x-1">
                     Read Full Article 
                     <TfiNewWindow fontSize={15} className="-translate-y-px" />
                 </a>
