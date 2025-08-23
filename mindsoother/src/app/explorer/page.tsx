@@ -10,8 +10,7 @@ import formHandler from "./helpers/formHandler";
 export default function TechniqueExplorer() {
   const [textValue, setTextValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [data, setData] = useState<object | null>(null);
-
+  const [data, setData] = useState<any | null>(null);
 
   const handleRecButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     const value = event.currentTarget.dataset.value;
@@ -50,7 +49,7 @@ export default function TechniqueExplorer() {
             <label htmlFor="experience" className="sr-only">
               Describe a topic you'd like to learn more about.
             </label>
-            <form onSubmit={(e) => formHandler(e, {setIsLoading, setData, textValue}) }>
+            <form onSubmit={(e) => formHandler(e, {setIsLoading, setData, setTextValue, textValue}) }>
               <textarea
                 id="experience"
                 className="w-full shadow-sm pl-2 pt-1 resize-none"
@@ -123,7 +122,7 @@ export default function TechniqueExplorer() {
             </div>
             {data && 
             <>
-            <SearchSummary />
+            <SearchSummary chatSummary={data.chatResponse} />
             <SearchResults />
             </>
             }
