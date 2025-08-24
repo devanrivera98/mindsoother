@@ -9,12 +9,12 @@ export async function POST(req: Request ) {
     const response = await client.responses.create({
         model: "gpt-5-nano",
         input: body.prompt,
-        instructions: "Conduct yourself professionally like a psychology teacher and use the input given and provide a paragraph summary on the topic."
+        instructions: "Conduct yourself professionally like a psychology teacher and use the input given and provide a paragraph summary on the topic. Advice them to ask another question if the question asked is unrelated to Psychology or connecting subjects."
     })
 
         console.log('chatgpt response', response.output_text)
 
-    const alexRes = await fetch (`https://api.openalex.org/works?search=${body.prompt}&per-page=20&filter=open_access.is_oa:true`, {method: 'GET'})
+    const alexRes = await fetch (`https://api.openalex.org/works?search=${body.prompt}&per-page=20&filter=open_access.is_oa:true,topics.field.id:32`, {method: 'GET'})
 
     if (!alexRes.ok) throw new Error(`OpenAlex request failed: ${alexRes.status}`);
 

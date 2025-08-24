@@ -22,7 +22,6 @@ export default function SearchResults({ results }: { results: Result[] }) {
       const allAuthors = authors.map((author: any) => {
         return author.raw_author_name;
       });
-      console.log(allAuthors);
       if (allAuthors.length > 3) {
         const slicedAuthors = allAuthors.slice(0, 3);
         authorsString = slicedAuthors.join(", ") + ", et al.";
