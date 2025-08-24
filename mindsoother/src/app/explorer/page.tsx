@@ -1,6 +1,6 @@
 "use client";
 import { FaMagnifyingGlass } from "../components/icons";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import LoadingIcon from "./LoadingIcon";
 import { MoonLoader } from 'react-spinners';
 import SearchSummary from "./SearchSummary";
