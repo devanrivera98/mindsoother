@@ -19,7 +19,7 @@ export default function TechniqueExplorer() {
     }
   };
 
-  const handleTextArea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     if (value.length > 200) {
       return;
@@ -50,21 +50,20 @@ export default function TechniqueExplorer() {
               Describe a topic you'd like to learn more about.
             </label>
             <form onSubmit={(e) => formHandler(e, {setIsLoading, setData, setTextValue, textValue}) }>
-              <textarea
+              <input
                 id="experience"
-                className="w-full shadow-sm pl-2 pt-1 resize-none"
-                rows={4}
+                className="w-full shadow-sm pl-2 py-1 resize-none"
                 placeholder="E.g., 'REM sleep cycles', 'aphasia treatment', 'child development stages', 'anxiety disorders'..."
                 value={textValue}
-                onChange={handleTextArea}
-              ></textarea>
-            <div className="flex justify-between text-gray-500">
+                onChange={(e) => handleSearchInput(e)}
+              ></input>
+            <div className="flex justify-between text-gray-500 pt-2">
               <span className="text-xs">
                 Be specific about the topic to see if a study exist for it already.
               </span>
-              <span className="text-xs">{textValue.length}/200</span>
+
             </div>
-            <button className="flex items-center justify-center gap-x-2 text-white bg-indigo-600 hover:bg-indigo-700 opacity-70 w-full mt-5 p-2 rounded-md cursor-pointer" type="submit">
+            <button className={`flex items-center justify-center gap-x-2 text-white bg-indigo-600 hover:bg-indigo-700 opacity-70 w-full mt-5 p-2 rounded-md ${textValue === '' ? "cursor-not-allowed" : "cursor-pointer"}`} type="submit" disabled={textValue === ''}>
               {isLoading ? 
                 <>
                   <MoonLoader size={18} color="white" />
