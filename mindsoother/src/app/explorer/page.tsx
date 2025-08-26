@@ -2,7 +2,7 @@
 import { FaMagnifyingGlass } from "../components/icons";
 import React, { useState } from "react";
 import LoadingIcon from "./LoadingIcon";
-import { MoonLoader } from 'react-spinners';
+import { MoonLoader } from "react-spinners";
 import SearchSummary from "./SearchSummary";
 import SearchResults from "./SearchResults";
 import formHandler from "./helpers/formHandler";
@@ -37,7 +37,8 @@ export default function TechniqueExplorer() {
               Psychology Research Explorer
             </h1>
             <p className="mt-4 text-gray-50 text-xl">
-            Search through research articles with AI-powered semantic understanding
+              Search through research articles with AI-powered semantic
+              understanding
             </p>
           </div>
         </div>
@@ -49,7 +50,16 @@ export default function TechniqueExplorer() {
             <label htmlFor="experience" className="sr-only">
               Describe a topic you'd like to learn more about.
             </label>
-            <form onSubmit={(e) => formHandler(e, {setIsLoading, setData, setTextValue, textValue}) }>
+            <form
+              onSubmit={(e) =>
+                formHandler(e, {
+                  setIsLoading,
+                  setData,
+                  setTextValue,
+                  textValue,
+                })
+              }
+            >
               <input
                 id="experience"
                 className="w-full shadow-sm pl-2 py-1 resize-none"
@@ -57,25 +67,31 @@ export default function TechniqueExplorer() {
                 value={textValue}
                 onChange={(e) => handleSearchInput(e)}
               ></input>
-            <div className="flex justify-between text-gray-500 pt-2">
-              <span className="text-xs">
-                Be specific about the topic to see if a study exist for it already.
-              </span>
-
-            </div>
-            <button className={`flex items-center justify-center gap-x-2 text-white bg-indigo-600 hover:bg-indigo-700 opacity-70 w-full mt-5 p-2 rounded-md ${textValue === '' ? "cursor-not-allowed" : "cursor-pointer"}`} type="submit" disabled={textValue === ''}>
-              {isLoading ? 
-                <>
-                  <MoonLoader size={18} color="white" />
-                  <span className="font-semibold">Searching Research Database</span>
-                </>
-                :
-                <>
-                <FaMagnifyingGlass />
-                <span className="font-semibold">Find Techniques</span>
-                </>
-              }
-            </button>
+              <div className="flex justify-between text-gray-500 pt-2">
+                <span className="text-xs">
+                  Be specific about the topic to see if a study exist for it
+                  already.
+                </span>
+              </div>
+              <button
+                className={`flex items-center justify-center gap-x-2 text-white bg-indigo-600 hover:bg-indigo-700 opacity-70 w-full mt-5 p-2 rounded-md ${textValue === "" ? "cursor-not-allowed" : "cursor-pointer"}`}
+                type="submit"
+                disabled={textValue === ""}
+              >
+                {isLoading ? (
+                  <>
+                    <MoonLoader size={18} color="white" />
+                    <span className="font-semibold">
+                      Searching Research Database
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <FaMagnifyingGlass />
+                    <span className="font-semibold">Find Techniques</span>
+                  </>
+                )}
+              </button>
             </form>
             <div className="pt-5">
               <h2>Try an example:</h2>
@@ -117,14 +133,14 @@ export default function TechniqueExplorer() {
           </div>
           <div className="py-5 max-w-7xl mx-auto ">
             <div className="flex justify-center">
-            <LoadingIcon loading={isLoading} />
+              <LoadingIcon loading={isLoading} />
             </div>
-            {data && 
-            <>
-            <SearchSummary chatSummary={data.chatResponse} />
-            <SearchResults results={data.alexData.results} />
-            </>
-            }
+            {data && (
+              <>
+                <SearchSummary chatSummary={data.chatResponse} />
+                <SearchResults results={data.alexData.results} />
+              </>
+            )}
           </div>
         </div>
       </section>

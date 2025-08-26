@@ -1,16 +1,16 @@
 import ArticleCard from "./ArticleCard";
 
 interface Author {
-    raw_author_name: string; 
-  }
-  
-  interface Result {
-    title: string; 
-    publication_year: string; 
-    primary_location: { landing_page_url: string }; 
-    authorships: Author[];
-    [key: string]: any; // allow unknown extra properties
-  }
+  raw_author_name: string;
+}
+
+interface Result {
+  title: string;
+  publication_year: string;
+  primary_location: { landing_page_url: string };
+  authorships: Author[];
+  [key: string]: any; // allow unknown extra properties
+}
 
 export default function SearchResults({ results }: { results: Result[] }) {
   const mappedResults = results.map((result, index) => {

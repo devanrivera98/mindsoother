@@ -16,8 +16,6 @@ import { TfiNewWindow as TfiNewWindowRaw } from "react-icons/tfi";
 import { IoPerson as IoPersonRaw } from "react-icons/io5";
 import { IoCalendarClearOutline as IoCalendarClearOutlineRaw } from "react-icons/io5";
 
-
-
 import React, { ComponentProps } from "react";
 
 const LuBrain = (props: React.ComponentProps<"svg">) => (
@@ -63,13 +61,21 @@ const IoMdCheckmark = (props: React.ComponentProps<"svg">) => (
   <>{IoMdCheckmarkRaw({ ...props })}</>
 );
 
-const BsStars = (props: React.ComponentProps<'svg'>) => <>{BsStarsRaw({...props})}</>
+const BsStars = (props: React.ComponentProps<"svg">) => (
+  <>{BsStarsRaw({ ...props })}</>
+);
 
-const TfiNewWindow = (props: React.ComponentProps<'svg'>) => <>{TfiNewWindowRaw({...props})}</>
+const TfiNewWindow = (props: React.ComponentProps<"svg">) => (
+  <>{TfiNewWindowRaw({ ...props })}</>
+);
 
-const IoPerson = (props: React.ComponentProps<'svg'>) => <>{IoPersonRaw({...props})}</>
+const IoPerson = (props: React.ComponentProps<"svg">) => (
+  <>{IoPersonRaw({ ...props })}</>
+);
 
-const IoCalendarClearOutline = (props: React.ComponentProps<'svg'>) => <>{IoCalendarClearOutlineRaw({...props})}</>
+const IoCalendarClearOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoCalendarClearOutlineRaw({ ...props })}</>
+);
 
 export {
   LuBrain,
@@ -87,5 +93,5 @@ export {
   BsStars,
   TfiNewWindow,
   IoPerson,
-  IoCalendarClearOutline
+  IoCalendarClearOutline,
 };
