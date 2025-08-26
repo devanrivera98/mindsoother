@@ -1,16 +1,16 @@
 import ArticleCard from "./ArticleCard";
 
 interface Author {
-    raw_author_name: string; 
-  }
-  
-  interface Result {
-    title: string; 
-    publication_year: string; 
-    primary_location: { landing_page_url: string }; 
-    authorships: Author[];
-    [key: string]: any; // allow unknown extra properties
-  }
+  raw_author_name: string;
+}
+
+interface Result {
+  title: string;
+  publication_year: string;
+  primary_location: { landing_page_url: string };
+  authorships: Author[];
+  [key: string]: any; // allow unknown extra properties
+}
 
 export default function SearchResults({ results }: { results: Result[] }) {
   const mappedResults = results.map((result, index) => {
@@ -34,7 +34,7 @@ export default function SearchResults({ results }: { results: Result[] }) {
       <ArticleCard
         key={index}
         title={result.title}
-        description="Placeholder description until we are able to get the proper abstract"
+        abstractIndex={result.abstract_inverted_index}
         url={result.primary_location.landing_page_url}
         publishDate={result.publication_year}
         authors={authorsString}
