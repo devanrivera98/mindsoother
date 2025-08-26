@@ -1,4 +1,4 @@
-import { BsStars } from "../components/icons"
+import { BsStars, InformationCircle } from "../components/icons"
 
 export default function SearchSummary({chatSummary}: {chatSummary: string}) {
     return (
@@ -9,6 +9,15 @@ export default function SearchSummary({chatSummary}: {chatSummary: string}) {
             </div>
             <div className="leading-7 font-medium text-gray-700">
                 <p>{chatSummary}</p>
+                <div className="pt-5">
+                        <a href="/about#disclaimer" className="inline-flex gap-x-2 hover:underline-100 text-brand-purple hover:text-hover-purple hover:underline hover:underline-offset-1">
+                            <span className="flex items-center gap-x-2">
+                            <InformationCircle />
+                            Disclaimer
+                            </span>
+                            </a>
+
+            </div>
             </div>
         </div>
     )
