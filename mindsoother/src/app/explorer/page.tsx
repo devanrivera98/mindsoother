@@ -53,7 +53,7 @@ export default function TechniqueExplorer() {
               <input
                 id="experience"
                 className="w-full shadow-sm pl-2 py-1 resize-none"
-                placeholder="E.g., 'REM sleep cycles', 'aphasia treatment', 'child development stages', 'anxiety disorders'..."
+                placeholder="E.g., 'REM sleep cycles', 'stroke treatment', 'child development stages', 'bipolar disorders'..."
                 value={textValue}
                 onChange={(e) => handleSearchInput(e)}
               ></input>
@@ -89,12 +89,12 @@ export default function TechniqueExplorer() {
                   REM sleep
                 </button>
                 <button
-                  data-value="aphasia recovery"
+                  data-value="stroke recovery"
                   className="bg-gray-100 text-xs font-semibold rounded-xl p-1.5 px-3 cursor-pointer hover:bg-indigo-100 hover:text-indigo-500"
                   type="button"
                   onClick={handleRecButton}
                 >
-                  aphasia recovery
+                  stroke recovery
                 </button>
                 <button
                   data-value="child development"
@@ -105,12 +105,12 @@ export default function TechniqueExplorer() {
                   child development
                 </button>
                 <button
-                  data-value="anxiety disorders"
+                  data-value="bipolar disorders"
                   className="bg-gray-100 text-xs font-semibold rounded-xl p-1.5 px-3 cursor-pointer hover:bg-indigo-100 hover:text-indigo-500"
                   type="button"
                   onClick={handleRecButton}
                 >
-                  anxiety disorder
+                  bipolar disorder
                 </button>
               </div>
             </div>
