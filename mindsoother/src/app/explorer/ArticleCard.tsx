@@ -1,14 +1,21 @@
 import { IoCalendarClearOutline, IoPerson, LuBookmark, TfiNewWindow } from "../components/icons";
+import buildAbstractFromIndex from './helpers/buildAbstractFromIndex'
+
+interface abstractInterface {
+    [key: string ]: number[]
+}
 
 interface ArticleCardInterface {
-    description: string;
+    abstractIndex: abstractInterface;
     title: string;
     authors: string;
     publishDate: string;
     url: string;
 }
 
-export default function ArticleCard({description, title, url, publishDate, authors} : ArticleCardInterface) {
+export default function ArticleCard({abstractIndex, title, url, publishDate, authors} : ArticleCardInterface) {
+
+    const abstract = buildAbstractFromIndex(abstractIndex)
 
     return (
         <div className="p-5 bg-white shadow-lg rounded flex flex-col">
@@ -27,7 +34,7 @@ export default function ArticleCard({description, title, url, publishDate, autho
                 </div>
             </div>
             <div className="py-5 flex-grow-1 font-medium text-gray-700">
-                <p>{description.length > 30 ? description.substring(0, 125) + '...' : description} </p>
+                <p>{abstract.length > 450 ? abstract.substring(0, 125) + '...' : abstract} </p>
             </div>
             <div className="text-brand-purple">
                 <a href={url} target="_blank" className="flex items-center gap-x-1">

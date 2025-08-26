@@ -34,7 +34,7 @@ export default function SearchResults({ results }: { results: Result[] }) {
       <ArticleCard
         key={index}
         title={result.title}
-        description="Placeholder description until we are able to get the proper abstract"
+        abstractIndex={result.abstract_inverted_index}
         url={result.primary_location.landing_page_url}
         publishDate={result.publication_year}
         authors={authorsString}
