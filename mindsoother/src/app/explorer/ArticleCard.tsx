@@ -25,11 +25,13 @@ export default function ArticleCard({abstractIndex, title, url, publishDate, aut
             <h3 className="font-semibold text-xl pr-5">{title}</h3>
             <div className="flex pt-3  gap-x-4 font-medium text-gray-700">
                 <div className="flex items-center gap-x-2">
-                <IoPerson />
-                <h3>{authors}</h3>
+                    <div>
+                    <IoPerson fontSize={16} />
+                    </div>
+                <h3 className="pr-2">{authors}</h3>
                 </div>
                 <div className="flex items-center gap-x-2">
-                  <IoCalendarClearOutline />
+                  <IoCalendarClearOutline fontSize={16}  />
                     <span>{publishDate}</span>
                 </div>
             </div>
