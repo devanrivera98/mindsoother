@@ -10,12 +10,10 @@ export default function IntroHome() {
           <div className="grid grid-cols-1 md:grid-cols-2 py-20 md:py-30 items-stretch">
             <div className="pr-5 flex flex-col flex-grow order-2 md:order-1">
               <h2 className="text-white text-5xl font-bold">
-                Find the right therapeutic technique for your unique journey
+                AI-powered psychology research at your fingertips
               </h2>
-              <p className="pt-5 text-white text-lg">
-                Describe your mental health challenges, and our AI will match
-                you with evidence-based techniques from CBT, DBT, ACT, and other
-                therapeutic approaches.
+              <p className="pt-5 text-white text-xl">
+                Search through psychology research articles, get instant AI summaries, and organize findings in your personal research library. 
               </p>
               <div className="pt-5 flex gap-x-5">
                 <Link
