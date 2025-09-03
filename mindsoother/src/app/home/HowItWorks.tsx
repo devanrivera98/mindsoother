@@ -1,6 +1,6 @@
 import HowCards from "./components/HowCards";
 import {
-  LuBrain,
+  FaMagnifyingGlass,
   RiPsychotherapyLine,
   IoBookOutline,
 } from "../components/icons";
@@ -15,30 +15,29 @@ export default function HowItWorks() {
               How It Works?
             </h1>
             <p className="text-lg pt-5 flex justify-center text-faded-gray">
-              Your personalized path to better mental well-being in three simple
-              steps
+            Powerful research tools designed for psychology professionals and students
             </p>
           </div>
           <div className="pt-12 grid md:grid-cols-3">
             <HowCards
-              icon={LuBrain}
+              icon={FaMagnifyingGlass}
               title={"Share Your Experience"}
               description={
-                "Describe what you're struggling with, whether it's anxiety, work stress, or relationship challenges."
+                "Search by concepts, not just keywords. Find relevant research even when using different terminology."
               }
             />
             <HowCards
               icon={RiPsychotherapyLine}
               title={"Get Matched"}
               description={
-                "Our AI analyzes your description and recommends evidence-based techniques tailored to your specific needs."
+                "Get instant AI-generated summaries of search term and related concepts for quick understanding."
               }
             />
             <HowCards
               icon={IoBookOutline}
               title={"Track Your Progress"}
               description={
-                "Save techniques, take notes on your experiences, and build a personalized library of what works for you."
+                "Save articles to custom folders, add personal notes, and build your research library over time."
               }
             />
           </div>

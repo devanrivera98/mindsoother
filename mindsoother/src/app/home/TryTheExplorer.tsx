@@ -6,11 +6,10 @@ export default function TryTheExplorer() {
       <div className="mx-auto max-w-7xl lg:px-8 sm:px-6 px-4">
         <div className="text-center">
           <h2 className="text-[30px] font-bold">
-            Ready to find techniques that work for you?
+            Ready to accelerate your research?
           </h2>
           <p className="pt-5 text-indigo-200 text-lg max-w-3xl mx-auto">
-            Start your journey to better mental well-being with personalized,
-            evidence-based techniques.
+          Join psychology professionals using AI to discover, understand, and organize research more efficiently.
           </p>
         </div>
         <div className="flex pt-10">

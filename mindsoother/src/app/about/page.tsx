@@ -7,7 +7,7 @@ export default function About() {
       <div className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-center text-white">
         <h1 className="text-3xl font-bold">About MindSoother Explorer</h1>
         <p className="mt-4 text-xl text-indigo-100">
-          Bridging the gap between evidence-based psychology and self-help
+        AI-powered research discovery for psychology enthusiast 
         </p>
       </div>
       <div className="mx-auto max-w-7xl my-12 px-4 sm:px-6 lg:px-8">
@@ -17,18 +17,10 @@ export default function About() {
               <div>
                 <h2 className="font-bold text-2xl">Our Mission</h2>
                 <p className="mt-4 text-faded-gray">
-                  Mindsoother was created to make evidence-based psychological
-                  techniques more accessible to everyone. We believe that
-                  understanding the tools therapists use can help people make
-                  progress even between therapy sessions, or while waiting for
-                  professional help.
+                PsychSearch was created to revolutionize how psychology professionals, researchers, and students discover and organize research. We believe that AI-powered search can dramatically improve the efficiency of literature reviews and evidence-based practice.
                 </p>
                 <p className="mt-4 text-faded-gray">
-                  Our AI-powered platform matches your specific challenges with
-                  techniques from cognitive behavioral therapy (CBT),
-                  dialectical behavior therapy (DBT), acceptance and commitment
-                  therapy (ACT), internal family systems (IFS), and other
-                  evidence-based approaches.
+                  Our AI-powered platform matches research queries conceptually, not just by keywords, and provides AI-generated summaries to help you quickly understand key findings and identify relevant research directions.
                 </p>
               </div>
               <div className="mt-10">
@@ -41,11 +33,10 @@ export default function About() {
                     />
                     <p className="text-faded-gray">
                       <span className="font-bold text-lg">
-                        Specific techniques, not just general advice
+                      Semantic search, not just keyword matching
                       </span>
                       <br />
-                      Instead of vague suggestions, we provide structured,
-                      actionable techniques used by therapists.
+                      Find relevant research even when using different terminology or concepts than the original papers.
                     </p>
                   </li>
                   <li className="flex gap-x-2">
@@ -55,11 +46,10 @@ export default function About() {
                     />
                     <p className="text-faded-gray">
                       <span className="font-bold text-lg">
-                        Evidence-based approaches
+                      AI-powered research summaries
                       </span>
                       <br />
-                      We focus on therapeutic modalities with scientific
-                      research supporting their effectiveness.
+                      Get instant, contextual summaries of research findings and related concepts to accelerate understanding.
                     </p>
                   </li>
                   <li className="flex gap-x-2">
@@ -69,10 +59,10 @@ export default function About() {
                     />
                     <p className="text-faded-gray">
                       <span className="font-bold text-lg">
-                        Personal progress tracking
+                      Personal research library
                       </span>
                       <br />
-                      Save techniques and track what works specifically for you.
+                      Organize articles in custom folders, add personal notes, and build your research collection over time.
                     </p>
                   </li>
                 </ul>
@@ -86,12 +76,12 @@ export default function About() {
                   />
                   <div className="flex flex-col gap-y-2">
                     <p className="text-orange-700 font-semibold">
-                      Mindsoother Explorer is intended for informational and
-                      self-guided exploration purposes only. It is not a
+                      PsychSearch Explorer is intended for informational and
+                      research exploration purposes only. It is not a
                       substitute for professional medical advice, diagnosis, or
                       treatment. Always seek the advice of your physician,
                       therapist, or other qualified health provider with any
-                      questions you may have regarding a mental health
+                      questions you may have regarding a personal mental health
                       condition. Do not disregard professional advice or delay
                       seeking it because of content or features on this site.
                     </p>
@@ -102,9 +92,9 @@ export default function About() {
                     </p>
                     <p className="text-orange-700 font-bold">
                       By using this site, you acknowledge and agree that
-                      Mindsoother Explorer and its creators are not responsible
+                      PsychSearch Explorer and its creators are not responsible
                       for any decisions or actions you take based on the content
-                      provided. Use of this site is at your own risk.
+                      provided. This platform is provided for educational and research purposes only.
                     </p>
                   </div>
                 </div>
@@ -112,9 +102,9 @@ export default function About() {
               <div className="mt-10">
                 <h2 className="font-bold text-2xl">Our Team</h2>
                 <p className="mt-4 text-faded-gray">
-                  Mindsoother Explorer is a personal project developed by a solo
+                  PsychSearch Explorer is a personal project developed by a solo
                   developer passionate about leveraging technology to make
-                  mental health resources more accessible and personalized.
+                  psychology resources more accessible and personalized.
                 </p>
               </div>
             </div>
