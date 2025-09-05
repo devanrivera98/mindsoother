@@ -1,4 +1,5 @@
 import { IoMailOutline } from "../components/icons"
+import FormInput from "../components/auth/FormInput";
 
 export default function SignInPage() {
   return (
@@ -13,15 +14,7 @@ export default function SignInPage() {
       <div className="w-full sm:max-w-lg flex flex-col mx-auto">
         <div className="border rounded border-gray-100 shadow-lg mt-10">
             <form className="py-10 mx-10">
-                <div className="flex flex-col gap-y-2">
-                    <label>Email address</label>
-                    <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center">
-                        <IoMailOutline stroke="gray" fontSize={20} />
-                        </div>
-                    <input className="py-1 w-full pl-10 border border-gray-300 rounded" placeholder="Enter email here" />
-                    </div>
-                </div>
+                <FormInput Icon={IoMailOutline} name={"Email Address"} placeholder={"Enter email here"} />
             </form>
         </div>
       </div>
