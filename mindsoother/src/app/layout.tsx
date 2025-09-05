@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Lora, Inter } from "next/font/google";
+import { Geist, JetBrains_Mono, Lora, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -14,6 +14,11 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"]
+})
+
 export const metadata: Metadata = {
   title: "MindSoother",
   description:
@@ -27,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.variable} ${inter.variable} antialiased`}>
+      <body className={`${lora.variable} ${inter.variable} ${mono.variable} antialiased`}>
         <Header />
         <main className="pt-[80px] min-h-screen">{children}</main>
         <Footer />
