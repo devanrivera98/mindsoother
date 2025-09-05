@@ -15,6 +15,9 @@ import { BsStars as BsStarsRaw } from "react-icons/bs";
 import { TfiNewWindow as TfiNewWindowRaw } from "react-icons/tfi";
 import { IoPerson as IoPersonRaw } from "react-icons/io5";
 import { IoCalendarClearOutline as IoCalendarClearOutlineRaw } from "react-icons/io5";
+import { IoMdMail as IoMdMailRaw} from "react-icons/io";
+import { IoLockClosed as IoLockClosedRaw} from "react-icons/io5";
+
 
 import React, { ComponentProps } from "react";
 
@@ -77,6 +80,12 @@ const IoCalendarClearOutline = (props: React.ComponentProps<"svg">) => (
   <>{IoCalendarClearOutlineRaw({ ...props })}</>
 );
 
+const IoMdMail = (props: React.ComponentProps<"svg">) => (<>{IoMdMailRaw({...props})}</>)
+
+const IoLockClosed = (props: React.ComponentProps<"svg">) => (
+  <>{IoLockClosedRaw({...props})}</>
+)
+
 export {
   LuBrain,
   LuHouse,
@@ -94,4 +103,6 @@ export {
   TfiNewWindow,
   IoPerson,
   IoCalendarClearOutline,
+  IoLockClosed,
+  IoMdMail
 };
