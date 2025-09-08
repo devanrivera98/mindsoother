@@ -17,8 +17,8 @@ import { IoPerson as IoPersonRaw } from "react-icons/io5";
 import { IoCalendarClearOutline as IoCalendarClearOutlineRaw } from "react-icons/io5";
 import { IoMailOutline as IoMailOutlineRaw} from "react-icons/io5";
 import { IoLockClosedOutline as IoLockClosedOutlineRaw } from "react-icons/io5";
-
-
+import { IoEyeOutline as IoEyeOutlineRaw } from "react-icons/io5";
+import { IoEyeOffOutline as IoEyeOffOutlineRaw } from "react-icons/io5";
 
 import React, { ComponentProps } from "react";
 
@@ -87,6 +87,10 @@ const IoLockClosedOutline = (props: React.ComponentProps<"svg">) => (
   <>{IoLockClosedOutlineRaw({...props})}</>
 )
 
+const IoEyeOutline = (props: React.ComponentProps<"svg">) => <>{IoEyeOutlineRaw({...props})}</>
+
+const IoEyeOffOutline = (props: React.ComponentProps<"svg">) => <>{IoEyeOffOutlineRaw({...props})}</>
+
 export {
   LuBrain,
   LuHouse,
@@ -105,5 +109,7 @@ export {
   IoPerson,
   IoCalendarClearOutline,
   IoLockClosedOutline,
-  IoMailOutline
+  IoMailOutline,
+  IoEyeOutline,
+  IoEyeOffOutline
 };

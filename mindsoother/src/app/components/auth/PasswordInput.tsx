@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 interface FormInputInterface {
     Icon: React.ElementType
     name: string;
@@ -6,6 +8,8 @@ interface FormInputInterface {
 
 
 export default function FormInput({Icon, name, placeholder} : FormInputInterface) {
+    const [isShowing, setIsShowing] = useState(false);
+
     return (
         <div className="flex flex-col gap-y-2">
                     <label htmlFor={name}>{name}</label>
