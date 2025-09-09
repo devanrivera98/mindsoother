@@ -13,7 +13,8 @@ import { FaMagnifyingGlass as FaMagnifyingGlassRaw } from "react-icons/fa6";
 import { IoMdCheckmark as IoMdCheckmarkRaw } from "react-icons/io";
 import { BsStars as BsStarsRaw } from "react-icons/bs";
 import { TfiNewWindow as TfiNewWindowRaw } from "react-icons/tfi";
-import { IoPerson as IoPersonRaw } from "react-icons/io5";
+import { IoPersonOutline as IoPersonOutlineRaw } from "react-icons/io5";
+
 import { IoCalendarClearOutline as IoCalendarClearOutlineRaw } from "react-icons/io5";
 import { IoMailOutline as IoMailOutlineRaw} from "react-icons/io5";
 import { IoLockClosedOutline as IoLockClosedOutlineRaw } from "react-icons/io5";
@@ -75,8 +76,8 @@ const TfiNewWindow = (props: React.ComponentProps<"svg">) => (
   <>{TfiNewWindowRaw({ ...props })}</>
 );
 
-const IoPerson = (props: React.ComponentProps<"svg">) => (
-  <>{IoPersonRaw({ ...props })}</>
+const IoPersonOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoPersonOutlineRaw({ ...props })}</>
 );
 
 const IoCalendarClearOutline = (props: React.ComponentProps<"svg">) => (
@@ -110,7 +111,7 @@ export {
   IoMdCheckmark,
   BsStars,
   TfiNewWindow,
-  IoPerson,
+  IoPersonOutline,
   IoCalendarClearOutline,
   IoLockClosedOutline,
   IoMailOutline,

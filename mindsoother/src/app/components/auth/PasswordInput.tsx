@@ -7,17 +7,18 @@ interface PasswordInputInterface {
     Icon: React.ElementType
     name: string;
     placeholder: string;
+    autoComplete?: string
 }
 
 
-export default function PasswordInput({Icon, name, placeholder} : PasswordInputInterface) {
+export default function PasswordInput({Icon, name, placeholder, autoComplete} : PasswordInputInterface) {
     const [isShowing, setIsShowing] = useState(false);
 
     return (
         <div className="flex flex-col gap-y-2">
                     <label htmlFor={name}>{name}</label>
                     <div className="relative">
-                    <input type={isShowing ? "text" : "password"} id={name} name={name} className="py-1 w-full pl-10 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={placeholder} />
+                    <input type={isShowing ? "text" : "password"} id={name} name={name} className="py-1 w-full pl-10 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={placeholder} {...(autoComplete ? {autoComplete} : {})} />
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center" aria-hidden="true">
                         <Icon stroke="gray" fontSize={20} />
                         </div>

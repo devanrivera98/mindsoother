@@ -2,10 +2,11 @@ interface FormInputInterface {
     Icon: React.ElementType
     name: string;
     placeholder: string;
+    autoComplete?: string;
 }
 
 
-export default function FormInput({Icon, name, placeholder} : FormInputInterface) {
+export default function FormInput({Icon, name, placeholder, autoComplete} : FormInputInterface) {
     return (
         <div className="flex flex-col gap-y-2">
                     <label htmlFor={name}>{name}</label>
@@ -13,7 +14,7 @@ export default function FormInput({Icon, name, placeholder} : FormInputInterface
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center" aria-hidden="true">
                         <Icon stroke="gray" fontSize={20} />
                         </div>
-                    <input id={name} name={name} className="py-1 w-full pl-10 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={placeholder} />
+                    <input id={name} name={name} className="py-1 w-full pl-10 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder={placeholder} {...(autoComplete ? { autoComplete } : {})} />
                     </div>
                 </div>
     )
