@@ -1,8 +1,47 @@
+'use client'
+import { useState } from "react"
+import { z } from "zod";
 import FormInput from "../components/auth/FormInput"
 import PasswordInput from "../components/auth/PasswordInput"
 import { IoMailOutline, IoPersonOutline, IoLockClosedOutline, IoArrowForwardSharp, FcGoogle } from "../components/icons"
 
+interface formInterface {
+    fullName: string;
+    email: string;
+    password: string;
+    confirmPassword: string
+}
+
 export default function SignUpPage() {
+
+    const formSchema = z.object({
+        fullName: z.string().min(1, "Full name is required"),
+        email: z.string().email("Invalid email"),
+        password: z.string().min(8, "Password must be at least 8 characters")
+        .regex(/[A-Z]/, "Must contain an uppercase letter")
+        .regex(/[!@#$%^&*]/, "Must contain a special character")
+        .regex(/[0-9]/, "Must contain a number"),
+        confirmPassword: z.string()
+    }).refine((data) => data.password === data.confirmPassword, {
+        message: "Passwords do not match",
+        path: ["confirmPassword"]
+    });
+
+    type FormData = z.infer<typeof formSchema>;
+
+    const [form, setForm] = useState<FormData>({
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+    });
+
+    const onInputChange = (name: string, value: string) => {
+        setForm({
+            ...form,
+            [name]: value
+        })
+    } 
 
     return (
     <div className="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8">
