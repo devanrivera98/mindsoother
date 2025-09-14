@@ -15,6 +15,15 @@ interface PasswordInputInterface {
 
 export default function PasswordInput({Icon, name, field, placeholder, autoComplete, onInputChange} : PasswordInputInterface) {
     const [isShowing, setIsShowing] = useState(false);
+    const [password, setPassword] = useState("");
+
+
+    const passwordRules = [
+        { test: (pw: string) => pw.length >= 8, message: "At least 8 characters" },
+        { test: (pw: string) => /[A-Z]/.test(pw), message: "Must contain an uppercase letter" },
+        { test: (pw: string) => /[!@#$%^&*]/.test(pw), message: "Must contain a special character" },
+        { test: (pw: string) => /\d/.test(pw), message: "Must contain a number" }
+      ];
 
     return (
         <div className="flex flex-col gap-y-2">
@@ -34,6 +43,11 @@ export default function PasswordInput({Icon, name, field, placeholder, autoCompl
                         )}
                         </button>
                     </div>
+                    {passwordRules.map((rule, i) => (
+                        !rule.test(password) && (
+                            <p className='text-red-500 pl-1' key={i}>{rule.message}</p>
+                        )
+                    ))}
                 </div>
     )
 }
