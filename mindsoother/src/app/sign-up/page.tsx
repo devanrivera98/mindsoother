@@ -76,8 +76,8 @@ export default function SignUpPage() {
                 <FormInput Icon={IoPersonOutline} name={"Full Name"} placeholder={"Enter your full name"} autoComplete="name" field="fullName" onInputChange={onInputChange} />
                 <FormInput Icon={IoMailOutline} name={"Email Address"} placeholder={"Enter email here"} autoComplete="email" field="email" onInputChange={onInputChange} />
 
-                <PasswordInput Icon={IoLockClosedOutline} name={"Password"} field="password" placeholder={"Create your password"} password={form.password} onInputChange={onInputChange} isSubmitted={isSubmitted} />
-                <PasswordInput Icon={IoLockClosedOutline} name={"Confirm Password"} field={"confirmPassword"} password={form.confirmPassword} placeholder={"Confirm your password"} onInputChange={onInputChange} isSubmitted={isSubmitted} />
+                <PasswordInput Icon={IoLockClosedOutline} name={"Password"} field="password" placeholder={"Create your password"} password={form.password} onInputChange={onInputChange} isSubmitted={isSubmitted} confirmPassword={form.confirmPassword} />
+                <PasswordInput Icon={IoLockClosedOutline} name={"Confirm Password"} field={"confirmPassword"} password={form.password} placeholder={"Confirm your password"} onInputChange={onInputChange} isSubmitted={isSubmitted} confirmPassword={form.confirmPassword} />
                 <button type="submit" className="bg-brand-purple hover:bg-hover-purple text-white rounded flex justify-center items-center py-2 transition-all duration-200 ease-in-out gap-x-2 hover:gap-x-4">
                     <span>Create account</span>
                     <IoArrowForwardSharp />

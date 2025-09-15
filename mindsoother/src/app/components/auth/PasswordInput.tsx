@@ -7,9 +7,10 @@ interface PasswordInputInterface {
   Icon: React.ElementType;
   name: string;
   placeholder: string;
-  field: string;
+  field: "password" | "confirmPassword";
   isSubmitted: boolean;
   password: string;
+  confirmPassword: string;
   autoComplete?: string;
   onInputChange: (name: string, value: string) => void;
 }
@@ -22,24 +23,36 @@ export default function PasswordInput({
   autoComplete,
   onInputChange,
   password,
-  isSubmitted
+  confirmPassword,
 }: PasswordInputInterface) {
   const [isShowing, setIsShowing] = useState(false);
-//   const [password, setPassword] = useState("");
-//   const [isPasswordSubmitted, setIsPasswordSubmitted] = useState(false);
+  const [showError, setShowError] = useState(false);
 
-  const passwordRules = [
-    { test: (pw: string) => pw.length >= 8, message: "At least 8 characters" },
-    {
-      test: (pw: string) => /[A-Z]/.test(pw),
-      message: "Must contain an uppercase letter",
-    },
-    {
-      test: (pw: string) => /[!@#$%^&*]/.test(pw),
-      message: "Must contain a special character",
-    },
-    { test: (pw: string) => /\d/.test(pw), message: "Must contain a number" },
-  ];
+  const passwordRules = {
+    password: [
+      {
+        test: (pw: string) => pw.length >= 8,
+        message: "At least 8 characters",
+      },
+      {
+        test: (pw: string) => /[A-Z]/.test(pw),
+        message: "Must contain an uppercase letter",
+      },
+      {
+        test: (pw: string) => /[!@#$%^&*]/.test(pw),
+        message: "Must contain a special character",
+      },
+      { test: (pw: string) => /\d/.test(pw), message: "Must contain a number" },
+    ],
+    confirmPassword: [
+      {
+        test: (confirmPw: string) => confirmPw === password,
+        message: "Passwords must match",
+      },
+    ],
+  };
+
+  const valueToTest = field === "password" ? password : confirmPassword;
 
   return (
     <div className="flex flex-col gap-y-2">
@@ -52,7 +65,14 @@ export default function PasswordInput({
           className="py-1 w-full pl-10 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder={placeholder}
           {...(autoComplete ? { autoComplete } : {})}
-          onChange={(e) => onInputChange(e.target.name, e.target.value)}
+          onChange={(e) => {
+            onInputChange(e.target.name, e.target.value);
+            if (e.target.value.length > 0) {
+              setShowError(true);
+            } else {
+              setShowError(false);
+            }
+          }}
         />
         <div
           className="absolute inset-y-0 left-0 pl-3 flex items-center"
@@ -77,9 +97,10 @@ export default function PasswordInput({
           )}
         </button>
       </div>
-      {isSubmitted &&
-        passwordRules.map((rule) =>
-          !rule.test(password) ? (
+
+      {showError &&
+        passwordRules[field]?.map((rule) =>
+          !rule.test(valueToTest) ? (
             <p key={rule.message} className="text-red-500 pl-1">
               {rule.message}
             </p>
