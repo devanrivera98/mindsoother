@@ -15,8 +15,8 @@ export default function SignInPage() {
       <div className="w-full sm:max-w-lg flex flex-col mx-auto">
         <div className="border rounded border-gray-100 shadow-lg mt-10 px-10">
             <form className="py-10  flex flex-col gap-y-4">
-                <FormInput Icon={IoMailOutline} name={"Email Address"} placeholder={"Enter email here"} autoComplete="email" />
-                <PasswordInput Icon={IoLockClosedOutline} name={"Password"} placeholder={"Enter your password"} autoComplete="current-password" />
+                <FormInput Icon={IoMailOutline} name={"Email Address"} placeholder={"Enter email here"} autoComplete="email" field="email" />
+                <PasswordInput Icon={IoLockClosedOutline} name={"Password"} placeholder={"Enter your password"} autoComplete="current-password" field="currentPassword" />
                 <button type="submit" className="bg-brand-purple hover:bg-hover-purple text-white rounded flex justify-center items-center py-2 transition-all duration-200 ease-in-out gap-x-2 hover:gap-x-4">
                     <span>Sign In</span>
                     <IoArrowForwardSharp />

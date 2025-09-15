@@ -8,6 +8,8 @@ interface PasswordInputInterface {
   name: string;
   placeholder: string;
   field: string;
+  isSubmitted: boolean;
+  password: string;
   autoComplete?: string;
   onInputChange: (name: string, value: string) => void;
 }
@@ -19,10 +21,12 @@ export default function PasswordInput({
   placeholder,
   autoComplete,
   onInputChange,
+  password,
+  isSubmitted
 }: PasswordInputInterface) {
   const [isShowing, setIsShowing] = useState(false);
-  const [password, setPassword] = useState("");
-  const [isPasswordSubmitted, setIsPasswordSubmitted] = useState(false);
+//   const [password, setPassword] = useState("");
+//   const [isPasswordSubmitted, setIsPasswordSubmitted] = useState(false);
 
   const passwordRules = [
     { test: (pw: string) => pw.length >= 8, message: "At least 8 characters" },
@@ -73,7 +77,7 @@ export default function PasswordInput({
           )}
         </button>
       </div>
-      {isPasswordSubmitted &&
+      {isSubmitted &&
         passwordRules.map((rule) =>
           !rule.test(password) ? (
             <p key={rule.message} className="text-red-500 pl-1">
