@@ -1,6 +1,6 @@
 import {
   IoCalendarClearOutline,
-  IoPerson,
+  IoPersonOutline,
   LuBookmark,
   TfiNewWindow,
 } from "../components/icons";
@@ -39,7 +39,7 @@ export default function ArticleCard({
       <div className="flex pt-3  gap-x-4 font-medium text-gray-700">
         <div className="flex items-center gap-x-2">
           <div>
-            <IoPerson fontSize={16} />
+            <IoPersonOutline fontSize={16} />
           </div>
           <h3 className="pr-2">{authors}</h3>
         </div>

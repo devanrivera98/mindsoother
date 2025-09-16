@@ -95,10 +95,10 @@ export default function Header() {
             isActive={pathname === "/about"}
             onClick={() => handleNavClick(3)}
           />
-          <div className="p-0.5 rounded-md border-2 border-transparent focus-within:border-brand-purple">
-            <button className="bg-brand-purple hover:bg-hover-purple cursor-pointer text-white px-4 py-2 rounded-md">
+          <div className="px-1 py-2.5 rounded-md border-2 border-transparent focus-within:border-brand-purple">
+            <Link className="bg-brand-purple hover:bg-hover-purple cursor-pointer text-white px-4 py-2 rounded-md" href="/sign-in">
               Sign In
-            </button>
+            </Link>
           </div>
         </div>
         {/* Mobile Menu Button */}
@@ -135,7 +135,7 @@ export default function Header() {
         <NavLink
           Icon={LuBookmark}
           name="My Library"
-          href="/saved-technique"
+          href="/my-library"
           fontSize={20}
           strokeWidth={1.5}
           isActive={pathname === "/my-library"}
@@ -150,10 +150,10 @@ export default function Header() {
           isActive={pathname === "/about"}
           onClick={() => handleNavClick(3)}
         />
-        <div className="mx-2 pb-4">
-          <button className="w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md">
+        <div className="mx-2 pt-2 pb-4 flex items-center">
+          <Link className="flex justify-center w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md" href="/sign-in" onClick={() => handleNavClick(4)}>
             Sign In
-          </button>
+          </Link>
         </div>
       </div>
     </header>
