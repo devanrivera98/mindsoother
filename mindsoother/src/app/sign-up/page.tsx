@@ -73,8 +73,8 @@ export default function SignUpPage() {
       <div className="w-full sm:max-w-lg flex flex-col mx-auto">
         <div className="border rounded border-gray-100 shadow-lg mt-10 px-10">
             <form className="py-10  flex flex-col gap-y-4" onSubmit={onFormSubmit}>
-                <FormInput Icon={IoPersonOutline} name={"Full Name"} placeholder={"Enter your full name"} autoComplete="name" field="fullName" onInputChange={onInputChange} />
-                <FormInput Icon={IoMailOutline} name={"Email Address"} placeholder={"Enter email here"} autoComplete="email" field="email" onInputChange={onInputChange} />
+                <FormInput Icon={IoPersonOutline} name={"Full Name"} placeholder={"Enter your full name"} autoComplete="name" field="fullName" isSubmitted={isSubmitted} onInputChange={onInputChange} formValue={form.fullName} />
+                <FormInput Icon={IoMailOutline} name={"Email Address"} placeholder={"Enter email here"} autoComplete="email" field="email" isSubmitted={isSubmitted} onInputChange={onInputChange} formValue={form.email} />
 
                 <PasswordInput Icon={IoLockClosedOutline} name={"Password"} field="password" placeholder={"Create your password"} password={form.password} onInputChange={onInputChange} isSubmitted={isSubmitted} confirmPassword={form.confirmPassword} />
                 <PasswordInput Icon={IoLockClosedOutline} name={"Confirm Password"} field={"confirmPassword"} password={form.password} placeholder={"Confirm your password"} onInputChange={onInputChange} isSubmitted={isSubmitted} confirmPassword={form.confirmPassword} />
