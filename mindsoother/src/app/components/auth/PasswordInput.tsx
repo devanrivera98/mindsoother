@@ -24,6 +24,7 @@ export default function PasswordInput({
   onInputChange,
   password,
   confirmPassword,
+  isSubmitted,
 }: PasswordInputInterface) {
   const [isShowing, setIsShowing] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -73,6 +74,14 @@ export default function PasswordInput({
               setShowError(false);
             }
           }}
+          required
+          //aria-invalid should not be set to true before the form is submitted
+          aria-invalid={
+            isSubmitted &&
+            showError &&
+            passwordRules[field]?.some((rule) => !rule.test(valueToTest))
+          }
+          aria-describedby={showError ? `${field}-errors` : undefined}
         />
         <div
           className="absolute inset-y-0 left-0 pl-3 flex items-center"
@@ -98,14 +107,18 @@ export default function PasswordInput({
         </button>
       </div>
 
-      {showError &&
-        passwordRules[field]?.map((rule) =>
-          !rule.test(valueToTest) ? (
-            <p key={rule.message} className="text-red-500 pl-1">
-              {rule.message}
-            </p>
-          ) : null,
-        )}
+      {showError && (
+        <div id={`${field}-errors`}>
+          {passwordRules[field]?.map((rule) =>
+            !rule.test(valueToTest) ? (
+              <p key={rule.message} className="text-red-500 pl-1">
+                <span aria-hidden="true">⚠️ </span>
+                {rule.message}
+              </p>
+            ) : null,
+          )}
+        </div>
+      )}
     </div>
   );
 }
