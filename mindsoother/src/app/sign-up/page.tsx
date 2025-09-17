@@ -76,8 +76,8 @@ export default function SignUpPage() {
                 <FormInput Icon={IoPersonOutline} name={"Full Name"} placeholder={"Enter your full name"} autoComplete="name" field="fullName" isSubmitted={isSubmitted} onInputChange={onInputChange} formValue={form.fullName} />
                 <FormInput Icon={IoMailOutline} name={"Email Address"} placeholder={"Enter email here"} autoComplete="email" field="email" isSubmitted={isSubmitted} onInputChange={onInputChange} formValue={form.email} />
 
-                <PasswordInput Icon={IoLockClosedOutline} name={"Password"} field="password" placeholder={"Create your password"} password={form.password} onInputChange={onInputChange} isSubmitted={isSubmitted} confirmPassword={form.confirmPassword} />
-                <PasswordInput Icon={IoLockClosedOutline} name={"Confirm Password"} field={"confirmPassword"} password={form.password} placeholder={"Confirm your password"} onInputChange={onInputChange} isSubmitted={isSubmitted} confirmPassword={form.confirmPassword} />
+                <PasswordInput Icon={IoLockClosedOutline} name={"Password"} field="password" placeholder={"Create your password"} password={form.password} onInputChange={onInputChange} isSubmitted={isSubmitted} confirmPassword={form.confirmPassword} formValue={form.password} />
+                <PasswordInput Icon={IoLockClosedOutline} name={"Confirm Password"} field={"confirmPassword"} password={form.password} placeholder={"Confirm your password"} onInputChange={onInputChange} isSubmitted={isSubmitted} confirmPassword={form.confirmPassword} formValue={form.confirmPassword} />
                 <button type="submit" className="bg-brand-purple hover:bg-hover-purple text-white rounded flex justify-center items-center py-2 transition-all duration-200 ease-in-out gap-x-2 hover:gap-x-4">
                     <span>Create account</span>
                     <IoArrowForwardSharp />
