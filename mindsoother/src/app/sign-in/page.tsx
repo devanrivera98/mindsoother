@@ -30,7 +30,7 @@ const onFormSubmit = (e: FormEvent) => {
   const result = formSchema.safeParse(form) 
 
   if (!result.success) {
-    setIsSubmiitted(false)
+    setIsSubmiitted(true)
   }
 }
     
@@ -46,8 +46,8 @@ const onFormSubmit = (e: FormEvent) => {
       </div>
       <div className="w-full sm:max-w-lg flex flex-col mx-auto">
         <div className="border rounded border-gray-100 shadow-lg mt-10 px-10">
-            <form className="py-10  flex flex-col gap-y-4">
-                <FormInput Icon={IoMailOutline} name={"Email Address"} placeholder={"Enter email here"} autoComplete="email" field="email" isSubmitted={false} formValue={form.email} onInputChange={onInputChange} />
+            <form className="py-10  flex flex-col gap-y-4" onSubmit={onFormSubmit}>
+                <FormInput Icon={IoMailOutline} name={"Email Address"} placeholder={"Enter email here"} autoComplete="email" field="email" isSubmitted={isSubmitted} formValue={form.email} onInputChange={onInputChange} />
                 {/* temp is submitted for now  */}
                 <PasswordInput Icon={IoLockClosedOutline} name={"Password"} placeholder={"Enter your password"} autoComplete="current-password"
                 password={form.password}
