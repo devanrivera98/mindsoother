@@ -4,6 +4,7 @@ import { z } from "zod";
 import FormInput from "../components/auth/FormInput"
 import PasswordInput from "../components/auth/PasswordInput"
 import { IoMailOutline, IoPersonOutline, IoLockClosedOutline, IoArrowForwardSharp, FcGoogle } from "../components/icons"
+import { signUpWithEmail } from "../utils/supabase/auth";
 
 // interface formInterface {
 //     fullName: string;
@@ -44,7 +45,7 @@ export default function SignUpPage() {
         })
     } 
 
-    const onFormSubmit = (e: FormEvent) => {
+    const onFormSubmit = async (e: FormEvent) => {
         e.preventDefault()
         SetIsSubmitted(true);
         console.log("Form submitted!", form);

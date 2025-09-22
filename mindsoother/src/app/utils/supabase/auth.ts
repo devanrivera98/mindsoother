@@ -1,3 +1,5 @@
+'use server'
+
 import { createClient } from "./server"
 
 export async function signUpWithEmail(email: string, password: string, fullName: string) {
