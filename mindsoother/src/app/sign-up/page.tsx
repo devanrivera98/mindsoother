@@ -10,6 +10,7 @@ import {
   IoArrowForwardSharp,
   FcGoogle,
 } from "../components/icons";
+import { useRouter } from "next/navigation";
 import { signUpWithEmail } from "../utils/supabase/auth";
 
 export default function SignUpPage() {
@@ -32,6 +33,7 @@ export default function SignUpPage() {
 
   type FormData = z.infer<typeof formSchema>;
 
+  const router = useRouter()
   const [isSubmitted, SetIsSubmitted] = useState(false);
   const [hasUser, setHasUser] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
@@ -73,6 +75,11 @@ export default function SignUpPage() {
         return {
           zodErrors: result.error.flatten().fieldErrors,
         };
+      } else {
+        router.push('/')
+
+        router.refresh()
+        //refresh re-fetches server components to perform a "state update" type effect
       }
       console.log("Form submitted!", result.data);
     }

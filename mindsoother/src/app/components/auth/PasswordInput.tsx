@@ -65,6 +65,7 @@ export default function PasswordInput({
           name={field}
           className="py-1 w-full pl-10 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder={placeholder}
+          onPaste={(e) => e.preventDefault()}
           {...(autoComplete ? { autoComplete } : {})}
           onChange={(e) => {
             onInputChange(e.target.name, e.target.value);

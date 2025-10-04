@@ -15,7 +15,7 @@ export const createClient = (request: NextRequest) => {
   const supabase = createServerClient(supabaseUrl!, supabaseKey!, {
     cookies: {
       getAll() {
-        return await request.cookies.getAll();
+        return request.cookies.getAll();
       },
       setAll(cookiesToSet) {
         cookiesToSet.forEach(({ name, value, options }) =>

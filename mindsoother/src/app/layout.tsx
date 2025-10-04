@@ -33,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lora.variable} ${inter.variable} ${mono.variable} antialiased`}>
+          {/* @ts-expect-error Async Server Component */}
         <Header />
         <main className="pt-[80px] min-h-screen">{children}</main>
         <Footer />
