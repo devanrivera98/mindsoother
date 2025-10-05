@@ -12,6 +12,7 @@ import {
 } from "../components/icons";
 import { useRouter } from "next/navigation";
 import { signUpWithEmail } from "../utils/supabase/auth";
+import { createClient } from '@/app/utils/supabase/client';
 
 export default function SignUpPage() {
   const formSchema = z
@@ -54,6 +55,8 @@ export default function SignUpPage() {
   const onFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    const supabase = createClient()
+
     const res = await fetch("/api/signUp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -76,10 +79,23 @@ export default function SignUpPage() {
           zodErrors: result.error.flatten().fieldErrors,
         };
       } else {
-        router.push('/')
+        const {data, error} = await supabase.auth.signUp({
+          email: form.email,
+          password: form.password,
+          options: {
+            data: {full_name: form.fullName}
+        }
+        })
 
-        router.refresh()
-        //refresh re-fetches server components to perform a "state update" type effect
+        if (error) {
+          return error
+        } else {
+          console.log(data)
+          router.push('/')
+  
+          router.refresh()
+          //refresh re-fetches server components to perform a "state update" type effect
+        }
       }
       console.log("Form submitted!", result.data);
     }

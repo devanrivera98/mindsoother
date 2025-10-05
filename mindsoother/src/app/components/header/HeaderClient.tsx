@@ -159,6 +159,9 @@ export default function HeaderClient({user}: HeaderClientProps) {
           <Link className="flex justify-center w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md" href="/sign-in" onClick={() => handleNavClick(4)}>
             Sign In
           </Link>
+          { user !== null && 
+          <h1>{user?.user_metadata.full_name}</h1>
+          }
         </div>
       </div>
     </header>
