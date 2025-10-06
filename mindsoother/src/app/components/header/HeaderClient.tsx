@@ -7,16 +7,19 @@ import { useState, useEffect, useRef } from "react";
 import MobileMenu from "./components/MobileMenu";
 import { usePathname } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
+import { createClient } from '@/app/utils/supabase/client';
 
 interface HeaderClientProps {
-    user: User | null;
+    userData: User | null;
   }
 
-export default function HeaderClient({user}: HeaderClientProps) {
+export default function HeaderClient({userData}: HeaderClientProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [user, setUser] = useState(null)
   const headerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const supabase = createClient()
 
   useEffect(() => {
     const windowWatcher = () => {
@@ -36,11 +39,20 @@ export default function HeaderClient({user}: HeaderClientProps) {
     window.addEventListener("resize", windowWatcher);
     window.addEventListener("mousedown", handleClickOutside);
 
+    const {data: subscription} = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN') {console.log('SIGNED_IN', session)
+      console.log(session?.user.user_metadata.full_name)
+      setUser(session?.user.user_metadata.full_name)
+    }
+    })
+
     return () => {
       window.removeEventListener("resize", windowWatcher);
       window.removeEventListener("mousedown", handleClickOutside);
+      subscription?.subscription.unsubscribe();
     };
-  }, []);
+    
+  }, [supabase]);
 
   const handleNavClick = (index: number) => {
     setActiveIndex(index);
@@ -160,7 +172,7 @@ export default function HeaderClient({user}: HeaderClientProps) {
             Sign In
           </Link>
           { user !== null && 
-          <h1>{user?.user_metadata.full_name}</h1>
+          <h1>{user}</h1>
           }
         </div>
       </div>

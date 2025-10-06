@@ -88,7 +88,7 @@ export default function SignUpPage() {
         })
 
         if (error) {
-          return error
+          console.error('Signup failed:', error.message);
         } else {
           console.log(data)
           router.push('/')
