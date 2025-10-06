@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import { z } from "zod";
 import FormInput from "../components/auth/FormInput";
 import PasswordInput from "../components/auth/PasswordInput";
@@ -12,7 +12,7 @@ import {
 } from "../components/icons";
 import { useRouter } from "next/navigation";
 import { signUpWithEmail } from "../utils/supabase/auth";
-import { createClient } from '@/app/utils/supabase/client';
+import onFormSubmit from "./helpers/onFormSubmit";
 
 export default function SignUpPage() {
   const formSchema = z
@@ -35,7 +35,7 @@ export default function SignUpPage() {
   type FormData = z.infer<typeof formSchema>;
 
   const router = useRouter()
-  const [isSubmitted, SetIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [hasUser, setHasUser] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
   const [form, setForm] = useState<FormData>({
@@ -50,55 +50,6 @@ export default function SignUpPage() {
       ...form,
       [name]: value,
     });
-  };
-
-  const onFormSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    const supabase = createClient()
-
-    const res = await fetch("/api/signUp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: form.email }),
-    });
-    const { userExist, message } = await res.json();
-    if (userExist !== null) setHasUser(userExist);
-    if (message) setSubmitMessage(message);
-    console.log("user", message);
-
-    if (!userExist) {
-      SetIsSubmitted(true);
-      console.log("Form submitted!", form);
-
-      const result = formSchema.safeParse(form);
-
-      if (!result.success) {
-        console.log(result.error.flatten().fieldErrors);
-        return {
-          zodErrors: result.error.flatten().fieldErrors,
-        };
-      } else {
-        const {data, error} = await supabase.auth.signUp({
-          email: form.email,
-          password: form.password,
-          options: {
-            data: {full_name: form.fullName}
-        }
-        })
-
-        if (error) {
-          console.error('Signup failed:', error.message);
-        } else {
-          console.log(data)
-          router.push('/')
-  
-          router.refresh()
-          //refresh re-fetches server components to perform a "state update" type effect
-        }
-      }
-      console.log("Form submitted!", result.data);
-    }
   };
 
   return (
@@ -119,7 +70,7 @@ export default function SignUpPage() {
         <div className="border rounded border-gray-100 shadow-lg mt-10 px-10">
           <form
             className="py-10  flex flex-col gap-y-4"
-            onSubmit={onFormSubmit}
+            onSubmit={(e) => onFormSubmit(e, {form, setHasUser, setSubmitMessage, setIsSubmitted, formSchema, router})}
           >
             <FormInput
               Icon={IoPersonOutline}
