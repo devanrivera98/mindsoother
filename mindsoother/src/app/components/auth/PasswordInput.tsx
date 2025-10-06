@@ -7,11 +7,12 @@ interface PasswordInputInterface {
   Icon: React.ElementType;
   name: string;
   placeholder: string;
-  field: "password" | "confirmPassword";
+  field: "password" | "confirmPassword" | "loginPassword";
   isSubmitted: boolean;
   password: string;
-  confirmPassword: string;
+  confirmPassword?: string;
   autoComplete?: string;
+  formValue: string;
   onInputChange: (name: string, value: string) => void;
 }
 
@@ -25,6 +26,7 @@ export default function PasswordInput({
   password,
   confirmPassword,
   isSubmitted,
+  formValue
 }: PasswordInputInterface) {
   const [isShowing, setIsShowing] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -53,8 +55,6 @@ export default function PasswordInput({
     ],
   };
 
-  const valueToTest = field === "password" ? password : confirmPassword;
-
   return (
     <div className="flex flex-col gap-y-2">
       <label htmlFor={field}>{name}</label>
@@ -65,6 +65,7 @@ export default function PasswordInput({
           name={field}
           className="py-1 w-full pl-10 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder={placeholder}
+          onPaste={(e) => e.preventDefault()}
           {...(autoComplete ? { autoComplete } : {})}
           onChange={(e) => {
             onInputChange(e.target.name, e.target.value);
@@ -79,7 +80,8 @@ export default function PasswordInput({
           aria-invalid={
             isSubmitted &&
             showError &&
-            passwordRules[field]?.some((rule) => !rule.test(valueToTest))
+            field !== "loginPassword" &&
+            passwordRules[field]?.some((rule) => !rule.test(formValue))
           }
           aria-describedby={showError ? `${field}-errors` : undefined}
         />
@@ -107,10 +109,10 @@ export default function PasswordInput({
         </button>
       </div>
 
-      {showError && (
+      {showError && field !== "loginPassword" && (
         <div id={`${field}-errors`}>
           {passwordRules[field]?.map((rule) =>
-            !rule.test(valueToTest) ? (
+            !rule.test(formValue) ? (
               <p key={rule.message} className="text-red-500 pl-1">
                 <span aria-hidden="true">⚠️ </span>
                 {rule.message}
