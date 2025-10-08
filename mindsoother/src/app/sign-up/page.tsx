@@ -12,6 +12,7 @@ import {
 } from "../components/icons";
 import { useRouter } from "next/navigation";
 import { signUpWithEmail } from "../utils/supabase/auth";
+// tried to used a server-side code in a client component ... no longer works
 import onFormSubmit from "./helpers/onFormSubmit";
 
 export default function SignUpPage() {
