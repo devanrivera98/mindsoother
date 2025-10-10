@@ -4,15 +4,15 @@ import HeaderClient from "./HeaderClient";
 
 export default async function Header(): Promise<React.JSX.Element> {
 
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  // const supabase = await createClient();
+  // const { data: { user } } = await supabase.auth.getUser();
 
-  console.log('user', user)
-  // will this update when a user is being logged in on a different component??? 
+  // console.log('user', user)
+
 
   return (
   <>
-    <HeaderClient userData={user} />
+    <HeaderClient />
   </>
   )
 }
