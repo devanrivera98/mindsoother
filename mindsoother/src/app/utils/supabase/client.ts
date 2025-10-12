@@ -9,6 +9,4 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 // function created a new Supabase (SB) client instance, which is essentially the interface to the SB project
-export const createClient = () =>
-
-createClientSupabase(supabaseUrl!, supabaseKey!);
+export const supabaseClient = createClientSupabase(supabaseUrl!, supabaseKey!);

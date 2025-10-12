@@ -4,10 +4,8 @@ import Link from "next/link";
 import { LuBrain, LuHouse, LuBookmark, InformationCircle } from "../icons";
 import NavLink from "./components/NavLink";
 import { useState, useEffect, useRef } from "react";
-import MobileMenu from "./components/MobileMenu";
 import { usePathname } from "next/navigation";
-import type { User } from "@supabase/supabase-js";
-import { createClient } from "@/app/utils/supabase/client";
+import { supabaseClient } from "@/app/utils/supabase/client";
 import HeaderNavbar from "./HeaderNavbar";
 
 export default function HeaderClient() {
@@ -18,7 +16,6 @@ export default function HeaderClient() {
   const headerRef = useRef<HTMLDivElement>(null);
   const accountMenuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  const supabase = createClient();
 
   useEffect(() => {
     const windowWatcher = () => {
@@ -40,13 +37,15 @@ export default function HeaderClient() {
     window.addEventListener("resize", windowWatcher);
     window.addEventListener("mousedown", handleClickOutside);
 
-    const { data: subscription } = supabase.auth.onAuthStateChange(
+    const { data: subscription } = supabaseClient.auth.onAuthStateChange(
       (event, session) => {
         if (event === "SIGNED_IN") {
           console.log("SIGNED_IN", session);
           console.log(session?.user.user_metadata.full_name);
           setUser(session?.user.email);
           // setUser(undefined)
+        } else {
+          setUser(null)
         }
       },
     );
@@ -56,7 +55,7 @@ export default function HeaderClient() {
       window.removeEventListener("mousedown", handleClickOutside);
       subscription?.subscription.unsubscribe();
     };
-  }, [supabase]);
+  }, [supabaseClient]);
 
   const handleNavClick = (index: number) => {
     setActiveIndex(index);

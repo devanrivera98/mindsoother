@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { createClient } from '@/app/utils/supabase/client';
+import { supabaseClient } from "@/app/utils/supabase/client";
 import { ZodEffects, ZodObject, ZodString } from "zod";
 
 type FormSchemaType =
@@ -29,8 +29,6 @@ interface FormSubmitParams {
 const onFormSubmit = async (e: FormEvent, {form, setHasUser, setSubmitMessage, setIsSubmitted, formSchema, router} : FormSubmitParams) => {
     e.preventDefault();
 
-    const supabase = createClient()
-
     const res = await fetch("/api/signUp", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -53,7 +51,7 @@ const onFormSubmit = async (e: FormEvent, {form, setHasUser, setSubmitMessage, s
           zodErrors: result.error.flatten().fieldErrors,
         };
       } else {
-        const {data, error} = await supabase.auth.signUp({
+        const {data, error} = await supabaseClient.auth.signUp({
           email: form.email,
           password: form.password,
           options: {
