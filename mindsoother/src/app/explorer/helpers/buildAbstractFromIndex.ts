@@ -11,7 +11,7 @@ export default function buildAbstractFromIndex(
   const valuesArr = Object.values(reverseIndex).flat();
   const maxValue = Math.max(...valuesArr);
   let indexArr: any = Array.from({ length: maxValue });
-  for (let key in reverseIndex) {
+  for (const key in reverseIndex) {
     reverseIndex[key].forEach((index) => {
       indexArr[index] = key;
     });

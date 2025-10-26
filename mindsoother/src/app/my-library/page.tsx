@@ -1,6 +1,5 @@
 import { IoBookOutline } from "../components/icons";
 import Link from "next/link";
-import { createClient } from "../utils/supabase/server";
 export default async function MyLibrary() {
   return (
     <section className="bg-gray-50 min-h-screen">
