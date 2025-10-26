@@ -14,6 +14,11 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"]
+})
+
 export const metadata: Metadata = {
   title: "MindSoother",
   description:
@@ -27,7 +32,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.variable} ${inter.variable} antialiased`}>
+      <body className={`${lora.variable} ${inter.variable} ${mono.variable} antialiased`}>
+          {/* @ts-expect-error Async Server Component */}
         <Header />
         <main className="pt-[80px] min-h-screen">{children}</main>
         <Footer />

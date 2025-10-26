@@ -17,7 +17,7 @@
   --color-hover-purple: var(--hover-purple);
   --color-faded-purple: var(--faded-purple);
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,4 +38,8 @@ h2,
 h3,
 h4 {
   font-family: var(--font-lora);
+}
+
+input {
+  font-family: var(--font-mono);
 }
