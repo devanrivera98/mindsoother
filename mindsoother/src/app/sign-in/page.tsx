@@ -5,6 +5,7 @@ import FormInput from "../components/auth/FormInput";
 import PasswordInput from "../components/auth/PasswordInput";
 import { z } from "zod";
 import { FormEvent, useState } from "react";
+import onSignUpSubmit from "./helpers/onSignInSubmit";
 
 export default function SignInPage() {
 
@@ -19,7 +20,7 @@ export default function SignInPage() {
     email: "",
     password: ""
   });
-  const [isSubmitted, setIsSubmiitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
 const onInputChange = (name: string, value: string) => {
   setForm({...form, [name]: value})
@@ -28,9 +29,12 @@ const onInputChange = (name: string, value: string) => {
 const onFormSubmit = (e: FormEvent) => {
   e.preventDefault()
   const result = formSchema.safeParse(form) 
+  setIsSubmitted(true)
 
   if (!result.success) {
-    setIsSubmiitted(true)
+    console.log(result.error)
+  } else if (result.success) {
+    onSignUpSubmit(result)
   }
 }
     
