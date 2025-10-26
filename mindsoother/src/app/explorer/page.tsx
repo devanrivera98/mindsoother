@@ -45,10 +45,10 @@ export default function TechniqueExplorer() {
         <div className="-mt-8 px-4">
           <div className="p-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded bg-white shadow-xl">
             <h2 className="mb-5 font-semibold">
-              Describe a topic you'd like to learn more about.
+              Describe a topic you&apos;d like to learn more about.
             </h2>
             <label htmlFor="experience" className="sr-only">
-              Describe a topic you'd like to learn more about.
+              Describe a topic you&apos;d like to learn more about.
             </label>
             <form
               onSubmit={(e) =>

@@ -8,7 +8,6 @@ import MobileMenu from "./components/MobileMenu";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const headerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -37,8 +36,7 @@ export default function Header() {
     };
   }, []);
 
-  const handleNavClick = (index: number) => {
-    setActiveIndex(index);
+  const handleNavClick = () => {
     if (window.innerWidth < 1023) {
       setIsMenuOpen(false);
     }
@@ -66,7 +64,7 @@ export default function Header() {
             fontSize={20}
             strokeWidth={1.5}
             isActive={pathname === "/"}
-            onClick={() => handleNavClick(0)}
+            onClick={() => handleNavClick()}
           />
           <NavLink
             Icon={LuBrain}
@@ -75,7 +73,7 @@ export default function Header() {
             fontSize={20}
             strokeWidth={1.5}
             isActive={pathname === "/explorer"}
-            onClick={() => handleNavClick(1)}
+            onClick={() => handleNavClick()}
           />
           <NavLink
             Icon={LuBookmark}
@@ -84,7 +82,7 @@ export default function Header() {
             fontSize={20}
             strokeWidth={1.5}
             isActive={pathname === "/my-library"}
-            onClick={() => handleNavClick(2)}
+            onClick={() => handleNavClick()}
           />
           <NavLink
             Icon={InformationCircle}
@@ -93,7 +91,7 @@ export default function Header() {
             fontSize={20}
             strokeWidth={5}
             isActive={pathname === "/about"}
-            onClick={() => handleNavClick(3)}
+            onClick={() => handleNavClick()}
           />
           <div className="p-0.5 rounded-md border-2 border-transparent focus-within:border-brand-purple">
             <button className="bg-brand-purple hover:bg-hover-purple cursor-pointer text-white px-4 py-2 rounded-md">
@@ -121,7 +119,7 @@ export default function Header() {
           fontSize={20}
           strokeWidth={1.5}
           isActive={pathname === "/"}
-          onClick={() => handleNavClick(0)}
+          onClick={() => handleNavClick()}
         />
         <NavLink
           Icon={LuBrain}
@@ -130,7 +128,7 @@ export default function Header() {
           fontSize={20}
           strokeWidth={1.5}
           isActive={pathname === "/explorer"}
-          onClick={() => handleNavClick(1)}
+          onClick={() => handleNavClick()}
         />
         <NavLink
           Icon={LuBookmark}
@@ -139,7 +137,7 @@ export default function Header() {
           fontSize={20}
           strokeWidth={1.5}
           isActive={pathname === "/my-library"}
-          onClick={() => handleNavClick(2)}
+          onClick={() => handleNavClick()}
         />
         <NavLink
           Icon={InformationCircle}
@@ -148,7 +146,7 @@ export default function Header() {
           fontSize={20}
           strokeWidth={5}
           isActive={pathname === "/about"}
-          onClick={() => handleNavClick(3)}
+          onClick={() => handleNavClick()}
         />
         <div className="mx-2 pb-4">
           <button className="w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md">
