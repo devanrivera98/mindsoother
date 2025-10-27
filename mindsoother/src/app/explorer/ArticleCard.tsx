@@ -28,12 +28,14 @@ export default function ArticleCard({
   const abstract = buildAbstractFromIndex(abstractIndex);
 
   return (
-    <div className="p-5 bg-white shadow-lg rounded flex flex-col">
+    <article className="p-5 bg-white shadow-lg rounded flex flex-col">
       <div className="flex justify-end">
+        <button type="button">
         <LuBookmark
           fontSize={22}
           className={"cursor-pointer hover:text-brand-purple"}
         />
+        </button>
       </div>
       <h3 className="font-semibold text-xl pr-5">{title}</h3>
       <div className="flex pt-3  gap-x-4 font-medium text-gray-700">
@@ -41,7 +43,7 @@ export default function ArticleCard({
           <div>
             <IoPersonOutline fontSize={16} />
           </div>
-          <h3 className="pr-2">{authors}</h3>
+          <span className="pr-2">{authors}</span>
         </div>
         <div className="flex items-center gap-x-2">
           <IoCalendarClearOutline fontSize={16} />
@@ -50,7 +52,7 @@ export default function ArticleCard({
       </div>
       <div className="py-5 flex-grow-1 font-medium text-gray-700">
         <p>
-          {abstract.length > 450
+          {abstract.length > 125
             ? abstract.substring(0, 125) + "..."
             : abstract}{" "}
         </p>
@@ -61,6 +63,6 @@ export default function ArticleCard({
           <TfiNewWindow fontSize={15} className="-translate-y-px" />
         </a>
       </div>
-    </div>
+    </article>
   );
 }
