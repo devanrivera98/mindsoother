@@ -9,9 +9,9 @@ export default function IntroHome() {
         <div className="max-w-7xl mx-auto lg:px-8 sm:px-6 px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 py-20 md:py-30 items-stretch">
             <div className="pr-5 flex flex-col flex-grow order-2 md:order-1">
-              <h2 className="text-white text-5xl font-bold">
+              <h1 className="text-white text-5xl font-bold">
                 AI-powered psychology research at your fingertips
-              </h2>
+              </h1>
               <p className="pt-5 text-white text-xl">
                 Search through psychology research articles, get instant AI summaries, and organize findings in your personal research library. 
               </p>

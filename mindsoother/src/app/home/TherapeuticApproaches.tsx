@@ -6,9 +6,9 @@ export default function TherapeuticApproaches() {
       <section className="bg-gray-50 py-16">
         <div className="mx-auto max-w-7xl lg:px-8 sm:px-6 px-4">
           <div>
-            <h1 className="flex justify-center font-bold text-[30px]">
+            <h2 className="flex justify-center font-bold text-[30px]">
               Research Areas
-            </h1>
+            </h2>
             <p className="text-lg pt-5 flex justify-center text-faded-gray">
             Explore different research across major therapeutic approaches and interventions
             </p>

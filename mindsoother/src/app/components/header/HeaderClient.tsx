@@ -66,7 +66,7 @@ export default function HeaderClient({userData}: HeaderClientProps) {
       ref={headerRef}
       className="shadow-md/10 w-full fixed z-50 bg-white h-[80px]"
     >
-      <div className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4">
+      <nav className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4"       aria-label="Main navigation">
         <div className="flex items-center cursor-pointer">
           <Link href="/" className="flex items-center">
             <LuBrain fontSize={35} color={"#4f45e4"} />
@@ -125,11 +125,12 @@ export default function HeaderClient({userData}: HeaderClientProps) {
           setIsMenuOpen={setIsMenuOpen}
           aria-label="Toggle menu"
         />
-      </div>
+      </nav>
       {/* Mobile Dropdown */}
-      <div
+      <nav
         className={`lg:hidden flex flex-col gap-y-2 px-2 overflow-hidden transition-all duration-300 ease-in bg-white ${isMenuOpen ? " max-h-96 opacity-100" : "max-h-0 opacity-0 ease-out"} `}
         aria-hidden={!isMenuOpen}
+        aria-label="Mobile navigation"
       >
         <NavLink
           Icon={LuHouse}
@@ -172,10 +173,10 @@ export default function HeaderClient({userData}: HeaderClientProps) {
             Sign In
           </Link>
           { user !== null && 
-          <h1>{user}</h1>
+          <span>{user}</span>
           }
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
