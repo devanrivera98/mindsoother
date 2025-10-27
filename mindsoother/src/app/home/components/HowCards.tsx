@@ -24,7 +24,7 @@ export default function HowCards({
             <Icon className="bg-indigo-100 text-brand-purple" fontSize={35} />
           </span>
         </div>
-        <h1 className="font-bold text-[20px]">{title}</h1>
+        <h3 className="font-bold text-[20px]">{title}</h3>
         <p className="text-md">{description}</p>
       </div>
     </>
