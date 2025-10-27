@@ -14,7 +14,7 @@ export default function HowItWorks() {
             <h2 className="flex justify-center font-bold text-[30px]">
               How It Works?
             </h2>
-            <p className="text-lg pt-5 flex justify-center text-faded-gray">
+            <p className="text-lg pt-5 flex justify-center text-faded-gray text-center">
             Powerful research tools designed for psychology professionals and students
             </p>
           </div>
