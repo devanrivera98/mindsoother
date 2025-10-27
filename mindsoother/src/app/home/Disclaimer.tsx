@@ -8,7 +8,7 @@ export default function Disclaimer() {
           <FiShield className="mr-2 text-brand-purple" fontSize={25} />
           <p className="text-faded-gray">Your data is secure and private</p>
         </div>
-        <div className="text-faded-gray pt-10 md:pt-0">
+        <div className="text-faded-gray text-center pt-10 md:pt-0">
           Note: This tool is not a replacement for professional mental health
           care.
         </div>
