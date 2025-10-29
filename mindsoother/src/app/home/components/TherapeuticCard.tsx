@@ -22,10 +22,10 @@ export default function TherapeuticCard({
   return (
     <div className="rounded-lg shadow-md hover:shadow-xl">
       <div className={`${allColors[color] ?? ""} p-3 rounded-t-lg`}>
-        <h2 className="font-bold">{heading}</h2>
+        <h3 className="font-bold">{heading}</h3>
       </div>
       <div className="px-5 py-8">
-        <h3 className="text-xl font-bold pb-2.5">{subHeading}</h3>
+        <h4 className="text-xl font-bold pb-2.5">{subHeading}</h4>
         <p>{description}</p>
       </div>
     </div>

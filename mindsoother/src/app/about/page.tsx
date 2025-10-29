@@ -24,7 +24,7 @@ export default function About() {
                 </p>
               </div>
               <div className="mt-10">
-                <h2 className="font-bold text-2xl">How We're Different</h2>
+                <h2 className="font-bold text-2xl">How We&apos;re Different</h2>
                 <ul className="mt-5 flex flex-col gap-y-5">
                   <li className="flex gap-x-2">
                     <IoMdCheckmark
