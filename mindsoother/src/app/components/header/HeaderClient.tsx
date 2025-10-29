@@ -7,14 +7,13 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { supabaseClient } from "@/app/utils/supabase/client";
 import { getUser } from "./helper/getUser";
-import MobileMenu from "./components/MobileMenu";
 import HeaderNavbar from "./HeaderNavbar";
 
 export default function HeaderClient() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState<boolean>(false);
-  const [user, setUser] = useState<string | null | undefined>(undefined);
+  const [user, setUser] = useState<string | null | undefined | 'Sign In'>(undefined);
   const headerRef = useRef<HTMLDivElement>(null);
   const accountMenuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -47,19 +46,21 @@ export default function HeaderClient() {
           setUser(session?.user.email);
           // setUser(undefined)
         } else {
-          setUser(null);
+          setUser('Sign In');
         }
       },
     );
 
-      const fetchUser = async () => {
-        const userEmail = await getUser();
-        if (userEmail) {
-          setUser(userEmail)
-        }
+    const fetchUser = async () => {
+      const userEmail = await getUser();
+      if (userEmail) {
+        setUser(userEmail);
+      } else {
+        setUser('Sign In')
       }
+    };
 
-      fetchUser()
+    fetchUser();
 
     return () => {
       window.removeEventListener("resize", windowWatcher);
@@ -84,6 +85,7 @@ export default function HeaderClient() {
         pathname={pathname}
         handleNavClick={handleNavClick}
         user={user}
+        setUser={setUser}
         accountMenuRef={accountMenuRef}
         isAccountMenuOpen={isAccountMenuOpen}
         setIsAccountMenuOpen={setIsAccountMenuOpen}
