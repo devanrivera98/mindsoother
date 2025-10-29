@@ -28,8 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lora.variable} ${inter.variable} antialiased`}>
-
-          {/* @ts-ignore */}
+        {/* @ts-ignore */}
         <Header />
         <main className="pt-[80px] min-h-screen">{children}</main>
         <Footer />

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { LuBrain, LuHouse, LuBookmark, InformationCircle } from "../icons";
 import NavLink from "./components/NavLink";
-import MobileMenu from './components/MobileMenu'
+import MobileMenu from "./components/MobileMenu";
 
-interface HeaderNavProps{
+interface HeaderNavProps {
   pathname: string;
   handleNavClick: (index: number) => void;
   user: string | null | undefined;
@@ -22,10 +22,10 @@ export default function HeaderNavbar({
   isAccountMenuOpen,
   setIsAccountMenuOpen,
   isMenuOpen,
-  setIsMenuOpen
+  setIsMenuOpen,
 }: HeaderNavProps) {
   return (
-    <div className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4 h-full">
+    <nav className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4 h-full">
       <div className="flex items-center cursor-pointer">
         <Link href="/" className="flex items-center">
           <LuBrain fontSize={35} color={"#4f45e4"} />
@@ -114,6 +114,6 @@ export default function HeaderNavbar({
         setIsMenuOpen={setIsMenuOpen}
         aria-label="Toggle menu"
       />
-    </div>
+    </nav>
   );
 }

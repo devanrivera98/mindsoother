@@ -13,7 +13,9 @@ export default function IntroHome() {
                 AI-powered psychology research at your fingertips
               </h1>
               <p className="pt-5 text-white text-xl">
-                Search through psychology research articles, get instant AI summaries, and organize findings in your personal research library. 
+                Search through psychology research articles, get instant AI
+                summaries, and organize findings in your personal research
+                library.
               </p>
               <div className="pt-5 flex gap-x-5">
                 <Link

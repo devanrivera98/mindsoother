@@ -16,12 +16,11 @@ import { TfiNewWindow as TfiNewWindowRaw } from "react-icons/tfi";
 import { IoPersonOutline as IoPersonOutlineRaw } from "react-icons/io5";
 
 import { IoCalendarClearOutline as IoCalendarClearOutlineRaw } from "react-icons/io5";
-import { IoMailOutline as IoMailOutlineRaw} from "react-icons/io5";
+import { IoMailOutline as IoMailOutlineRaw } from "react-icons/io5";
 import { IoLockClosedOutline as IoLockClosedOutlineRaw } from "react-icons/io5";
 import { IoEyeOutline as IoEyeOutlineRaw } from "react-icons/io5";
 import { IoEyeOffOutline as IoEyeOffOutlineRaw } from "react-icons/io5";
 import { FcGoogle as FcGoogleRaw } from "react-icons/fc";
-
 
 import React, { ComponentProps } from "react";
 
@@ -84,17 +83,25 @@ const IoCalendarClearOutline = (props: React.ComponentProps<"svg">) => (
   <>{IoCalendarClearOutlineRaw({ ...props })}</>
 );
 
-const IoMailOutline = (props: React.ComponentProps<"svg">) => (<>{IoMailOutlineRaw({...props})}</>)
+const IoMailOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoMailOutlineRaw({ ...props })}</>
+);
 
 const IoLockClosedOutline = (props: React.ComponentProps<"svg">) => (
-  <>{IoLockClosedOutlineRaw({...props})}</>
-)
+  <>{IoLockClosedOutlineRaw({ ...props })}</>
+);
 
-const IoEyeOutline = (props: React.ComponentProps<"svg">) => <>{IoEyeOutlineRaw({...props})}</>
+const IoEyeOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoEyeOutlineRaw({ ...props })}</>
+);
 
-const IoEyeOffOutline = (props: React.ComponentProps<"svg">) => <>{IoEyeOffOutlineRaw({...props})}</>
+const IoEyeOffOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoEyeOffOutlineRaw({ ...props })}</>
+);
 
-const FcGoogle = (props: React.ComponentProps<"svg">) => <>{FcGoogleRaw({...props})}</>
+const FcGoogle = (props: React.ComponentProps<"svg">) => (
+  <>{FcGoogleRaw({ ...props })}</>
+);
 
 export {
   LuBrain,
@@ -117,5 +124,5 @@ export {
   IoMailOutline,
   IoEyeOutline,
   IoEyeOffOutline,
-  FcGoogle
+  FcGoogle,
 };
