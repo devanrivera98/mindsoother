@@ -71,13 +71,13 @@ export default function HeaderNavbar({
           isActive={pathname === "/about"}
           onClick={() => handleNavClick(3)}
         />
-        {user === undefined ? (
+        {user === undefined || user === null ? (
           <div className="bg-brand-purple px-1 py-1 rounded-md border-2 border-transparent">
             <div className="bg-gray-200 text-transparent px-4 py-1 rounded-md animate-pulse">
               Loading
             </div>
           </div>
-        ) : user !== null ? (
+        ) : typeof(user) === 'string' ? (
           <>
             <div className="relative" ref={accountMenuRef}>
               <button

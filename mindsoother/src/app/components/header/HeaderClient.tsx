@@ -6,6 +6,7 @@ import NavLink from "./components/NavLink";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { supabaseClient } from "@/app/utils/supabase/client";
+import { getUser } from "./helper/getUser";
 import MobileMenu from "./components/MobileMenu";
 import HeaderNavbar from "./HeaderNavbar";
 
@@ -50,6 +51,15 @@ export default function HeaderClient() {
         }
       },
     );
+
+      const fetchUser = async () => {
+        const userEmail = await getUser();
+        if (userEmail) {
+          setUser(userEmail)
+        }
+      }
+
+      fetchUser()
 
     return () => {
       window.removeEventListener("resize", windowWatcher);
