@@ -102,7 +102,7 @@ export default function HeaderNavbar({
                       className="hover:cursor-pointer"
                       onClick={() => signOut()}
                     >
-                      Logout
+                      Sign Out
                     </button>
                   </li>
                 </ul>
