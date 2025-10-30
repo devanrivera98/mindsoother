@@ -18,10 +18,16 @@ export default function MobileNavMenu({
   user,
   setUser,
 }: MobileNavMenuInterface) {
+
   async function handleMobileSignOut() {
     const result = await signUserOut(user);
     setUser(result);
+    handleMobileNavClick()
+  }
+
+  function handleMobileNavClick() {
     setIsMenuOpen(false);
+    (document.activeElement as HTMLElement | null)?.blur();
   }
 
   return (
@@ -37,7 +43,7 @@ export default function MobileNavMenu({
         fontSize={20}
         strokeWidth={1.5}
         isActive={pathname === "/"}
-        onClick={() => setIsMenuOpen(false)}
+        onClick={handleMobileNavClick}
       />
       <NavLink
         Icon={LuBrain}
@@ -46,7 +52,7 @@ export default function MobileNavMenu({
         fontSize={20}
         strokeWidth={1.5}
         isActive={pathname === "/explorer"}
-        onClick={() => setIsMenuOpen(false)}
+        onClick={handleMobileNavClick}
       />
       <NavLink
         Icon={LuBookmark}
@@ -55,7 +61,7 @@ export default function MobileNavMenu({
         fontSize={20}
         strokeWidth={1.5}
         isActive={pathname === "/my-library"}
-        onClick={() => setIsMenuOpen(false)}
+        onClick={handleMobileNavClick}
       />
       <NavLink
         Icon={InformationCircle}
@@ -64,7 +70,7 @@ export default function MobileNavMenu({
         fontSize={20}
         strokeWidth={5}
         isActive={pathname === "/about"}
-        onClick={() => setIsMenuOpen(false)}
+        onClick={handleMobileNavClick}
       />
       <div className="mx-2 pt-2 pb-4 flex items-center grid grid-cols-1 gap-y-4">
         {user !== "Sign In" ? (
@@ -83,7 +89,7 @@ export default function MobileNavMenu({
           <Link
             className="flex justify-center w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md"
             href="/sign-in"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={handleMobileNavClick}
           >
             Sign In
           </Link>
