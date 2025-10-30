@@ -13,7 +13,9 @@ export default function HeaderClient() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState<boolean>(false);
-  const [user, setUser] = useState<string | null | undefined | 'Sign In'>(undefined);
+  const [user, setUser] = useState<string | null | undefined | "Sign In">(
+    undefined,
+  );
   const headerRef = useRef<HTMLDivElement>(null);
   const accountMenuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -46,7 +48,7 @@ export default function HeaderClient() {
           setUser(session?.user.email);
           // setUser(undefined)
         } else {
-          setUser('Sign In');
+          setUser("Sign In");
         }
       },
     );
@@ -56,7 +58,7 @@ export default function HeaderClient() {
       if (userEmail) {
         setUser(userEmail);
       } else {
-        setUser('Sign In')
+        setUser("Sign In");
       }
     };
 
@@ -135,15 +137,29 @@ export default function HeaderClient() {
           isActive={pathname === "/about"}
           onClick={() => handleNavClick(3)}
         />
-        <div className="mx-2 pt-2 pb-4 flex items-center">
-          <Link
-            className="flex justify-center w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md"
-            href="/sign-in"
-            onClick={() => handleNavClick(4)}
-          >
-            Sign In
-          </Link>
-          {user !== null && <span>{user}</span>}
+        <div className="mx-2 pt-2 pb-4 flex items-center grid grid-cols-1 gap-y-4">
+          {user === "Sign In" ? (
+            <>
+              <div className="flex justify-center w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md">
+                <span>{user} devanrivera98@gmail.com</span>
+              </div>
+              <button
+                className="flex justify-center w-full cursor-pointer bg-red-500 hover:bg-hover-purple text-white py-2 rounded-md"
+                // change to handle signout in new component 
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <Link
+              className="flex justify-center w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md"
+              href="/sign-in"
+              onClick={() => handleNavClick(4)}
+              //change to handle signin in new component 
+            >
+              Sign In
+            </Link>
+          )}
         </div>
       </nav>
     </header>

@@ -1,6 +1,8 @@
 import { supabaseClient } from "@/app/utils/supabase/client";
 
-export default async function signUserOut(currentUser: string | null | undefined) {
+export default async function signUserOut(
+  currentUser: string | null | undefined,
+) {
   const { error } = await supabaseClient.auth.signOut();
 
   if (error) {

@@ -27,7 +27,6 @@ export default function HeaderNavbar({
   isMenuOpen,
   setIsMenuOpen,
 }: HeaderNavProps) {
-
   async function signOut() {
     const result = await signUserOut(user);
     setUser(result);
