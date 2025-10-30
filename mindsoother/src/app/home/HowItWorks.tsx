@@ -15,7 +15,8 @@ export default function HowItWorks() {
               How It Works?
             </h2>
             <p className="text-lg pt-5 flex justify-center text-faded-gray text-center">
-            Powerful research tools designed for psychology professionals and students
+              Powerful research tools designed for psychology professionals and
+              students
             </p>
           </div>
           <div className="pt-12 grid md:grid-cols-3">

@@ -6,7 +6,7 @@ export default async function MyLibrary() {
       <div className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-center text-white  px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold">Your Saved Techniuqes</h1>
         <p className="mt-4 text-xl text-indigo-100">
-        Organize and revisit your saved psychology research
+          Organize and revisit your saved psychology research
         </p>
       </div>
       <div className="-mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,7 +21,8 @@ export default async function MyLibrary() {
             No saved techniques yet
           </h2>
           <p className="mt-5 max-w-md text-center text-gray-600">
-          Start building your research library by saving articles from your searches.
+            Start building your research library by saving articles from your
+            searches.
           </p>
           <Link
             href="/explorer"

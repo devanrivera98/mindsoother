@@ -31,10 +31,10 @@ export default function ArticleCard({
     <article className="p-5 bg-white shadow-lg rounded flex flex-col">
       <div className="flex justify-end">
         <button type="button">
-        <LuBookmark
-          fontSize={22}
-          className={"cursor-pointer hover:text-brand-purple"}
-        />
+          <LuBookmark
+            fontSize={22}
+            className={"cursor-pointer hover:text-brand-purple"}
+          />
         </button>
       </div>
       <h3 className="font-semibold text-xl pr-5">{title}</h3>

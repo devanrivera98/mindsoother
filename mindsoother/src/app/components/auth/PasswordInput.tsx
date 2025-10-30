@@ -26,7 +26,7 @@ export default function PasswordInput({
   password,
   confirmPassword,
   isSubmitted,
-  formValue
+  formValue,
 }: PasswordInputInterface) {
   const [isShowing, setIsShowing] = useState(false);
   const [showError, setShowError] = useState(false);

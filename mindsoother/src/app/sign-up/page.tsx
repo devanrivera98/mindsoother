@@ -12,6 +12,7 @@ import {
 } from "../components/icons";
 import { useRouter } from "next/navigation";
 import { signUpWithEmail } from "../utils/supabase/auth";
+// tried to used a server-side code in a client component ... no longer works
 import onFormSubmit from "./helpers/onFormSubmit";
 
 export default function SignUpPage() {
@@ -34,7 +35,7 @@ export default function SignUpPage() {
 
   type FormData = z.infer<typeof formSchema>;
 
-  const router = useRouter()
+  const router = useRouter();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [hasUser, setHasUser] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
@@ -70,7 +71,16 @@ export default function SignUpPage() {
         <div className="border rounded border-gray-100 shadow-lg mt-10 px-10">
           <form
             className="py-10  flex flex-col gap-y-4"
-            onSubmit={(e) => onFormSubmit(e, {form, setHasUser, setSubmitMessage, setIsSubmitted, formSchema, router})}
+            onSubmit={(e) =>
+              onFormSubmit(e, {
+                form,
+                setHasUser,
+                setSubmitMessage,
+                setIsSubmitted,
+                formSchema,
+                router,
+              })
+            }
           >
             <FormInput
               Icon={IoPersonOutline}

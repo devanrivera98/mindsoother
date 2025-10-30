@@ -9,7 +9,8 @@ export default function TryTheExplorer() {
             Ready to accelerate your research?
           </h2>
           <p className="pt-5 text-indigo-200 text-lg max-w-3xl mx-auto">
-          Join psychology professionals using AI to discover, understand, and organize research more efficiently.
+            Join psychology professionals using AI to discover, understand, and
+            organize research more efficiently.
           </p>
         </div>
         <div className="flex pt-10">
