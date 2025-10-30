@@ -1,13 +1,10 @@
 "use client";
 import React from "react";
-import Link from "next/link";
-import { LuBrain, LuHouse, LuBookmark, InformationCircle } from "../icons";
-import NavLink from "./components/NavLink";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { supabaseClient } from "@/app/utils/supabase/client";
 import { getUser } from "./helper/getUser";
-import HeaderNavbar from "./HeaderNavbar";
+import HeaderNavbar from "./Navbar";
 import MobileNavMenu from "./MobileNavMenu";
 
 export default function HeaderClient() {
