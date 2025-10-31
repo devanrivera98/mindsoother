@@ -2,7 +2,7 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { supabaseClient } from "@/app/utils/supabase/client";
+import { supabaseClient } from "@/lib/supabase/client";
 import { getUser } from "./helper/getUser";
 import Navbar from "./Navbar";
 import MobileNavMenu from "./MobileNavMenu";

@@ -1,4 +1,4 @@
-import { adminAuthClient } from "@/app/utils/supabase/adminClient";
+import { adminAuthClient } from "@/lib/supabase/adminClient";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {

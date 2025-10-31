@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { supabaseClient } from "@/app/utils/supabase/client";
+import { supabaseClient } from "@/lib/supabase/client";
 import { ZodEffects, ZodObject, ZodString } from "zod";
 
 type FormSchemaType = ZodEffects<
