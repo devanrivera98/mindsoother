@@ -37,20 +37,7 @@ export default function HeaderClient() {
     };
     window.addEventListener("resize", windowWatcher);
     window.addEventListener("mousedown", handleClickOutside);
-
-    const { data: subscription } = supabaseClient.auth.onAuthStateChange(
-      (event, session) => {
-        if (event === "SIGNED_IN") {
-          console.log("SIGNED_IN", session);
-          console.log(session?.user.user_metadata.full_name);
-          setUser(session?.user.email);
-          // setUser(undefined)
-        } else {
-          setUser("Sign In");
-        }
-      },
-    );
-
+    
     const fetchUser = async () => {
       const userEmail = await getUser();
       if (userEmail) {
@@ -61,6 +48,18 @@ export default function HeaderClient() {
     };
 
     fetchUser();
+
+    const { data: subscription } = supabaseClient.auth.onAuthStateChange(
+      (event, session) => {
+        if (event === "SIGNED_IN") {
+          console.log("SIGNED_IN", session);
+          console.log(session?.user.user_metadata.full_name);
+          setUser(session?.user.email);
+        } else if (event === "SIGNED_OUT") {
+          setUser("Sign In");
+        }
+      },
+    );
 
     return () => {
       window.removeEventListener("resize", windowWatcher);

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getUser } from "../helper/getUser";
 import signUserOut from "../helper/signUserOut";
 
 export default function DesktopUserMenu({
@@ -64,14 +63,14 @@ export default function DesktopUserMenu({
     );
   }
 
-  return (
-    <div className="px-1 py-2.5 rounded-md border-2 border-transparent focus-within:border-brand-purple">
-      <Link
-        className="bg-brand-purple hover:bg-hover-purple cursor-pointer text-white px-4 py-2 rounded-md"
-        href="/sign-in"
-      >
-        Sign In
-      </Link>
-    </div>
-  );
+    return (
+      <div className="px-1 py-2.5 rounded-md border-2 border-transparent focus-within:border-brand-purple">
+        <Link
+          className="bg-brand-purple hover:bg-hover-purple cursor-pointer text-white px-4 py-2 rounded-md"
+          href="/sign-in"
+        >
+          Sign In
+        </Link>
+      </div>
+    );
 }
