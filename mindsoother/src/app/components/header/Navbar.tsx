@@ -3,7 +3,7 @@ import { LuBrain, LuHouse, LuBookmark, InformationCircle } from "../icons";
 import NavLink from "./components/NavLink";
 import MobileMenu from "./components/MobileMenu";
 import signUserOut from "./helper/signUserOut";
-import MobileUserMenu from "./components/MobileUserMenu";
+import DesktopUserMenu from "./components/DesktopUserMenu";
 
 interface HeaderNavProps {
   pathname: string;
@@ -17,7 +17,7 @@ interface HeaderNavProps {
   setIsMenuOpen: (boolean: boolean) => void;
 }
 
-export default function HeaderNavbar({
+export default function Navbar({
   pathname,
   handleNavClick,
   user,
@@ -28,10 +28,6 @@ export default function HeaderNavbar({
   isMenuOpen,
   setIsMenuOpen,
 }: HeaderNavProps) {
-  async function signOut() {
-    const result = await signUserOut(user);
-    setUser(result);
-  }
 
   return (
     <nav className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4 h-full">
@@ -80,12 +76,12 @@ export default function HeaderNavbar({
           isActive={pathname === "/about"}
           onClick={() => handleNavClick(3)}
         />
-        <MobileUserMenu
+        <DesktopUserMenu
           user={user}
           setUser={setUser}
           accountMenuRef={accountMenuRef}
           isAccountMenuOpen={isAccountMenuOpen}
-          setIsAccountMenuOpen={isAccountMenuOpen}
+          setIsAccountMenuOpen={setIsAccountMenuOpen}
         />
       </div>
       {/* Mobile Menu Button */}

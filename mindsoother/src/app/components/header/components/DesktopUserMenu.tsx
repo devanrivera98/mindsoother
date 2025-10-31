@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { getUser } from "../helper/getUser";
 import signUserOut from "../helper/signUserOut";
 
-export default function MobileUserMenu({
+export default function DesktopUserMenu({
   user,
   setUser,
   accountMenuRef,
@@ -22,7 +23,7 @@ export default function MobileUserMenu({
     setUser(result);
   }
 
-  if (!isMounted) {
+  if (!isMounted || user === null) {
     return (
       <>
         <div className="bg-brand-purple px-1 py-1 rounded-md border-2 border-transparent">

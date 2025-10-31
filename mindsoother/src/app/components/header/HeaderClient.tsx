@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { supabaseClient } from "@/app/utils/supabase/client";
 import { getUser } from "./helper/getUser";
-import HeaderNavbar from "./Navbar";
+import Navbar from "./Navbar";
 import MobileNavMenu from "./MobileNavMenu";
 
 export default function HeaderClient() {
@@ -12,7 +12,7 @@ export default function HeaderClient() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState<boolean>(false);
   const [user, setUser] = useState<string | null | undefined | "Sign In">(
-    undefined,
+    null
   );
   const headerRef = useRef<HTMLDivElement>(null);
   const accountMenuRef = useRef<HTMLDivElement>(null);
@@ -81,7 +81,7 @@ export default function HeaderClient() {
       ref={headerRef}
       className="shadow-md/10 w-full fixed z-50 bg-white h-[80px]"
     >
-      <HeaderNavbar
+      <Navbar
         pathname={pathname}
         handleNavClick={handleNavClick}
         user={user}
