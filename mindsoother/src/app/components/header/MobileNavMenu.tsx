@@ -18,11 +18,10 @@ export default function MobileNavMenu({
   user,
   setUser,
 }: MobileNavMenuInterface) {
-
   async function handleMobileSignOut() {
     const result = await signUserOut(user);
     setUser(result);
-    handleMobileNavClick()
+    handleMobileNavClick();
   }
 
   function handleMobileNavClick() {

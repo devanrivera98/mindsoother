@@ -3,22 +3,22 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
-    const { email, password } = await req.json();
+    const result = await req.json();
+    const { email, loginPassword } = result.data;
 
-    if (!email && !password) {
-      return NextResponse.json(
-        { error: "Missing Email and Password" },
-        { status: 400 },
-      );
+    console.log(email, loginPassword);
+
+    if (!email && !loginPassword) {
+      return NextResponse.json({ error: " and Password" }, { status: 400 });
     } else if (!email) {
       return NextResponse.json({ error: "Missing Email" }, { status: 400 });
-    } else if (!password) {
+    } else if (!loginPassword) {
       return NextResponse.json({ error: "Missing password" }, { status: 400 });
     }
 
     const { data, error } = await adminAuthClient.auth.signInWithPassword({
       email: email,
-      password: password,
+      password: loginPassword,
     });
 
     if (error) {
@@ -30,5 +30,3 @@ export async function POST(req: Request) {
     console.log(err);
   }
 }
-
-// route create it just needs to be implemented in the sign in page formSubmit

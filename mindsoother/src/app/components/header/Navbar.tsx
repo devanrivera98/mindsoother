@@ -28,7 +28,6 @@ export default function Navbar({
   isMenuOpen,
   setIsMenuOpen,
 }: HeaderNavProps) {
-
   return (
     <nav className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4 h-full">
       <div className="flex items-center cursor-pointer">

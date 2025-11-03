@@ -11,9 +11,7 @@ export default function HeaderClient() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState<boolean>(false);
-  const [user, setUser] = useState<string | null | undefined | "Sign In">(
-    null
-  );
+  const [user, setUser] = useState<string | null | undefined | "Sign In">(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const accountMenuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -37,7 +35,7 @@ export default function HeaderClient() {
     };
     window.addEventListener("resize", windowWatcher);
     window.addEventListener("mousedown", handleClickOutside);
-    
+
     const fetchUser = async () => {
       const userEmail = await getUser();
       if (userEmail) {
