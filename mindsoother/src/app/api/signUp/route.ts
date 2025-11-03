@@ -1,4 +1,4 @@
-import { adminAuthClient } from "@/app/utils/supabase/adminClient";
+import { adminAuthClient } from "@/lib/supabase/adminClient";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -13,7 +13,6 @@ export async function POST(req: Request) {
     if (error) throw error;
 
     const userExist = data.users.some((user) => user.email === email);
-    console.log(userExist);
 
     if (userExist) {
       return NextResponse.json({
@@ -24,7 +23,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ userExist: userExist });
     }
   } catch (err) {
-    console.log("Response error", err);
+    console.error("Response error", err);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 },

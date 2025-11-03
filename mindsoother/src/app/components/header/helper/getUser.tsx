@@ -1,4 +1,4 @@
-import { supabaseClient } from "@/app/utils/supabase/client";
+import { supabaseClient } from "@/lib/supabase/client";
 
 export async function getUser() {
   const {

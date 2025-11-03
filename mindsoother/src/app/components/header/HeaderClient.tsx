@@ -2,18 +2,16 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { supabaseClient } from "@/app/utils/supabase/client";
+import { supabaseClient } from "@/lib/supabase/client";
 import { getUser } from "./helper/getUser";
-import HeaderNavbar from "./Navbar";
+import Navbar from "./Navbar";
 import MobileNavMenu from "./MobileNavMenu";
 
 export default function HeaderClient() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState<boolean>(false);
-  const [user, setUser] = useState<string | null | undefined | "Sign In">(
-    undefined,
-  );
+  const [user, setUser] = useState<string | null | undefined | "Sign In">(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const accountMenuRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
@@ -38,19 +36,6 @@ export default function HeaderClient() {
     window.addEventListener("resize", windowWatcher);
     window.addEventListener("mousedown", handleClickOutside);
 
-    const { data: subscription } = supabaseClient.auth.onAuthStateChange(
-      (event, session) => {
-        if (event === "SIGNED_IN") {
-          console.log("SIGNED_IN", session);
-          console.log(session?.user.user_metadata.full_name);
-          setUser(session?.user.email);
-          // setUser(undefined)
-        } else {
-          setUser("Sign In");
-        }
-      },
-    );
-
     const fetchUser = async () => {
       const userEmail = await getUser();
       if (userEmail) {
@@ -61,6 +46,16 @@ export default function HeaderClient() {
     };
 
     fetchUser();
+
+    const { data: subscription } = supabaseClient.auth.onAuthStateChange(
+      (event, session) => {
+        if (event === "SIGNED_IN") {
+          setUser(session?.user.email);
+        } else if (event === "SIGNED_OUT") {
+          setUser("Sign In");
+        }
+      },
+    );
 
     return () => {
       window.removeEventListener("resize", windowWatcher);
@@ -81,7 +76,7 @@ export default function HeaderClient() {
       ref={headerRef}
       className="shadow-md/10 w-full fixed z-50 bg-white h-[80px]"
     >
-      <HeaderNavbar
+      <Navbar
         pathname={pathname}
         handleNavClick={handleNavClick}
         user={user}

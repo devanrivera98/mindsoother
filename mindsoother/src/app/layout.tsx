@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "MindSoother",
+  title: "PsychSearch",
   description:
-    "A tool that recommends users psychologic techniques dependent on their situation.",
+    "A tool that can allow users access to open source psychological articles based on the query provided.",
 };
 
 export default function RootLayout({
