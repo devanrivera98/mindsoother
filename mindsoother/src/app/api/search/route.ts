@@ -3,7 +3,6 @@ import OpenAI from "openai";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log("server response", body);
     const client = new OpenAI({ apiKey: process.env.OPEN_AI_KEY });
 
     const response = await client.responses.create({
@@ -24,8 +23,6 @@ export async function POST(req: Request) {
           respond with a prompt warning them about potentially falling out of the scope but let them know you'll give at least a high school level short fun fact about the topic relating to psychology (2 sentences max).
       `,
     });
-
-    console.log("chatgpt response", response.output_text);
 
     const alexRes = await fetch(
       `https://api.openalex.org/works?search=${body.prompt}&per-page=20&filter=open_access.is_oa:true,topics.field.id:32`,

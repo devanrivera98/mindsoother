@@ -6,8 +6,6 @@ export async function POST(req: Request) {
     const result = await req.json();
     const { email, loginPassword } = result.data;
 
-    console.log(email, loginPassword);
-
     if (!email && !loginPassword) {
       return NextResponse.json({ error: " and Password" }, { status: 400 });
     } else if (!email) {
@@ -27,6 +25,6 @@ export async function POST(req: Request) {
       return NextResponse.json({ data: data }, { status: 200 });
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }

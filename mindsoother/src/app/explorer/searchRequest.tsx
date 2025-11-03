@@ -8,7 +8,6 @@ export async function searchRequest(prompt: string) {
       },
     });
     const data = await res.json();
-    console.log(data);
 
     if (!res.ok) {
       throw new Error(`Search request failed with status ${res.status}`);

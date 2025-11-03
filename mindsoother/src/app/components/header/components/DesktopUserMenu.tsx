@@ -52,7 +52,7 @@ export default function DesktopUserMenu({
                 className="hover:cursor-pointer"
                 onClick={async () => {
                   await signOut();
-                  setIsAccountMenuOpen(false)
+                  setIsAccountMenuOpen(false);
                 }}
               >
                 Sign Out

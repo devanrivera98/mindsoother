@@ -20,7 +20,6 @@ export default async function onSignUpSubmit(signInForm: any, router: any) {
     if (error) {
       console.error("Sign in failed:", error.message);
     } else {
-      console.log(data);
       router.push("/");
       router.refresh();
     }

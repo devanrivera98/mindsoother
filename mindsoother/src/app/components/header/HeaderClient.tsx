@@ -50,8 +50,6 @@ export default function HeaderClient() {
     const { data: subscription } = supabaseClient.auth.onAuthStateChange(
       (event, session) => {
         if (event === "SIGNED_IN") {
-          console.log("SIGNED_IN", session);
-          console.log(session?.user.user_metadata.full_name);
           setUser(session?.user.email);
         } else if (event === "SIGNED_OUT") {
           setUser("Sign In");

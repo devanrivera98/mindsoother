@@ -46,16 +46,14 @@ const onFormSubmit = async (
   const { userExist, message } = await res.json();
   if (userExist !== null) setHasUser(userExist);
   if (message) setSubmitMessage(message);
-  console.log("user", message);
 
   if (!userExist) {
     setIsSubmitted(true);
-    console.log("Form submitted!", form);
 
     const result = formSchema.safeParse(form);
 
     if (!result.success) {
-      console.log(result.error.flatten().fieldErrors);
+      console.error(result.error.flatten().fieldErrors);
       return {
         zodErrors: result.error.flatten().fieldErrors,
       };
@@ -71,14 +69,12 @@ const onFormSubmit = async (
       if (error) {
         console.error("Signup failed:", error.message);
       } else {
-        console.log(data);
         router.push("/");
 
         router.refresh();
         //refresh re-fetches server components to perform a "state update" type effect
       }
     }
-    console.log("Form submitted!", result.data);
   }
 };
 

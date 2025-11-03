@@ -51,13 +51,12 @@ export default function SignInForm() {
     setIsSubmitted(true);
 
     if (!result.success) {
-      console.log(result.error);
+      console.error(result.error);
     } else if (result.success) {
       onSignUpSubmit(result, router);
 
       router.push("/");
       router.refresh();
-      console.log("sign in form result", result);
     }
   };
 
