@@ -11,8 +11,8 @@ export default function SignedOutLibraryView() {
             Organize and revisit your saved psychology research
           </p>
         </div>
-        <div>
-          <div className="rounded bg-white -mt-8 shadow-xl py-5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="rounded bg-white -mt-8 shadow-xl p-5 max-w-7xl mx-auto text-center">
             <div className="inline-flex bg-indigo-50 p-5 rounded-full justify-center text-center mb-2">
               <IoLockClosedOutline
                 fontSize={30}
