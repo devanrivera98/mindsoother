@@ -2,6 +2,7 @@ import Link from "next/link";
 import { InformationCircle, LuBookmark, LuBrain, LuHouse } from "../icons";
 import NavLink from "./components/NavLink";
 import signUserOut from "./helper/signUserOut";
+import { useRouter } from "next/navigation";
 
 interface MobileNavMenuInterface {
   isMenuOpen: boolean;
@@ -18,10 +19,13 @@ export default function MobileNavMenu({
   user,
   setUser,
 }: MobileNavMenuInterface) {
+  const router = useRouter();
+
   async function handleMobileSignOut() {
     const result = await signUserOut(user);
     setUser(result);
     handleMobileNavClick();
+    router.refresh();
   }
 
   function handleMobileNavClick() {

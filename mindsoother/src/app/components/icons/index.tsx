@@ -20,7 +20,7 @@ import { IoMailOutline as IoMailOutlineRaw } from "react-icons/io5";
 import { IoLockClosedOutline as IoLockClosedOutlineRaw } from "react-icons/io5";
 import { IoEyeOutline as IoEyeOutlineRaw } from "react-icons/io5";
 import { IoEyeOffOutline as IoEyeOffOutlineRaw } from "react-icons/io5";
-import { IoPersonAddOutline  as IoPersonAddOutlineRaw} from "react-icons/io5";
+import { IoPersonAddOutline as IoPersonAddOutlineRaw } from "react-icons/io5";
 
 import { FcGoogle as FcGoogleRaw } from "react-icons/fc";
 
@@ -105,7 +105,9 @@ const FcGoogle = (props: React.ComponentProps<"svg">) => (
   <>{FcGoogleRaw({ ...props })}</>
 );
 
-const IoPersonAddOutline = (props: React.ComponentProps<"svg">) => <>{IoPersonAddOutlineRaw({...props})}</>
+const IoPersonAddOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoPersonAddOutlineRaw({ ...props })}</>
+);
 
 export {
   LuBrain,

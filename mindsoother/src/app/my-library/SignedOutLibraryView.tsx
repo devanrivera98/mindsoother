@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { IoArrowForwardSharp, IoLockClosedOutline, IoPersonAddOutline } from "../components/icons";
+import {
+  IoArrowForwardSharp,
+  IoLockClosedOutline,
+  IoPersonAddOutline,
+} from "../components/icons";
 
 export default function SignedOutLibraryView() {
   return (
@@ -28,15 +32,24 @@ export default function SignedOutLibraryView() {
                 your personal psychology library.
               </p>
               <div>
-                <Link href="/sign-up" className="bg-brand-purple hover:bg-hover-purple rounded p-4 text-white font-semibold inline-flex items-center gap-x-2">
-                    <IoPersonAddOutline fontSize={20} />
-                    Create Account
-                    <IoArrowForwardSharp fontSize={20}/>
+                <Link
+                  href="/sign-up"
+                  className="bg-brand-purple hover:bg-hover-purple rounded p-4 text-white font-semibold inline-flex items-center gap-x-2"
+                >
+                  <IoPersonAddOutline fontSize={20} />
+                  Create Account
+                  <IoArrowForwardSharp fontSize={20} />
                 </Link>
               </div>
               <div>
-                <p>Already have an account? {" "}
-                <Link href="/sign-in" className="text-brand-purple font-semibold hover:underline underline-offset-4 hover:text-hover-purple">Sign in here</Link>
+                <p>
+                  Already have an account?{" "}
+                  <Link
+                    href="/sign-in"
+                    className="text-brand-purple font-semibold hover:underline underline-offset-4 hover:text-hover-purple"
+                  >
+                    Sign in here
+                  </Link>
                 </p>
               </div>
             </div>

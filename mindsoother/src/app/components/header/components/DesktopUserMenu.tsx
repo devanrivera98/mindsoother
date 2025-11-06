@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import signUserOut from "../helper/signUserOut";
+import { useRouter } from "next/navigation";
 
 export default function DesktopUserMenu({
   user,
@@ -12,6 +13,7 @@ export default function DesktopUserMenu({
   setIsAccountMenuOpen,
 }: any) {
   const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsMounted(true);
@@ -20,6 +22,7 @@ export default function DesktopUserMenu({
   async function signOut() {
     const result = await signUserOut(user);
     setUser(result);
+    router.refresh();
   }
 
   if (!isMounted || user === null) {
