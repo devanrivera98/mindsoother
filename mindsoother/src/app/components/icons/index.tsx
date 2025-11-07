@@ -22,10 +22,12 @@ import { IoEyeOutline as IoEyeOutlineRaw } from "react-icons/io5";
 import { IoEyeOffOutline as IoEyeOffOutlineRaw } from "react-icons/io5";
 import { IoPersonAddOutline as IoPersonAddOutlineRaw } from "react-icons/io5";
 import { IoFolderOutline as IoFolderOutlineRaw } from "react-icons/io5";
+import { FaPlus as FaPlusRaw } from "react-icons/fa6";
+import { IoTrashOutline as IoTrashOutlineRaw } from "react-icons/io5";
 
 import { FcGoogle as FcGoogleRaw } from "react-icons/fc";
 
-import React, { ComponentProps, ReactSVGElement } from "react";
+import React, { ComponentProps } from "react";
 
 const LuBrain = (props: React.ComponentProps<"svg">) => (
   <>{LuBrainRaw({ ...props })}</>
@@ -114,6 +116,14 @@ const IoFolderOutline = (props: React.ComponentProps<"svg">) => (
   <>{IoFolderOutlineRaw({ ...props })}</>
 );
 
+const FaPlus = (props: React.ComponentProps<"svg">) => (
+  <>{FaPlusRaw({ ...props })}</>
+);
+
+const IoTrashOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoTrashOutlineRaw({ ...props })}</>
+);
+
 export {
   LuBrain,
   LuHouse,
@@ -138,4 +148,6 @@ export {
   IoPersonAddOutline,
   FcGoogle,
   IoFolderOutline,
+  IoTrashOutline,
+  FaPlus,
 };

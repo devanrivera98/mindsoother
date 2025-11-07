@@ -1,10 +1,11 @@
 import Link from "next/link";
 import React, { ReactSVGElement } from "react";
-import { IoBookOutline, IoFolderOutline } from "../components/icons";
+import { IoBookOutline, IoFolderOutline } from "../../components/icons";
+import ManageFolderModal from "./ManageFolderModal";
 
 export default function SignedInLibraryView() {
   return (
-    <>
+    <div className="z-2">
       <div className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-center text-white  px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold">Your Saved Techniuqes</h1>
         <p className="mt-4 text-xl text-indigo-100">
@@ -48,6 +49,7 @@ export default function SignedInLibraryView() {
           </Link>
         </div>
       </div>
-    </>
+      <ManageFolderModal />
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import SignedInLibraryView from "./SignedInLibraryView";
+import SignedInLibraryView from "./SignedInLibraryView/SignedInLibraryView";
 import SignedOutLibraryView from "./SignedOutLibraryView";
 import serverGetUser from "@/lib/helper/serverGetUser";
 
