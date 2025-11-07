@@ -21,6 +21,7 @@ import { IoLockClosedOutline as IoLockClosedOutlineRaw } from "react-icons/io5";
 import { IoEyeOutline as IoEyeOutlineRaw } from "react-icons/io5";
 import { IoEyeOffOutline as IoEyeOffOutlineRaw } from "react-icons/io5";
 import { IoPersonAddOutline as IoPersonAddOutlineRaw } from "react-icons/io5";
+import { IoFolderOutline as IoFolderOutlineRaw } from "react-icons/io5";
 
 import { FcGoogle as FcGoogleRaw } from "react-icons/fc";
 
@@ -109,6 +110,10 @@ const IoPersonAddOutline = (props: React.ComponentProps<"svg">) => (
   <>{IoPersonAddOutlineRaw({ ...props })}</>
 );
 
+const IoFolderOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoFolderOutlineRaw({ ...props })}</>
+);
+
 export {
   LuBrain,
   LuHouse,
@@ -132,4 +137,5 @@ export {
   IoEyeOffOutline,
   IoPersonAddOutline,
   FcGoogle,
+  IoFolderOutline,
 };
