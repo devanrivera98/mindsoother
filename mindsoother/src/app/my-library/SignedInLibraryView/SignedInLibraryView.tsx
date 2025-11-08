@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
-import React, { ReactSVGElement } from "react";
+import React, { useState } from "react";
 import { IoBookOutline, IoFolderOutline } from "../../components/icons";
 import ManageFolderModal from "./ManageFolderModal";
 
 export default function SignedInLibraryView() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="z-2">
       <div className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-center text-white  px-4 sm:px-6 lg:px-8">
@@ -18,7 +22,10 @@ export default function SignedInLibraryView() {
             <h2 className="text-xl md:text-2xl font-semibold">
               0 Saved Techniques
             </h2>
-            <button className="md:ml-5 py-2 md:py-0 px-2 flex items-center border border-gray-300 font-medium rounded-md">
+            <button
+              className="md:ml-5 py-2 md:py-0 px-2 flex items-center hover:bg-gray-100 border border-gray-300 font-medium rounded-md cursor-pointer"
+              onClick={() => setIsModalOpen(true)}
+            >
               <IoFolderOutline fontSize={18} className="mr-2" />
               Manage Folders
             </button>
@@ -49,7 +56,10 @@ export default function SignedInLibraryView() {
           </Link>
         </div>
       </div>
-      <ManageFolderModal />
+      <ManageFolderModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </div>
   );
 }

@@ -5,15 +5,34 @@ import {
   IoTrashOutline,
 } from "@/app/components/icons";
 
-export default function ManageFolderModal() {
+interface ManageModalInterface {
+  isModalOpen: boolean;
+  setIsModalOpen: (boolean: boolean) => void;
+}
+
+export default function ManageFolderModal({
+  isModalOpen,
+  setIsModalOpen,
+}: ManageModalInterface) {
   return (
     <>
-      <dialog open className="fixed w-full h-full m-auto inset-0 bg-black/50">
+      <dialog
+        open={isModalOpen}
+        className="fixed w-full h-full m-auto inset-0 bg-black/50"
+      >
         <div className="flex items-center justify-center h-full px-4">
           <div className="flex flex-col gap-y-5 max-w-lg w-full p-4 sm:p-6 bg-white rounded">
             <div className="flex justify-between">
               <h3 className="text-2xl font-semibold">Manage Folder</h3>
-              <AiOutlineClose />
+              <button
+                className="cursor-pointer"
+                onClick={() => setIsModalOpen(false)}
+              >
+                <AiOutlineClose
+                  className="text-black hover:text-gray-500"
+                  fontSize={20}
+                />
+              </button>
             </div>
             <div className="flex flex-col gap-y-2">
               <h4 className="text-lg  font-medium">Create New Folder</h4>
