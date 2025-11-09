@@ -53,7 +53,7 @@ export default function ManageFolderModal({
       <dialog
         ref={dialogRef}
         open={isModalOpen}
-        className="fixed w-full h-full m-auto inset-0 bg-black/50"
+        className="fixed w-full h-full m-auto inset-0 bg-black/50 z-50"
       >
         <div className="flex items-center justify-center h-full px-4">
           <div className="flex flex-col gap-y-5 max-w-lg w-full p-4 sm:p-6 bg-white rounded">

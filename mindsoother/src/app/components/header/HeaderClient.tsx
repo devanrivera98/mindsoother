@@ -74,7 +74,7 @@ export default function HeaderClient() {
   return (
     <header
       ref={headerRef}
-      className="shadow-md/10 w-full fixed z-50 bg-white h-[80px]"
+      className="shadow-md/10 w-full fixed z-30 bg-white h-[80px]"
     >
       <Navbar
         pathname={pathname}
