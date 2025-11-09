@@ -4,6 +4,7 @@ import {
   IoFolderOutline,
   IoTrashOutline,
 } from "@/app/components/icons";
+import { useEffect, useRef } from "react";
 
 interface ManageModalInterface {
   isModalOpen: boolean;
@@ -14,9 +15,43 @@ export default function ManageFolderModal({
   isModalOpen,
   setIsModalOpen,
 }: ManageModalInterface) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (dialog === null) return;
+    console.log("this is the dialog", dialog);
+
+    if (isModalOpen) {
+      const firstFocusable =
+        dialog.querySelector<HTMLElement>("input, button)");
+      firstFocusable?.focus();
+    }
+
+    function dialogFocus(e: globalThis.KeyboardEvent) {
+      const focusableElements = Array.from(
+        dialog!.querySelectorAll("a[href], input, button"),
+      );
+
+      if (e.key === "Tab") {
+        e.preventDefault();
+        const currentIndex = focusableElements.indexOf(
+          document.activeElement as HTMLElement,
+        );
+        const nextIndex = (currentIndex + 1) % focusableElements.length;
+        (focusableElements[nextIndex] as HTMLElement).focus();
+      }
+    }
+
+    document.addEventListener("keydown", dialogFocus);
+
+    return () => document?.removeEventListener("keydown", dialogFocus);
+  }, []);
+
   return (
     <>
       <dialog
+        ref={dialogRef}
         open={isModalOpen}
         className="fixed w-full h-full m-auto inset-0 bg-black/50"
       >
