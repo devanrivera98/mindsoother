@@ -1,10 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import React, { useState } from "react";
-import { IoBookOutline, IoFolderOutline } from "../../components/icons";
+import { IoFolderOutline } from "../../components/icons";
 import ManageFolderModal from "./ManageFolderModal";
-import NoSavedTechniques from "./NoSavedTechniques";
+import ArticleCollectionView from "./ArticleSaves/ArticleCollectionView";
 
 export default function SignedInLibraryView() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,8 +39,8 @@ export default function SignedInLibraryView() {
         </div>
       </div>
       <div className="my-10 max-w-7xl mx-auto rounded px-4 sm:px-6 lg:px-8">
-        <div className="p-12 flex flex-col items-center bg-white shadow-xl">
-          <NoSavedTechniques />
+        <div className="p-5 flex flex-col items-center bg-white shadow-xl">
+          <ArticleCollectionView />
         </div>
       </div>
       <ManageFolderModal

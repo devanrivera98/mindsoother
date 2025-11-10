@@ -1,7 +1,7 @@
 import { IoBookOutline } from "@/app/components/icons";
 import Link from "next/link";
 
-export default function NoSavedTechniques() {
+export default function ArticleCollectionEmptyView() {
   return (
     <>
       <IoBookOutline fontSize={40} className="text-gray-500" />
