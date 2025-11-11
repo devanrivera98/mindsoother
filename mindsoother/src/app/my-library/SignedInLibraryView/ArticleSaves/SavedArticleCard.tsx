@@ -6,13 +6,19 @@ import {
   LuSave,
   TfiNewWindow,
 } from "@/app/components/icons";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export default function SavedArticleCard() {
   const [isManaged, setIsManaged] = useState(false);
+  const [hasNotes, setHasNotes] = useState(true);
+  const [textCounter, setTextCounter] = useState(0);
+
+  function manageTextChange(e: ChangeEvent<HTMLTextAreaElement>) {
+    setTextCounter(e.target.value.length);
+  }
 
   return (
-    <>
+    <div>
       <article className="flex flex-col gap-y-3 shadow-lg hover:shadow-xl border border-gray-100 p-3 rounded-lg bg-white">
         <div className="flex justify-end gap-x-2">
           <button
@@ -68,7 +74,12 @@ export default function SavedArticleCard() {
                 className="border border-gray-300 rounded-md pt-1 pl-2"
                 rows={4}
                 placeholder="Add your notes about this article..."
+                maxLength={400}
+                onChange={(e) => manageTextChange(e)}
               ></textarea>
+              <div className="flex justify-end">
+                <span className="text-gray-500">{textCounter} / 400</span>
+              </div>
             </div>
             <div>
               <button className="flex items-center bg-brand-purple hover:bg-hover-purple p-2 rounded-lg text-white font-semibold cursor-pointer">
@@ -78,17 +89,35 @@ export default function SavedArticleCard() {
             </div>
           </>
         ) : (
-          <div className="flex items-center">
-            <a
-              className="flex items-center text-brand-purple hover:underline underline-offset-2 cursor-pointer"
-              target="_blank"
-            >
-              Read full article
-              <TfiNewWindow className="ml-1 -translate-y-px" />
-            </a>
-          </div>
+          <>
+            {hasNotes ? (
+              <>
+                <label className="font-medium">Notes</label>
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat. Lorem ipsum dolor sit amet, consectetur
+                  adipiscing elit, sed do eiusmod tempor
+                </span>
+              </>
+            ) : (
+              <></>
+            )}
+            <div className="flex items-center">
+              <a
+                className="flex items-center text-brand-purple hover:underline underline-offset-2 cursor-pointer"
+                target="_blank"
+              >
+                Read full article
+                <TfiNewWindow className="ml-1 -translate-y-px" />
+              </a>
+            </div>
+          </>
         )}
       </article>
-    </>
+    </div>
   );
 }
