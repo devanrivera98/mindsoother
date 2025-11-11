@@ -5,6 +5,7 @@ import {
   TfiNewWindow,
 } from "../components/icons";
 import buildAbstractFromIndex from "./helpers/buildAbstractFromIndex";
+import SaveArticleOverlay from "./SaveArticleOverlay";
 
 interface abstractInterface {
   [key: string]: number[];
@@ -63,6 +64,7 @@ export default function ArticleCard({
           <TfiNewWindow fontSize={15} className="-translate-y-px" />
         </a>
       </div>
+      {/* <SaveArticleOverlay /> */}
     </article>
   );
 }

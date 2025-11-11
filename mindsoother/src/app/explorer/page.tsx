@@ -6,6 +6,7 @@ import { MoonLoader } from "react-spinners";
 import SearchSummary from "./SearchSummary";
 import SearchResults from "./SearchResults";
 import formHandler from "./helpers/formHandler";
+import SaveArticleOverlay from "./SaveArticleOverlay";
 
 export default function TechniqueExplorer() {
   const [textValue, setTextValue] = useState<string>("");
@@ -143,6 +144,8 @@ export default function TechniqueExplorer() {
             )}
           </div>
         </div>
+        {/* remove off the page and add the modal for search article cards when completed */}
+        <SaveArticleOverlay />
       </section>
     </>
   );
