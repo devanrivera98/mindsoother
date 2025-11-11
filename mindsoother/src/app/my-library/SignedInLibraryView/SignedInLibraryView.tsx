@@ -39,7 +39,7 @@ export default function SignedInLibraryView() {
         </div>
       </div>
       <div className="my-10 max-w-7xl mx-auto rounded px-4 sm:px-6 lg:px-8">
-        <div className="p-5 flex flex-col items-center bg-white shadow-xl">
+        <div className="p-5 flex flex-col items-center">
           <ArticleCollectionView />
         </div>
       </div>
