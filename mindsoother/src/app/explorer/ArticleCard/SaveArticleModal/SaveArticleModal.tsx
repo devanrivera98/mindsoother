@@ -1,9 +1,13 @@
 "use client";
 import { supabaseClient } from "@/lib/supabase/client";
 import { FormEvent, useState } from "react";
-import { AiOutlineClose, FaPlus } from "../components/icons";
+import { AiOutlineClose, FaPlus } from "../../../components/icons";
 
-export default function SaveArticleOverlay() {
+export default function SaveArticleModal({
+  isModalOpen,
+  setIsModalOpen,
+  folders,
+}: any) {
   const [showNewFolderForm, setShowNewFolderForm] = useState(false);
   const [newFolderName, setNewFolderName] = useState("");
   const [newFolderError, setNewFolderError] = useState("");
@@ -15,6 +19,7 @@ export default function SaveArticleOverlay() {
     console.log("yup");
   }
 
+  //function will need to useEffect will be need when this function will eventually need to update the select options
   async function handleCreateFolder() {
     try {
       const {
@@ -49,10 +54,21 @@ export default function SaveArticleOverlay() {
     }
   }
 
+  const folderMap = folders?.map((folder: any, index: any) => (
+    <option key={index} value={folder.name}>
+      {folder.name}
+    </option>
+  ));
+
+  // async function getFolders() {
+  //   const {data: user, error} = await supabaseClient.from('folders')
+
+  // }
+
   return (
     <>
       <dialog
-        open
+        open={isModalOpen}
         className="z-50 px-4 w-full h-full fixed bg-black/50 inset-0 m-auto"
         aria-labelledby="save-article-file"
         aria-modal="true"
@@ -66,7 +82,11 @@ export default function SaveArticleOverlay() {
               <h3 id="save-article-file" className="font-semibold text-xl">
                 Save Article
               </h3>
-              <button type="button" aria-label="Close dialog">
+              <button
+                type="button"
+                aria-label="Close dialog"
+                onClick={() => setIsModalOpen(false)}
+              >
                 <AiOutlineClose
                   fontSize={20}
                   className="text-black hover:text-gray-500"
@@ -88,7 +108,8 @@ export default function SaveArticleOverlay() {
                 id="folderSelect"
                 className="w-full py-2 px-2 border border-gray-300 rounded font-semibold"
               >
-                <option value="Unsorted">Unsorted</option>
+                {folderMap}
+                {/* should i render children prop here so that I can have my server side component that returns a client side component . Wait no that wouldnt work right there would have to be a parent component that would need to pass down a child when this component is called and then id place the child prop here and insert my server side component on that child?  */}
               </select>
               <button
                 className="flex items-center text-brand-purple hover:text-hover-purple cursor-pointer"

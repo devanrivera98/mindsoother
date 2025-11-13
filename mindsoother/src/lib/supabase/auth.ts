@@ -1,13 +1,13 @@
 "use server";
 
-import { createClient } from "./server";
+import { createServerClient } from "./server";
 
 export async function signUpWithEmail(
   email: string,
   password: string,
   fullName: string,
 ) {
-  const supabase = await createClient();
+  const supabase = await createServerClient();
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -19,7 +19,7 @@ export async function signUpWithEmail(
 }
 
 export async function signInWithEmail(email: string, password: string) {
-  const supabase = await createClient();
+  const supabase = await createServerClient();
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -29,6 +29,6 @@ export async function signInWithEmail(email: string, password: string) {
 }
 
 export async function signOut() {
-  const supabase = await createClient();
+  const supabase = await createServerClient();
   return supabase.auth.signOut();
 }

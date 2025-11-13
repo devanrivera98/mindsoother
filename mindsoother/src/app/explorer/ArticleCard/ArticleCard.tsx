@@ -3,9 +3,9 @@ import {
   IoPersonOutline,
   LuBookmark,
   TfiNewWindow,
-} from "../components/icons";
-import buildAbstractFromIndex from "./helpers/buildAbstractFromIndex";
-import SaveArticleOverlay from "./SaveArticleOverlay";
+} from "../../components/icons";
+import buildAbstractFromIndex from "../helpers/buildAbstractFromIndex";
+import BookmarkButton from "./BookmarkButton";
 
 interface abstractInterface {
   [key: string]: number[];
@@ -17,6 +17,7 @@ interface ArticleCardInterface {
   authors: string;
   publishDate: string;
   url: string;
+  folders: { name: string; id: number; user_id: string; created_at: string }[];
 }
 
 export default function ArticleCard({
@@ -25,18 +26,20 @@ export default function ArticleCard({
   url,
   publishDate,
   authors,
+  folders,
 }: ArticleCardInterface) {
   const abstract = buildAbstractFromIndex(abstractIndex);
 
   return (
     <article className="p-5 bg-white shadow-lg rounded flex flex-col">
       <div className="flex justify-end">
-        <button type="button">
+        <BookmarkButton folders={folders} />
+        {/* <button type="button">
           <LuBookmark
             fontSize={22}
             className={"cursor-pointer hover:text-brand-purple"}
           />
-        </button>
+        </button> */}
       </div>
       <h3 className="font-semibold text-xl pr-5">{title}</h3>
       <div className="flex pt-3  gap-x-4 font-medium text-gray-700">
@@ -64,7 +67,6 @@ export default function ArticleCard({
           <TfiNewWindow fontSize={15} className="-translate-y-px" />
         </a>
       </div>
-      {/* <SaveArticleOverlay /> */}
     </article>
   );
 }

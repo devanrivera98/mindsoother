@@ -1,4 +1,4 @@
-import ArticleCard from "./ArticleCard";
+import ArticleCard from "./ArticleCard/ArticleCard";
 
 interface Author {
   raw_author_name: string;
@@ -12,7 +12,13 @@ interface Result {
   [key: string]: any; // allow unknown extra properties
 }
 
-export default function SearchResults({ results }: { results: Result[] }) {
+export default function SearchResults({
+  results,
+  folders,
+}: {
+  results: Result[];
+  folders: { name: string; id: number; user_id: string; created_at: string }[];
+}) {
   const mappedResults = results.map((result, index) => {
     const authors = result.authorships;
     let authorsString;
@@ -38,6 +44,7 @@ export default function SearchResults({ results }: { results: Result[] }) {
         url={result.primary_location.landing_page_url}
         publishDate={result.publication_year}
         authors={authorsString}
+        folders={folders}
       />
     );
   });
