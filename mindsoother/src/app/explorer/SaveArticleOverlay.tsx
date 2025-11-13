@@ -1,10 +1,12 @@
 "use client";
+import { supabaseClient } from "@/lib/supabase/client";
 import { FormEvent, useState } from "react";
 import { AiOutlineClose, FaPlus } from "../components/icons";
 
 export default function SaveArticleOverlay() {
   const [showNewFolderForm, setShowNewFolderForm] = useState(false);
   const [newFolderName, setNewFolderName] = useState("");
+  const [newFolderError, setNewFolderError] = useState("");
 
   // this needs to be moved off the page and onto component card when ready
 
@@ -13,8 +15,38 @@ export default function SaveArticleOverlay() {
     console.log("yup");
   }
 
-  function handleCreateFolder() {
-    //logic needs to be implemented for sending folder data
+  async function handleCreateFolder() {
+    try {
+      const {
+        data: { user },
+      } = await supabaseClient.auth.getUser();
+
+      if (!user) {
+        console.error("User not found");
+        return;
+      }
+
+      const { data, error } = await supabaseClient
+        .from("folders")
+        .insert({
+          name: newFolderName,
+          user_id: user.id,
+        })
+        .select();
+
+      if (error?.code === "23505") {
+        return setNewFolderError("Folder name already created.");
+      } else if (error) {
+        return console.error("Error creating folder:", error);
+      }
+
+      setNewFolderName("");
+      setNewFolderError("");
+
+      console.log("Folder created:", data);
+    } catch (err) {
+      console.error("Unexpected error:", err);
+    }
   }
 
   return (
@@ -61,26 +93,34 @@ export default function SaveArticleOverlay() {
               <button
                 className="flex items-center text-brand-purple hover:text-hover-purple cursor-pointer"
                 type="button"
-                onClick={() => setShowNewFolderForm(!showNewFolderForm)}
+                onClick={() => {
+                  setShowNewFolderForm(!showNewFolderForm);
+                  setNewFolderError("");
+                }}
               >
                 <FaPlus />
                 <span className="pl-1">Create New Folder</span>
               </button>
               {showNewFolderForm ? (
                 <>
-                  <div className="flex w-full">
-                    <input
-                      placeholder="Folder name"
-                      name="newFolderName"
-                      className="w-full py-0.5 pl-2 mr-2 border border-gray-300 rounded"
-                      onChange={(e) => setNewFolderName(e.target.value)}
-                    ></input>
-                    <button
-                      className="bg-brand-purple hover:bg-hover-purple text-white p-2 rounded cursor-pointer"
-                      onClick={() => handleCreateFolder()}
-                    >
-                      Create
-                    </button>
+                  <div className="flex flex-col w-full gap-y-2">
+                    <div className="flex">
+                      <input
+                        placeholder="Folder name"
+                        name="newFolderName"
+                        className="w-full py-0.5 pl-2 mr-2 border border-gray-300 rounded"
+                        value={newFolderName}
+                        onChange={(e) => setNewFolderName(e.target.value)}
+                      ></input>
+                      <button
+                        type="button"
+                        className="bg-brand-purple hover:bg-hover-purple text-white p-2 rounded cursor-pointer"
+                        onClick={() => handleCreateFolder()}
+                      >
+                        Create
+                      </button>
+                    </div>
+                    <span className="text-red-500 pl-1">{newFolderError}</span>
                   </div>
                 </>
               ) : (
