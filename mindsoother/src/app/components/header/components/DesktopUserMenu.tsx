@@ -22,6 +22,7 @@ export default function DesktopUserMenu({
   async function signOut() {
     const result = await signUserOut(user);
     setUser(result);
+    window.location.reload();
     router.refresh();
   }
 

@@ -25,6 +25,7 @@ export default function MobileNavMenu({
     const result = await signUserOut(user);
     setUser(result);
     handleMobileNavClick();
+    window.location.reload();
     router.refresh();
   }
 
