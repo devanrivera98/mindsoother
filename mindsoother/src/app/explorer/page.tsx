@@ -13,6 +13,7 @@ export default function TechniqueExplorer() {
   const [textValue, setTextValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [data, setData] = useState<any | null>(null);
+  const [isThereUser, setIsThereUser] = useState(false);
   const [userFolders, setUserFolders] = useState<
     { name: string; id: number; user_id: string; created_at: string }[]
   >([]);
@@ -63,6 +64,7 @@ export default function TechniqueExplorer() {
                   setTextValue,
                   textValue,
                   setUserFolders,
+                  setIsThereUser,
                 })
               }
             >
@@ -147,13 +149,12 @@ export default function TechniqueExplorer() {
                 <SearchResults
                   results={data.alexData.results}
                   folders={userFolders}
+                  isThereUser={isThereUser}
                 />
               </>
             )}
           </div>
         </div>
-        {/* remove off the page and add the modal for search article cards when completed */}
-        <SaveArticleModal />
       </section>
     </>
   );

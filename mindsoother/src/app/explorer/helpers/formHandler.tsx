@@ -1,11 +1,14 @@
+import { createServerClient } from "@/lib/supabase/server";
 import { FormEvent } from "react";
 import { searchRequest } from "../searchRequest";
 import getFolders from "./getFolders";
+import { supabaseClient } from "@/lib/supabase/client";
 
 interface formHandlerInterface {
   setIsLoading: (loading: boolean) => void;
   setData: (data: object | null) => void;
   setTextValue: (text: string) => void;
+  setIsThereUser: (boolean: boolean) => void;
   setUserFolders: (
     folders: {
       name: string;
@@ -25,6 +28,7 @@ export default async function formHandler(
     setTextValue,
     textValue,
     setUserFolders,
+    setIsThereUser,
   }: formHandlerInterface,
 ) {
   e.preventDefault();
@@ -39,10 +43,20 @@ export default async function formHandler(
     setTextValue("");
   }
 
+  const {
+    data: { user },
+  } = await supabaseClient.auth.getUser();
+
+  if (user) {
+    setIsThereUser(true);
+  }
+
   const folders = await getFolders();
 
-  if (folders) {
+  if (folders && user) {
     setUserFolders(folders);
+  } else {
+    setUserFolders([]);
   }
 
   return { results, folders };

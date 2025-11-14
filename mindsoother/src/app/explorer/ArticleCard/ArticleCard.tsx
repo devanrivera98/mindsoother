@@ -17,6 +17,7 @@ interface ArticleCardInterface {
   authors: string;
   publishDate: string;
   url: string;
+  isThereUser: boolean;
   folders: { name: string; id: number; user_id: string; created_at: string }[];
 }
 
@@ -27,19 +28,14 @@ export default function ArticleCard({
   publishDate,
   authors,
   folders,
+  isThereUser,
 }: ArticleCardInterface) {
   const abstract = buildAbstractFromIndex(abstractIndex);
 
   return (
     <article className="p-5 bg-white shadow-lg rounded flex flex-col">
       <div className="flex justify-end">
-        <BookmarkButton folders={folders} />
-        {/* <button type="button">
-          <LuBookmark
-            fontSize={22}
-            className={"cursor-pointer hover:text-brand-purple"}
-          />
-        </button> */}
+        <BookmarkButton folders={folders} isThereUser={isThereUser} />
       </div>
       <h3 className="font-semibold text-xl pr-5">{title}</h3>
       <div className="flex pt-3  gap-x-4 font-medium text-gray-700">

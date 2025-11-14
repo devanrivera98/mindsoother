@@ -15,9 +15,11 @@ interface Result {
 export default function SearchResults({
   results,
   folders,
+  isThereUser,
 }: {
   results: Result[];
   folders: { name: string; id: number; user_id: string; created_at: string }[];
+  isThereUser: boolean;
 }) {
   const mappedResults = results.map((result, index) => {
     const authors = result.authorships;
@@ -45,6 +47,7 @@ export default function SearchResults({
         publishDate={result.publication_year}
         authors={authorsString}
         folders={folders}
+        isThereUser={isThereUser}
       />
     );
   });
