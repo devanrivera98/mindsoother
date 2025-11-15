@@ -1,6 +1,6 @@
 "use client";
 import { supabaseClient } from "@/lib/supabase/client";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { AiOutlineClose, FaPlus } from "../../../components/icons";
 
 export default function SaveArticleModal({
@@ -13,15 +13,11 @@ export default function SaveArticleModal({
   const [newFolderName, setNewFolderName] = useState("");
   const [newFolderError, setNewFolderError] = useState("");
 
-  useEffect(() => {
-    console.log(setFolders);
-  }, [folders]);
-
   // this needs to be moved off the page and onto component card when ready
 
   function onArticleFormSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log("yup");
+    // functionality for form to be submitted to database needs to be entered
   }
 
   //function will need to useEffect will be need when this function will eventually need to update the select options
@@ -50,6 +46,8 @@ export default function SaveArticleModal({
         return console.error("Error creating folder:", error);
       }
 
+      setFolders((prev: any) => [...prev, data[0]]);
+
       setNewFolderName("");
       setNewFolderError("");
 
@@ -64,11 +62,6 @@ export default function SaveArticleModal({
       {folder.name}
     </option>
   ));
-
-  // async function getFolders() {
-  //   const {data: user, error} = await supabaseClient.from('folders')
-
-  // }
 
   return (
     <>
@@ -114,7 +107,6 @@ export default function SaveArticleModal({
                 className="w-full py-2 px-2 border border-gray-300 rounded font-semibold"
               >
                 {folderMap}
-                {/* should i render children prop here so that I can have my server side component that returns a client side component . Wait no that wouldnt work right there would have to be a parent component that would need to pass down a child when this component is called and then id place the child prop here and insert my server side component on that child?  */}
               </select>
               <button
                 className="flex items-center text-brand-purple hover:text-hover-purple cursor-pointer"
@@ -142,7 +134,6 @@ export default function SaveArticleModal({
                         type="button"
                         className="bg-brand-purple hover:bg-hover-purple text-white p-2 rounded cursor-pointer"
                         onClick={() => handleCreateFolder()}
-                        // this click show refresh the folders being shown but only for the options
                       >
                         Create
                       </button>
