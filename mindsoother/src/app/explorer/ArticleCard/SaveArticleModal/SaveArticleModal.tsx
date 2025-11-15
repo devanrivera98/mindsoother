@@ -1,16 +1,21 @@
 "use client";
 import { supabaseClient } from "@/lib/supabase/client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { AiOutlineClose, FaPlus } from "../../../components/icons";
 
 export default function SaveArticleModal({
   isModalOpen,
   setIsModalOpen,
   folders,
+  setFolders,
 }: any) {
   const [showNewFolderForm, setShowNewFolderForm] = useState(false);
   const [newFolderName, setNewFolderName] = useState("");
   const [newFolderError, setNewFolderError] = useState("");
+
+  useEffect(() => {
+    console.log(setFolders);
+  }, [folders]);
 
   // this needs to be moved off the page and onto component card when ready
 
@@ -89,7 +94,7 @@ export default function SaveArticleModal({
               >
                 <AiOutlineClose
                   fontSize={20}
-                  className="text-black hover:text-gray-500"
+                  className="text-black hover:text-gray-500 hover:cursor-pointer"
                 />
               </button>
             </div>
@@ -137,6 +142,7 @@ export default function SaveArticleModal({
                         type="button"
                         className="bg-brand-purple hover:bg-hover-purple text-white p-2 rounded cursor-pointer"
                         onClick={() => handleCreateFolder()}
+                        // this click show refresh the folders being shown but only for the options
                       >
                         Create
                       </button>

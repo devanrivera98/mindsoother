@@ -3,12 +3,15 @@ import { LuBookmark } from "@/app/components/icons";
 import { useState } from "react";
 import SaveArticleModal from "./SaveArticleModal/SaveArticleModal";
 import { supabaseClient } from "@/lib/supabase/client";
+import { UserFolderInterface } from "../interface/explorerInterface";
 
 export default function BookmarkButton({
   folders,
+  setFolders,
   isThereUser,
 }: {
-  folders: { name: string; id: number; user_id: string; created_at: string }[];
+  folders: UserFolderInterface[];
+  setFolders: (folders: UserFolderInterface[]) => void;
   isThereUser: boolean;
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,6 +32,7 @@ export default function BookmarkButton({
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         folders={folders}
+        setFolders={setFolders}
       />
     </>
   );

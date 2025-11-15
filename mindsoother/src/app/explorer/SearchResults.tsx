@@ -1,4 +1,5 @@
 import ArticleCard from "./ArticleCard/ArticleCard";
+import { UserFolderInterface } from "./interface/explorerInterface";
 
 interface Author {
   raw_author_name: string;
@@ -15,10 +16,12 @@ interface Result {
 export default function SearchResults({
   results,
   folders,
+  setFolders,
   isThereUser,
 }: {
   results: Result[];
-  folders: { name: string; id: number; user_id: string; created_at: string }[];
+  folders: UserFolderInterface[];
+  setFolders: (folders: UserFolderInterface[]) => void;
   isThereUser: boolean;
 }) {
   const mappedResults = results.map((result, index) => {
@@ -47,6 +50,7 @@ export default function SearchResults({
         publishDate={result.publication_year}
         authors={authorsString}
         folders={folders}
+        setFolders={setFolders}
         isThereUser={isThereUser}
       />
     );

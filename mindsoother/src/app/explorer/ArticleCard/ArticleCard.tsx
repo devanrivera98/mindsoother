@@ -6,6 +6,7 @@ import {
 } from "../../components/icons";
 import buildAbstractFromIndex from "../helpers/buildAbstractFromIndex";
 import BookmarkButton from "./BookmarkButton";
+import { UserFolderInterface } from "../interface/explorerInterface";
 
 interface abstractInterface {
   [key: string]: number[];
@@ -18,7 +19,8 @@ interface ArticleCardInterface {
   publishDate: string;
   url: string;
   isThereUser: boolean;
-  folders: { name: string; id: number; user_id: string; created_at: string }[];
+  folders: UserFolderInterface[];
+  setFolders: (folders: UserFolderInterface[]) => void;
 }
 
 export default function ArticleCard({
@@ -28,6 +30,7 @@ export default function ArticleCard({
   publishDate,
   authors,
   folders,
+  setFolders,
   isThereUser,
 }: ArticleCardInterface) {
   const abstract = buildAbstractFromIndex(abstractIndex);
@@ -35,7 +38,11 @@ export default function ArticleCard({
   return (
     <article className="p-5 bg-white shadow-lg rounded flex flex-col">
       <div className="flex justify-end">
-        <BookmarkButton folders={folders} isThereUser={isThereUser} />
+        <BookmarkButton
+          folders={folders}
+          setFolders={setFolders}
+          isThereUser={isThereUser}
+        />
       </div>
       <h3 className="font-semibold text-xl pr-5">{title}</h3>
       <div className="flex pt-3  gap-x-4 font-medium text-gray-700">

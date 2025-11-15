@@ -7,6 +7,7 @@ import SearchSummary from "./SearchSummary";
 import SearchResults from "./SearchResults";
 import formHandler from "./helpers/formHandler";
 import SaveArticleModal from "./ArticleCard/SaveArticleModal/SaveArticleModal";
+import { UserFolderInterface } from "./interface/explorerInterface";
 // import { UserFoldersInterface } from "./interface/explorerInterface";
 
 export default function TechniqueExplorer() {
@@ -14,9 +15,7 @@ export default function TechniqueExplorer() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [data, setData] = useState<any | null>(null);
   const [isThereUser, setIsThereUser] = useState(false);
-  const [userFolders, setUserFolders] = useState<
-    { name: string; id: number; user_id: string; created_at: string }[]
-  >([]);
+  const [userFolders, setUserFolders] = useState<UserFolderInterface[]>([]);
 
   const handleRecButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     const value = event.currentTarget.dataset.value;
@@ -149,6 +148,7 @@ export default function TechniqueExplorer() {
                 <SearchResults
                   results={data.alexData.results}
                   folders={userFolders}
+                  setFolders={setUserFolders}
                   isThereUser={isThereUser}
                 />
               </>
