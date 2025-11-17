@@ -5,14 +5,26 @@ import SaveArticleModal from "./SaveArticleModal/SaveArticleModal";
 import { supabaseClient } from "@/lib/supabase/client";
 import { UserFolderInterface } from "../interface/explorerInterface";
 
+interface ArticleInfoInterface {
+  title: string;
+  authors: string;
+  publishedDate: string;
+  // folder: string;
+  // notes?: string;
+  //dateAdded: string;
+  articleLink: string;
+}
+
 export default function BookmarkButton({
   folders,
   setFolders,
   isThereUser,
+  articleInfo,
 }: {
   folders: UserFolderInterface[];
   setFolders: (folders: UserFolderInterface[]) => void;
   isThereUser: boolean;
+  articleInfo: ArticleInfoInterface;
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,6 +45,7 @@ export default function BookmarkButton({
         setIsModalOpen={setIsModalOpen}
         folders={folders}
         setFolders={setFolders}
+        articleInfo={articleInfo}
       />
     </>
   );

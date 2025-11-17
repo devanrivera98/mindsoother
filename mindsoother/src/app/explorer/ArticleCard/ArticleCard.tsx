@@ -35,6 +35,13 @@ export default function ArticleCard({
 }: ArticleCardInterface) {
   const abstract = buildAbstractFromIndex(abstractIndex);
 
+  const articleInfo = {
+    title: title,
+    authors: authors,
+    publishedDate: publishDate,
+    articleLink: url,
+  };
+
   return (
     <article className="p-5 bg-white shadow-lg rounded flex flex-col">
       <div className="flex justify-end">
@@ -42,6 +49,7 @@ export default function ArticleCard({
           folders={folders}
           setFolders={setFolders}
           isThereUser={isThereUser}
+          articleInfo={articleInfo}
         />
       </div>
       <h3 className="font-semibold text-xl pr-5">{title}</h3>

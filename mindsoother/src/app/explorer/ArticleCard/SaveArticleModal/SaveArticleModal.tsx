@@ -2,25 +2,47 @@
 import { supabaseClient } from "@/lib/supabase/client";
 import { FormEvent, useState } from "react";
 import { AiOutlineClose, FaPlus } from "../../../components/icons";
+import { allArticleInfo } from "./types/saveArticleInterfaces";
 
 export default function SaveArticleModal({
   isModalOpen,
   setIsModalOpen,
   folders,
   setFolders,
+  articleInfo,
 }: any) {
   const [showNewFolderForm, setShowNewFolderForm] = useState(false);
   const [newFolderName, setNewFolderName] = useState("");
   const [newFolderError, setNewFolderError] = useState("");
 
-  // this needs to be moved off the page and onto component card when ready
+  const { title, authors, publishedDate, articleLink } = articleInfo;
+
+  const [modalForm, setModalForm] = useState<allArticleInfo>({
+    title,
+    authors,
+    publishedDate,
+    articleLink,
+    folder: "",
+    dateAdded: "",
+  });
+
+  console.log(modalForm);
 
   function onArticleFormSubmit(e: FormEvent) {
     e.preventDefault();
+    const {
+      title,
+      author,
+      publishedDate,
+      folder,
+      dataAdded,
+      notes,
+      articleLink,
+    } = articleInfo;
+
     // functionality for form to be submitted to database needs to be entered
   }
 
-  //function will need to useEffect will be need when this function will eventually need to update the select options
   async function handleCreateFolder() {
     try {
       const {
@@ -156,6 +178,9 @@ export default function SaveArticleModal({
                 rows={4}
                 placeholder="Add your notes about this article..."
                 maxLength={400}
+                onChange={(e) =>
+                  setModalForm((prev) => ({ ...prev, notes: e.target.value }))
+                }
               ></textarea>
             </div>
             <div className="flex justify-end gap-x-5 font-semibold">
