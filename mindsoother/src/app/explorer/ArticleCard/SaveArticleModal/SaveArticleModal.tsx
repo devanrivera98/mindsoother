@@ -30,21 +30,6 @@ export default function SaveArticleModal({
 
   console.log(modalForm);
 
-  function onArticleFormSubmit(e: FormEvent) {
-    e.preventDefault();
-    const {
-      title,
-      author,
-      publishedDate,
-      folder,
-      dataAdded,
-      notes,
-      articleLink,
-    } = articleInfo;
-
-    // functionality for form to be submitted to database needs to be entered
-  }
-
   async function handleCreateFolder() {
     try {
       const {
@@ -81,6 +66,14 @@ export default function SaveArticleModal({
     }
   }
 
+  const onModalSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+   await handleModalSubmit(modalForm);
+
+   setIsModalOpen(false)
+  }
+
   const folderMap = folders?.map((folder: any, index: any) => (
     <option key={index + 1} value={folder.id}>
       {folder.name}
@@ -98,10 +91,7 @@ export default function SaveArticleModal({
         <div className="flex items-center justify-center m-auto h-full">
           <form
             className="max-w-lg flex flex-col gap-y-5 w-full bg-white p-4 md:p-6 rounded"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleModalSubmit(modalForm);
-            }}
+            onSubmit={onModalSubmit}
           >
             <div className="flex items-center justify-between">
               <h3 id="save-article-file" className="font-semibold text-xl">
@@ -206,7 +196,7 @@ export default function SaveArticleModal({
                 Cancel
               </button>
               <button
-                className="py-2 px-4 bg-brand-purple hover:bg-hover-purple text-white rounded"
+                className="py-2 px-4 bg-brand-purple hover:bg-hover-purple text-white rounded cursor-pointer"
                 type="submit"
               >
                 Save Article
