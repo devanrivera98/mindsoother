@@ -6,9 +6,9 @@ export type articleInfo = {
 };
 
 export type customArticleInfo = {
-  folder: string;
+  folderId: number | null;
   dateAdded: string;
-  notes?: string;
+  notes?: string | null;
 };
 
 export type allArticleInfo = articleInfo & customArticleInfo;

@@ -2,6 +2,7 @@
 import { supabaseClient } from "@/lib/supabase/client";
 import { FormEvent, useState } from "react";
 import { AiOutlineClose, FaPlus } from "../../../components/icons";
+import handleModalSubmit from "./handleModalSubmit";
 import { allArticleInfo } from "./types/saveArticleInterfaces";
 
 export default function SaveArticleModal({
@@ -22,8 +23,9 @@ export default function SaveArticleModal({
     authors,
     publishedDate,
     articleLink,
-    folder: "Unsorted",
+    folderId: null,
     dateAdded: "",
+    notes: null,
   });
 
   console.log(modalForm);
@@ -80,7 +82,7 @@ export default function SaveArticleModal({
   }
 
   const folderMap = folders?.map((folder: any, index: any) => (
-    <option key={index + 1} value={folder.name}>
+    <option key={index + 1} value={folder.id}>
       {folder.name}
     </option>
   ));
@@ -96,7 +98,10 @@ export default function SaveArticleModal({
         <div className="flex items-center justify-center m-auto h-full">
           <form
             className="max-w-lg flex flex-col gap-y-5 w-full bg-white p-4 md:p-6 rounded"
-            onSubmit={(e) => onArticleFormSubmit(e)}
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleModalSubmit(modalForm);
+            }}
           >
             <div className="flex items-center justify-between">
               <h3 id="save-article-file" className="font-semibold text-xl">
@@ -128,10 +133,14 @@ export default function SaveArticleModal({
                 id="folderSelect"
                 className="w-full py-2 px-2 border border-gray-300 rounded font-semibold"
                 onChange={(e) =>
-                  setModalForm((prev) => ({ ...prev, folder: e.target.value }))
+                  setModalForm((prev) => ({
+                    ...prev,
+                    folderId: Number(e.target.value),
+                  }))
                 }
               >
-                <option key={0} value="Unsorted">
+                {/* first option will need to be provided folder id value  */}
+                <option key={0} value={0}>
                   Unsorted
                 </option>
                 {folderMap}
