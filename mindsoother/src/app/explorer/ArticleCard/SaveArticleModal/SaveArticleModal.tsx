@@ -22,7 +22,7 @@ export default function SaveArticleModal({
     authors,
     publishedDate,
     articleLink,
-    folder: "",
+    folder: "Unsorted",
     dateAdded: "",
   });
 
@@ -80,7 +80,7 @@ export default function SaveArticleModal({
   }
 
   const folderMap = folders?.map((folder: any, index: any) => (
-    <option key={index} value={folder.name}>
+    <option key={index + 1} value={folder.name}>
       {folder.name}
     </option>
   ));
@@ -127,7 +127,13 @@ export default function SaveArticleModal({
               <select
                 id="folderSelect"
                 className="w-full py-2 px-2 border border-gray-300 rounded font-semibold"
+                onChange={(e) =>
+                  setModalForm((prev) => ({ ...prev, folder: e.target.value }))
+                }
               >
+                <option key={0} value="Unsorted">
+                  Unsorted
+                </option>
                 {folderMap}
               </select>
               <button
