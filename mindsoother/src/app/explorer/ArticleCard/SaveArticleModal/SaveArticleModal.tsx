@@ -132,9 +132,6 @@ export default function SaveArticleModal({
                   }
                 >
                   {/* first option will need to be provided folder id value  */}
-                  <option key={0} value={0}>
-                    Unsorted
-                  </option>
                   {folderMap}
                 </select>
                 <button

@@ -50,31 +50,41 @@ const onFormSubmit = async (
   if (!userExist) {
     setIsSubmitted(true);
 
+    //Validate with Zod
     const result = formSchema.safeParse(form);
-
     if (!result.success) {
       console.error(result.error.flatten().fieldErrors);
       return {
         zodErrors: result.error.flatten().fieldErrors,
       };
-    } else {
-      const { data, error } = await supabaseClient.auth.signUp({
-        email: form.email,
-        password: form.password,
-        options: {
-          data: { full_name: form.fullName },
-        },
-      });
-
-      if (error) {
-        console.error("Signup failed:", error.message);
-      } else {
-        router.push("/");
-
-        router.refresh();
-        //refresh re-fetches server components to perform a "state update" type effect
-      }
     }
+
+    //Signup user
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: form.email,
+      password: form.password,
+      options: {
+        data: { full_name: form.fullName },
+      },
+    });
+
+    if (error) {
+      return console.error("Signup failed:", error.message);
+    }
+
+    //Insert into user_profiles
+    const { error: profileUserError } = await supabaseClient
+      .from("user_profiles")
+      .insert({ id: data?.user?.id });
+
+    if (profileUserError) {
+      return console.error(profileUserError);
+    }
+
+    router.push("/");
+
+    router.refresh();
+    //refresh re-fetches server components to perform a "state update" type effect
   }
 };
 
