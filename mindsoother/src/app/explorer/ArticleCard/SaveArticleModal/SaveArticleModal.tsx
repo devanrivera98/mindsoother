@@ -24,12 +24,11 @@ export default function SaveArticleModal({
     authors,
     publishedDate,
     articleLink,
-    folderId: null,
+    folderId: folders[0].id,
     dateAdded: "",
     notes: null,
   });
 
-  console.log(modalForm);
 
   async function handleCreateFolder() {
     try {
@@ -76,7 +75,7 @@ export default function SaveArticleModal({
   };
 
   const folderMap = folders?.map((folder: any, index: any) => (
-    <option key={index + 1} value={folder.id}>
+    <option key={index} value={folder.id}>
       {folder.name}
     </option>
   ));

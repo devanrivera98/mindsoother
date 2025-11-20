@@ -15,10 +15,21 @@ export default async function handleModalSubmit(
   const day = now.getDate();
   const year = now.getFullYear();
 
-  const dateSaved = `${month} ${day}, ${year}`;
+  const dateSaved = `${month}/${day}/${year}`;
 
   try {
     const supabase = await createServerClient();
+
+    const {
+      data: { user },
+      error: userError,
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      console.error("User not authenticated", userError);
+      return { error: "Not authenticated" };
+    }
+
     const { data, error } = await supabase
       .from("articles")
       .insert({
@@ -27,6 +38,7 @@ export default async function handleModalSubmit(
         link: articleLink,
         published_date: publishedDate,
         folder_id: folderId,
+        user_id: user.id,
         notes,
         added_date: dateSaved,
       })
