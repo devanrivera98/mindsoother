@@ -6,6 +6,7 @@ import { supabaseClient } from "@/lib/supabase/client";
 import { getUser } from "./helper/getUser";
 import Navbar from "./Navbar";
 import MobileNavMenu from "./MobileNavMenu";
+import { FocusTrap } from "focus-trap-react";
 
 export default function HeaderClient() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -72,6 +73,7 @@ export default function HeaderClient() {
   };
 
   return (
+    <FocusTrap active={isMenuOpen}>
     <header
       ref={headerRef}
       className="shadow-md/10 w-full fixed z-30 bg-white h-[80px]"
@@ -97,5 +99,6 @@ export default function HeaderClient() {
         setUser={setUser}
       />
     </header>
+    </FocusTrap>
   );
 }

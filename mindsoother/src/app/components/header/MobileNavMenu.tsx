@@ -39,6 +39,7 @@ export default function MobileNavMenu({
       className={`lg:hidden flex flex-col gap-y-2 px-2 overflow-hidden transition-all duration-300 ease-in bg-gray-100 ${isMenuOpen ? " max-h-96 opacity-100" : "max-h-0 opacity-0 ease-out"} `}
       aria-hidden={!isMenuOpen}
       aria-label="Mobile navigation"
+      inert={!isMenuOpen || undefined}
     >
       <NavLink
         Icon={LuHouse}
