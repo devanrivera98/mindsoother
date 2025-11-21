@@ -19,41 +19,21 @@ export default function ManageFolderModal({
 
   useEffect(() => {
     const dialog = dialogRef.current;
-    if (dialog === null) return;
-    console.log("this is the dialog", dialog);
+    if (!dialog) return;
 
     if (isModalOpen) {
-      const firstFocusable =
-        dialog.querySelector<HTMLElement>("input, button)");
-      firstFocusable?.focus();
+      dialog.showModal();
+      //show Modal traps focus on its own
+    } else {
+      dialog.close();
     }
-
-    function dialogFocus(e: globalThis.KeyboardEvent) {
-      const focusableElements = Array.from(
-        dialog!.querySelectorAll("a[href], input, button"),
-      );
-
-      if (e.key === "Tab") {
-        e.preventDefault();
-        const currentIndex = focusableElements.indexOf(
-          document.activeElement as HTMLElement,
-        );
-        const nextIndex = (currentIndex + 1) % focusableElements.length;
-        (focusableElements[nextIndex] as HTMLElement).focus();
-      }
-    }
-
-    document.addEventListener("keydown", dialogFocus);
-
-    return () => document?.removeEventListener("keydown", dialogFocus);
-  }, []);
+  }, [isModalOpen]);
 
   return (
     <>
       <dialog
         ref={dialogRef}
-        open={isModalOpen}
-        className="fixed w-full h-full m-auto inset-0 bg-black/50 z-50"
+        className="fixed w-full h-full m-auto inset-0 bg-black/50 p-4 z-50 max-w-none max-h-none"
       >
         <div className="flex items-center justify-center h-full px-4">
           <div className="flex flex-col gap-y-5 max-w-lg w-full p-4 sm:p-6 bg-white rounded">

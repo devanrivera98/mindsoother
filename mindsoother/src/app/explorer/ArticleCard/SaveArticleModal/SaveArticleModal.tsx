@@ -29,7 +29,6 @@ export default function SaveArticleModal({
     notes: null,
   });
 
-
   async function handleCreateFolder() {
     try {
       const {

@@ -74,31 +74,31 @@ export default function HeaderClient() {
 
   return (
     <FocusTrap active={isMenuOpen}>
-    <header
-      ref={headerRef}
-      className="shadow-md/10 w-full fixed z-30 bg-white h-[80px]"
-    >
-      <Navbar
-        pathname={pathname}
-        handleNavClick={handleNavClick}
-        user={user}
-        setUser={setUser}
-        accountMenuRef={accountMenuRef}
-        isAccountMenuOpen={isAccountMenuOpen}
-        setIsAccountMenuOpen={setIsAccountMenuOpen}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-      />
+      <header
+        ref={headerRef}
+        className="shadow-md/10 w-full fixed z-30 bg-white h-[80px]"
+      >
+        <Navbar
+          pathname={pathname}
+          handleNavClick={handleNavClick}
+          user={user}
+          setUser={setUser}
+          accountMenuRef={accountMenuRef}
+          isAccountMenuOpen={isAccountMenuOpen}
+          setIsAccountMenuOpen={setIsAccountMenuOpen}
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+        />
 
-      {/* Mobile Dropdown */}
-      <MobileNavMenu
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        pathname={pathname}
-        user={user}
-        setUser={setUser}
-      />
-    </header>
+        {/* Mobile Dropdown */}
+        <MobileNavMenu
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          pathname={pathname}
+          user={user}
+          setUser={setUser}
+        />
+      </header>
     </FocusTrap>
   );
 }
