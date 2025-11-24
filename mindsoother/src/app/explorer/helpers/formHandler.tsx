@@ -37,12 +37,6 @@ export default async function formHandler(
 
   const results = await searchRequest(textValue);
 
-  if (results) {
-    setIsLoading(false);
-    setData(results);
-    setTextValue("");
-  }
-
   const {
     data: { user },
   } = await supabaseClient.auth.getUser();
@@ -57,6 +51,12 @@ export default async function formHandler(
     setUserFolders(folders);
   } else {
     setUserFolders([]);
+  }
+
+  if (results) {
+    setIsLoading(false);
+    setData(results);
+    setTextValue("");
   }
 
   return { results, folders };
