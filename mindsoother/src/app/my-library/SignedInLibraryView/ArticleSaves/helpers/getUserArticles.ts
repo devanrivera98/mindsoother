@@ -1,11 +1,19 @@
-'use server'
-import { createServerClient } from "@/lib/supabase/server"
+"use server";
+import { createServerClient } from "@/lib/supabase/server";
 
 export default async function getUserArticles() {
+  try {
+    const supabase = await createServerClient();
 
-    const supabase = createServerClient();
+    const { data, error } = await supabase.from("articles").select("*");
 
-    const {data, error} = await (await supabase).from('articles').select();
-
-    console.log(data)
+    if (error) {
+      throw new Error(error.message);
+    }
+    console.log(data);
+    return data ?? [];
+  } catch (err) {
+    console.error("There was an error getting User Articles", err);
+    throw err;
+  }
 }
