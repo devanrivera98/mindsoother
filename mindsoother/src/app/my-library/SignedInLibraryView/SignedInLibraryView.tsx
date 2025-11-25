@@ -4,8 +4,13 @@ import React, { useState } from "react";
 import { IoFolderOutline } from "../../components/icons";
 import ManageFolderModal from "./ManageFolderModal";
 import ArticleCollectionView from "./ArticleSaves/ArticleCollectionView";
+import { UserArticlesType } from "./ArticleSaves/types/UserArticleTypes";
 
-export default function SignedInLibraryView() {
+export default function SignedInLibraryView({
+  userArticles,
+}: {
+  userArticles: UserArticlesType[] | [];
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -40,7 +45,7 @@ export default function SignedInLibraryView() {
       </div>
       <div className="my-10 max-w-7xl mx-auto rounded px-4 sm:px-6 lg:px-8">
         <div className="p-5 flex flex-col items-center">
-          <ArticleCollectionView />
+          <ArticleCollectionView userArticles={userArticles} />
         </div>
       </div>
       <ManageFolderModal

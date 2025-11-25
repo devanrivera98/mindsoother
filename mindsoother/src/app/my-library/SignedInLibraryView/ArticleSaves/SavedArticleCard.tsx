@@ -7,11 +7,29 @@ import {
   TfiNewWindow,
 } from "@/app/components/icons";
 import { ChangeEvent, useState } from "react";
+import { UserArticlesType } from "./types/UserArticleTypes";
 
-export default function SavedArticleCard() {
+export default function SavedArticleCard({
+  article,
+}: {
+  article: UserArticlesType;
+}) {
   const [isManaged, setIsManaged] = useState(false);
   const [hasNotes, setHasNotes] = useState(true);
   const [textCounter, setTextCounter] = useState(0);
+
+  const {
+    id,
+    added_date,
+    authors,
+    created_at,
+    folder_id,
+    link,
+    notes,
+    published_date,
+    title,
+    user_id,
+  } = article;
 
   function manageTextChange(e: ChangeEvent<HTMLTextAreaElement>) {
     setTextCounter(e.target.value.length);
@@ -36,20 +54,16 @@ export default function SavedArticleCard() {
           </button>
         </div>
         <div>
-          <h3 className="text-lg font-semibold">
-            Placeholder Title to Represent a User's Saved Article
-          </h3>
+          <h3 className="text-lg font-semibold">{title}</h3>
         </div>
         <div className="flex justify-between">
           <div className="flex items-center">
             <IoPersonOutline fontSize={18} className="flex flex-shrink-0" />
-            <span className="pl-2">
-              Magdalena Ietswaart, Marie Johnston, H. Chris Dijkerman, et al.
-            </span>
+            <span className="pl-2">{authors}</span>
           </div>
           <div className="flex items-center pl-5">
             <IoCalendarClearOutline fontSize={18} />
-            <span className="pl-2">2011</span>
+            <span className="pl-2">{published_date}</span>
           </div>
         </div>
         <div className="flex justify-between">
@@ -57,7 +71,7 @@ export default function SavedArticleCard() {
             <IoFolderOutline />
             <span className="pl-2">Unsorted</span>
           </div>
-          <span className="pl-5">Added Nov 5, 2025</span>
+          <span className="pl-5">Added {added_date}</span>
         </div>
         {isManaged ? (
           <>
@@ -93,15 +107,7 @@ export default function SavedArticleCard() {
             {hasNotes ? (
               <>
                 <label className="font-medium">Notes</label>
-                <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat. Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit, sed do eiusmod tempor
-                </span>
+                <span>{notes}</span>
               </>
             ) : (
               <></>
@@ -110,6 +116,7 @@ export default function SavedArticleCard() {
               <a
                 className="flex items-center text-brand-purple hover:underline underline-offset-2 cursor-pointer"
                 target="_blank"
+                href={link}
               >
                 Read full article
                 <TfiNewWindow className="ml-1 -translate-y-px" />

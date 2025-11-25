@@ -5,14 +5,19 @@ import getUserArticles from "./SignedInLibraryView/ArticleSaves/helpers/getUserA
 
 export default async function MyLibrary() {
   const data = await serverGetUser();
+  let userArticles = [];
 
   if (data) {
-    const userArticles = await getUserArticles();
+    userArticles = await getUserArticles();
   }
 
   return (
     <section className="bg-gray-50 min-h-screen">
-      {data === null ? <SignedOutLibraryView /> : <SignedInLibraryView />}
+      {data === null ? (
+        <SignedOutLibraryView />
+      ) : (
+        <SignedInLibraryView userArticles={userArticles} />
+      )}
     </section>
   );
 }

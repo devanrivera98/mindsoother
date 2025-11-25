@@ -1,8 +1,13 @@
 import { useState } from "react";
 import ArticleCollectionEmptyView from "./ArticleCollectionEmptyView";
 import ArticleCollectionListView from "./ArticleCollectionListView";
+import { UserArticlesType } from "./types/UserArticleTypes";
 
-export default function ArticleCollectionView() {
+export default function ArticleCollectionView({
+  userArticles,
+}: {
+  userArticles: UserArticlesType[] | [];
+}) {
   const [isViewEmpty, setIsViewEmpty] = useState(false);
 
   return (
@@ -10,7 +15,7 @@ export default function ArticleCollectionView() {
       {isViewEmpty ? (
         <ArticleCollectionEmptyView />
       ) : (
-        <ArticleCollectionListView />
+        <ArticleCollectionListView userArticles={userArticles} />
       )}
     </>
   );
