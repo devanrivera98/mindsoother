@@ -7,6 +7,7 @@ import {
   TfiNewWindow,
 } from "@/app/components/icons";
 import { ChangeEvent, useState } from "react";
+import DeleteSavedArticleModal from "./DeleteSavedArticleModal";
 import { UserArticlesType } from "./types/UserArticleTypes";
 
 export default function SavedArticleCard({
@@ -123,6 +124,7 @@ export default function SavedArticleCard({
           </div>
         </>
       )}
+      <DeleteSavedArticleModal articleTitle="Cognitive Behavioral Therapy for Anxiety Disorders: A Meta-Analysis" />
     </article>
   );
 }
