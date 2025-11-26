@@ -18,6 +18,7 @@ export default function SavedArticleCard({
   const [isManaged, setIsManaged] = useState(false);
   const [hasNotes, setHasNotes] = useState(true);
   const [textCounter, setTextCounter] = useState(0);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const {
     id,
@@ -49,6 +50,7 @@ export default function SavedArticleCard({
         <button
           aria-label="Delete article"
           className="cursor-pointer hover:text-red-500"
+          onClick={() => setIsDeleteModalOpen(true)}
         >
           <IoTrashOutline fontSize={18} />
         </button>
@@ -124,7 +126,11 @@ export default function SavedArticleCard({
           </div>
         </>
       )}
-      <DeleteSavedArticleModal articleTitle="Cognitive Behavioral Therapy for Anxiety Disorders: A Meta-Analysis" />
+      <DeleteSavedArticleModal
+        articleTitle={title}
+        isDeleteModalOpen={isDeleteModalOpen}
+        setIsDeleteModalOpen={setIsDeleteModalOpen}
+      />
     </article>
   );
 }
