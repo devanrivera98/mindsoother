@@ -1,11 +1,14 @@
 import { IoTrashOutline } from "@/app/components/icons";
 import { useEffect, useRef } from "react";
+import deleteUserCards from "./helpers/deleteUserCard";
 
 export default function DeleteSavedArticleModal({
+  id,
   articleTitle,
   isDeleteModalOpen,
   setIsDeleteModalOpen,
 }: {
+  id: number;
   articleTitle: string;
   isDeleteModalOpen: boolean;
   setIsDeleteModalOpen: (boolean: boolean) => void;
@@ -35,6 +38,14 @@ export default function DeleteSavedArticleModal({
     };
   }, []);
 
+  async function deleteUserArticle(id: number) {
+    const results = await deleteUserCards(id);
+
+    if (results.success) {
+      setIsDeleteModalOpen(false);
+    }
+  }
+
   return (
     <dialog
       className="modal m-auto inset-0 rounded-xl bg-black/50 z-50"
@@ -63,15 +74,16 @@ export default function DeleteSavedArticleModal({
         </div>
         <div className="mt-auto pt-5 flex justify-end gap-x-5">
           <button
-            className="cursor-pointer bg-gray-200 hover:bg-gray-300 py-2 px-4"
+            className="cursor-pointer bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded"
             onClick={() => setIsDeleteModalOpen(false)}
             aria-label="Cancel deletion"
           >
             Cancel
           </button>
           <button
-            className="cursor-pointer bg-red-500 hover:bg-red-600 text-white py-2 px-4"
+            className="cursor-pointer bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
             aria-label={`Remove ${articleTitle} from library`}
+            onClick={() => deleteUserArticle(id)}
           >
             Remove Article
           </button>

@@ -127,6 +127,7 @@ export default function SavedArticleCard({
         </>
       )}
       <DeleteSavedArticleModal
+        id={id}
         articleTitle={title}
         isDeleteModalOpen={isDeleteModalOpen}
         setIsDeleteModalOpen={setIsDeleteModalOpen}
