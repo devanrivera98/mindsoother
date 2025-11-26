@@ -6,11 +6,16 @@ import { MoonLoader } from "react-spinners";
 import SearchSummary from "./SearchSummary";
 import SearchResults from "./SearchResults";
 import formHandler from "./helpers/formHandler";
+import SaveArticleModal from "./ArticleCard/SaveArticleModal/SaveArticleModal";
+import { UserFolderInterface } from "./interface/explorerInterface";
+// import { UserFoldersInterface } from "./interface/explorerInterface";
 
 export default function TechniqueExplorer() {
   const [textValue, setTextValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [data, setData] = useState<any | null>(null);
+  const [isThereUser, setIsThereUser] = useState(false);
+  const [userFolders, setUserFolders] = useState<UserFolderInterface[]>([]);
 
   const handleRecButton = (event: React.MouseEvent<HTMLButtonElement>) => {
     const value = event.currentTarget.dataset.value;
@@ -57,6 +62,8 @@ export default function TechniqueExplorer() {
                   setData,
                   setTextValue,
                   textValue,
+                  setUserFolders,
+                  setIsThereUser,
                 })
               }
             >
@@ -138,7 +145,12 @@ export default function TechniqueExplorer() {
             {data && (
               <>
                 <SearchSummary chatSummary={data.chatResponse} />
-                <SearchResults results={data.alexData.results} />
+                <SearchResults
+                  results={data.alexData.results}
+                  folders={userFolders}
+                  setFolders={setUserFolders}
+                  isThereUser={isThereUser}
+                />
               </>
             )}
           </div>

@@ -20,6 +20,12 @@ import { IoMailOutline as IoMailOutlineRaw } from "react-icons/io5";
 import { IoLockClosedOutline as IoLockClosedOutlineRaw } from "react-icons/io5";
 import { IoEyeOutline as IoEyeOutlineRaw } from "react-icons/io5";
 import { IoEyeOffOutline as IoEyeOffOutlineRaw } from "react-icons/io5";
+import { IoPersonAddOutline as IoPersonAddOutlineRaw } from "react-icons/io5";
+import { IoFolderOutline as IoFolderOutlineRaw } from "react-icons/io5";
+import { FaPlus as FaPlusRaw } from "react-icons/fa6";
+import { IoTrashOutline as IoTrashOutlineRaw } from "react-icons/io5";
+import { LuSave as LuSaveRaw } from "react-icons/lu";
+
 import { FcGoogle as FcGoogleRaw } from "react-icons/fc";
 
 import React, { ComponentProps } from "react";
@@ -103,6 +109,26 @@ const FcGoogle = (props: React.ComponentProps<"svg">) => (
   <>{FcGoogleRaw({ ...props })}</>
 );
 
+const IoPersonAddOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoPersonAddOutlineRaw({ ...props })}</>
+);
+
+const IoFolderOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoFolderOutlineRaw({ ...props })}</>
+);
+
+const FaPlus = (props: React.ComponentProps<"svg">) => (
+  <>{FaPlusRaw({ ...props })}</>
+);
+
+const IoTrashOutline = (props: React.ComponentProps<"svg">) => (
+  <>{IoTrashOutlineRaw({ ...props })}</>
+);
+
+const LuSave = (props: React.ComponentProps<"svg">) => (
+  <>{LuSaveRaw({ ...props })}</>
+);
+
 export {
   LuBrain,
   LuHouse,
@@ -124,5 +150,10 @@ export {
   IoMailOutline,
   IoEyeOutline,
   IoEyeOffOutline,
+  IoPersonAddOutline,
   FcGoogle,
+  IoFolderOutline,
+  IoTrashOutline,
+  FaPlus,
+  LuSave,
 };

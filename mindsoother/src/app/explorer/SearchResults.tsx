@@ -1,4 +1,5 @@
-import ArticleCard from "./ArticleCard";
+import ArticleCard from "./ArticleCard/ArticleCard";
+import { UserFolderInterface } from "./interface/explorerInterface";
 
 interface Author {
   raw_author_name: string;
@@ -12,7 +13,17 @@ interface Result {
   [key: string]: any; // allow unknown extra properties
 }
 
-export default function SearchResults({ results }: { results: Result[] }) {
+export default function SearchResults({
+  results,
+  folders,
+  setFolders,
+  isThereUser,
+}: {
+  results: Result[];
+  folders: UserFolderInterface[];
+  setFolders: (folders: UserFolderInterface[]) => void;
+  isThereUser: boolean;
+}) {
   const mappedResults = results.map((result, index) => {
     const authors = result.authorships;
     let authorsString;
@@ -38,6 +49,9 @@ export default function SearchResults({ results }: { results: Result[] }) {
         url={result.primary_location.landing_page_url}
         publishDate={result.publication_year}
         authors={authorsString}
+        folders={folders}
+        setFolders={setFolders}
+        isThereUser={isThereUser}
       />
     );
   });

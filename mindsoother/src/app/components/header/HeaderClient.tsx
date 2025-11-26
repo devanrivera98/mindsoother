@@ -6,6 +6,7 @@ import { supabaseClient } from "@/lib/supabase/client";
 import { getUser } from "./helper/getUser";
 import Navbar from "./Navbar";
 import MobileNavMenu from "./MobileNavMenu";
+import { FocusTrap } from "focus-trap-react";
 
 export default function HeaderClient() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -72,30 +73,32 @@ export default function HeaderClient() {
   };
 
   return (
-    <header
-      ref={headerRef}
-      className="shadow-md/10 w-full fixed z-50 bg-white h-[80px]"
-    >
-      <Navbar
-        pathname={pathname}
-        handleNavClick={handleNavClick}
-        user={user}
-        setUser={setUser}
-        accountMenuRef={accountMenuRef}
-        isAccountMenuOpen={isAccountMenuOpen}
-        setIsAccountMenuOpen={setIsAccountMenuOpen}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-      />
+    <FocusTrap active={isMenuOpen}>
+      <header
+        ref={headerRef}
+        className="shadow-md/10 w-full fixed z-30 bg-white h-[80px]"
+      >
+        <Navbar
+          pathname={pathname}
+          handleNavClick={handleNavClick}
+          user={user}
+          setUser={setUser}
+          accountMenuRef={accountMenuRef}
+          isAccountMenuOpen={isAccountMenuOpen}
+          setIsAccountMenuOpen={setIsAccountMenuOpen}
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+        />
 
-      {/* Mobile Dropdown */}
-      <MobileNavMenu
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-        pathname={pathname}
-        user={user}
-        setUser={setUser}
-      />
-    </header>
+        {/* Mobile Dropdown */}
+        <MobileNavMenu
+          isMenuOpen={isMenuOpen}
+          setIsMenuOpen={setIsMenuOpen}
+          pathname={pathname}
+          user={user}
+          setUser={setUser}
+        />
+      </header>
+    </FocusTrap>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { InformationCircle, LuBookmark, LuBrain, LuHouse } from "../icons";
 import NavLink from "./components/NavLink";
 import signUserOut from "./helper/signUserOut";
+import { useRouter } from "next/navigation";
 
 interface MobileNavMenuInterface {
   isMenuOpen: boolean;
@@ -18,10 +19,14 @@ export default function MobileNavMenu({
   user,
   setUser,
 }: MobileNavMenuInterface) {
+  const router = useRouter();
+
   async function handleMobileSignOut() {
     const result = await signUserOut(user);
     setUser(result);
     handleMobileNavClick();
+    window.location.reload();
+    router.refresh();
   }
 
   function handleMobileNavClick() {
@@ -34,6 +39,7 @@ export default function MobileNavMenu({
       className={`lg:hidden flex flex-col gap-y-2 px-2 overflow-hidden transition-all duration-300 ease-in bg-gray-100 ${isMenuOpen ? " max-h-96 opacity-100" : "max-h-0 opacity-0 ease-out"} `}
       aria-hidden={!isMenuOpen}
       aria-label="Mobile navigation"
+      inert={!isMenuOpen || undefined}
     >
       <NavLink
         Icon={LuHouse}

@@ -3,8 +3,10 @@ import {
   IoPersonOutline,
   LuBookmark,
   TfiNewWindow,
-} from "../components/icons";
-import buildAbstractFromIndex from "./helpers/buildAbstractFromIndex";
+} from "../../components/icons";
+import buildAbstractFromIndex from "../helpers/buildAbstractFromIndex";
+import BookmarkButton from "./BookmarkButton";
+import { UserFolderInterface } from "../interface/explorerInterface";
 
 interface abstractInterface {
   [key: string]: number[];
@@ -16,6 +18,9 @@ interface ArticleCardInterface {
   authors: string;
   publishDate: string;
   url: string;
+  isThereUser: boolean;
+  folders: UserFolderInterface[];
+  setFolders: (folders: UserFolderInterface[]) => void;
 }
 
 export default function ArticleCard({
@@ -24,18 +29,28 @@ export default function ArticleCard({
   url,
   publishDate,
   authors,
+  folders,
+  setFolders,
+  isThereUser,
 }: ArticleCardInterface) {
   const abstract = buildAbstractFromIndex(abstractIndex);
+
+  const articleInfo = {
+    title: title,
+    authors: authors,
+    publishedDate: publishDate,
+    articleLink: url,
+  };
 
   return (
     <article className="p-5 bg-white shadow-lg rounded flex flex-col">
       <div className="flex justify-end">
-        <button type="button">
-          <LuBookmark
-            fontSize={22}
-            className={"cursor-pointer hover:text-brand-purple"}
-          />
-        </button>
+        <BookmarkButton
+          folders={folders}
+          setFolders={setFolders}
+          isThereUser={isThereUser}
+          articleInfo={articleInfo}
+        />
       </div>
       <h3 className="font-semibold text-xl pr-5">{title}</h3>
       <div className="flex pt-3  gap-x-4 font-medium text-gray-700">
