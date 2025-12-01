@@ -12,8 +12,10 @@ import { UserArticlesType } from "./types/UserArticleTypes";
 
 export default function SavedArticleCard({
   article,
+  setUserArticlesState
 }: {
   article: UserArticlesType;
+  setUserArticlesState: (input: UserArticlesType[]) => void;
 }) {
   const [isManaged, setIsManaged] = useState(false);
   const [hasNotes, setHasNotes] = useState(true);
@@ -131,6 +133,7 @@ export default function SavedArticleCard({
         articleTitle={title}
         isDeleteModalOpen={isDeleteModalOpen}
         setIsDeleteModalOpen={setIsDeleteModalOpen}
+        setUserArticlesState={setUserArticlesState}
       />
     </article>
   );

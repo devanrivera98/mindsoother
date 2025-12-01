@@ -1,17 +1,21 @@
 import { IoTrashOutline } from "@/app/components/icons";
 import { useEffect, useRef } from "react";
 import deleteUserCards from "./helpers/deleteUserCard";
+import getUserArticles from "./helpers/getUserArticles";
+import { UserArticlesType } from "./types/UserArticleTypes";
 
 export default function DeleteSavedArticleModal({
   id,
   articleTitle,
   isDeleteModalOpen,
   setIsDeleteModalOpen,
+  setUserArticlesState
 }: {
   id: number;
   articleTitle: string;
   isDeleteModalOpen: boolean;
   setIsDeleteModalOpen: (boolean: boolean) => void;
+  setUserArticlesState: (input: UserArticlesType[]) => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -42,6 +46,8 @@ export default function DeleteSavedArticleModal({
     const results = await deleteUserCards(id);
 
     if (results.success) {
+        const userSavedArticles = await getUserArticles();
+        setUserArticlesState(userSavedArticles)
       setIsDeleteModalOpen(false);
     }
   }
