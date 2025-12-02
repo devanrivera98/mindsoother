@@ -14,6 +14,7 @@ export default function SaveArticleModal({
   articleInfo,
 }: any) {
   const [showNewFolderForm, setShowNewFolderForm] = useState(false);
+  const [textCounter, setTextCounter] = useState(0);
   const [newFolderName, setNewFolderName] = useState("");
   const [newFolderError, setNewFolderError] = useState("");
 
@@ -186,15 +187,23 @@ export default function SaveArticleModal({
                   rows={4}
                   placeholder="Add your notes about this article..."
                   maxLength={400}
-                  onChange={(e) =>
-                    setModalForm((prev) => ({ ...prev, notes: e.target.value }))
-                  }
+                  onChange={(e) => {
+                    setTextCounter(e.target.value.length);
+                    setModalForm((prev) => ({
+                      ...prev,
+                      notes: e.target.value,
+                    }));
+                  }}
                 ></textarea>
+                <span className="text-end text-gray-500 pt-2">
+                  {textCounter} / 400
+                </span>
               </div>
               <div className="flex justify-end gap-x-5 font-semibold">
                 <button
                   className="py-2 px-4 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded"
                   type="button"
+                  onClick={() => setIsModalOpen(false)}
                 >
                   Cancel
                 </button>
