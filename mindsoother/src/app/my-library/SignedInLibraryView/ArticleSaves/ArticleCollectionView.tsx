@@ -5,20 +5,22 @@ import { UserArticlesType } from "./types/UserArticleTypes";
 
 export default function ArticleCollectionView({
   userArticles,
-  setUserArticlesState,
 }: {
   userArticles: UserArticlesType[] | [];
-  setUserArticlesState: (input: UserArticlesType[]) => void;
 }) {
-  const [isViewEmpty, setIsViewEmpty] = useState(userArticles.length === 0);
+  const [userArticlesState, setUserArticlesState] =
+    useState<UserArticlesType[]>(userArticles);
+  const [isViewEmpty, setIsViewEmpty] = useState(
+    userArticlesState.length === 0,
+  );
 
   useEffect(() => {
-    if (userArticles.length === 0) {
+    if (userArticlesState.length === 0) {
       setIsViewEmpty(true);
     } else {
       setIsViewEmpty(false);
     }
-  }, [userArticles]);
+  }, [userArticlesState]);
 
   return (
     <>
@@ -26,7 +28,7 @@ export default function ArticleCollectionView({
         <ArticleCollectionEmptyView />
       ) : (
         <ArticleCollectionListView
-          userArticles={userArticles}
+          userArticles={userArticlesState}
           setUserArticlesState={setUserArticlesState}
         />
       )}
