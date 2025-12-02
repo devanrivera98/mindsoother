@@ -3,14 +3,17 @@ import { UserArticlesType } from "./types/UserArticleTypes";
 
 export default function ArticleCollectionListView({
   userArticles,
-  setUserArticlesState
+  setUserArticlesState,
 }: {
   userArticles: UserArticlesType[] | [];
   setUserArticlesState: (input: UserArticlesType[]) => void;
 }) {
   const userArticlesMap = userArticles.map((article, index) => (
     <div key={index}>
-      <SavedArticleCard article={article} setUserArticlesState={setUserArticlesState} />
+      <SavedArticleCard
+        article={article}
+        setUserArticlesState={setUserArticlesState}
+      />
     </div>
   ));
 

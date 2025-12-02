@@ -9,7 +9,7 @@ export default function DeleteSavedArticleModal({
   articleTitle,
   isDeleteModalOpen,
   setIsDeleteModalOpen,
-  setUserArticlesState
+  setUserArticlesState,
 }: {
   id: number;
   articleTitle: string;
@@ -46,8 +46,8 @@ export default function DeleteSavedArticleModal({
     const results = await deleteUserCards(id);
 
     if (results.success) {
-        const userSavedArticles = await getUserArticles();
-        setUserArticlesState(userSavedArticles)
+      const userSavedArticles = await getUserArticles();
+      setUserArticlesState(userSavedArticles);
       setIsDeleteModalOpen(false);
     }
   }

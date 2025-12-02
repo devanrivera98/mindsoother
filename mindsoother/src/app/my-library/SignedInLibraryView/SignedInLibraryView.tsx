@@ -12,7 +12,8 @@ export default function SignedInLibraryView({
   userArticles: UserArticlesType[] | [];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userArticlesState, setUserArticlesState] = useState<UserArticlesType[]>(userArticles);
+  const [userArticlesState, setUserArticlesState] =
+    useState<UserArticlesType[]>(userArticles);
 
   return (
     <div className="z-2">
@@ -46,7 +47,10 @@ export default function SignedInLibraryView({
       </div>
       <div className="my-10 max-w-7xl mx-auto rounded px-4 sm:px-6 lg:px-8">
         <div className="p-5 flex flex-col items-center">
-          <ArticleCollectionView userArticles={userArticlesState} setUserArticlesState={setUserArticlesState} />
+          <ArticleCollectionView
+            userArticles={userArticlesState}
+            setUserArticlesState={setUserArticlesState}
+          />
         </div>
       </div>
       <ManageFolderModal

@@ -12,7 +12,7 @@ import { UserArticlesType } from "./types/UserArticleTypes";
 
 export default function SavedArticleCard({
   article,
-  setUserArticlesState
+  setUserArticlesState,
 }: {
   article: UserArticlesType;
   setUserArticlesState: (input: UserArticlesType[]) => void;
