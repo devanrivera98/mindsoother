@@ -25,6 +25,7 @@ export default function SaveArticleModal({
     publishedDate,
     articleLink,
     folderId: folders[0].id,
+    folderName: folders[0].name,
     dateAdded: "",
     notes: null,
   });
@@ -74,7 +75,7 @@ export default function SaveArticleModal({
   };
 
   const folderMap = folders?.map((folder: any, index: any) => (
-    <option key={index} value={folder.id}>
+    <option key={index} value={folder.id} data-name={folder.name}>
       {folder.name}
     </option>
   ));
@@ -122,14 +123,17 @@ export default function SaveArticleModal({
                 <select
                   id="folderSelect"
                   className="w-full py-2 px-2 border border-gray-300 rounded font-semibold"
-                  onChange={(e) =>
+                  onChange={(e) => {
+                    const selectedOption = e.target.selectedOptions[0];
+                    const folderName =
+                      selectedOption.getAttribute("data-name") || " ";
                     setModalForm((prev) => ({
                       ...prev,
                       folderId: Number(e.target.value),
-                    }))
-                  }
+                      folderName: folderName,
+                    }));
+                  }}
                 >
-                  {/* first option will need to be provided folder id value  */}
                   {folderMap}
                 </select>
                 <button

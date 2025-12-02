@@ -28,6 +28,7 @@ export default function SavedArticleCard({
     authors,
     created_at,
     folder_id,
+    folder_name,
     link,
     notes,
     published_date,
@@ -72,10 +73,10 @@ export default function SavedArticleCard({
       </div>
       <div className="flex justify-between">
         <div className="flex items-center">
-          <IoFolderOutline />
-          <span className="pl-2">Unsorted</span>
+          <IoFolderOutline className="flex-shrink-0" />
+          <span className="pl-2">{folder_name}</span>
         </div>
-        <span className="pl-5">Added {added_date}</span>
+        <span className="pl-5 text-end">Added {added_date}</span>
       </div>
       {isManaged ? (
         <>
