@@ -1,11 +1,14 @@
 import { UserArticlesType } from "./ArticleSaves/types/UserArticleTypes";
+import getUserFolderList from "./getUserFolderList";
 import LibraryDashboardClient from "./LibraryDashboardClient";
 
-export default function SignedInLibraryView({
+export default async function SignedInLibraryView({
   userArticles,
 }: {
   userArticles: UserArticlesType[] | [];
 }) {
+  const userList = await getUserFolderList();
+
   return (
     <div className="z-2">
       <div className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-center text-white  px-4 sm:px-6 lg:px-8">
