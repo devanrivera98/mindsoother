@@ -5,6 +5,7 @@ import {
   IoTrashOutline,
 } from "@/app/components/icons";
 import { useEffect, useRef } from "react";
+import removeUserFolder from "./helpers/removeUserFolder";
 
 interface ManageModalInterface {
   isModalOpen: boolean;
@@ -34,6 +35,10 @@ export default function ManageFolderModal({
     }
   }, [isModalOpen]);
 
+  async function deleteUserFolder(id: number) {
+    const result = await removeUserFolder(id);
+  }
+
   const userListMapped = userList.map((folder, index) => (
     <div
       key={index}
@@ -47,12 +52,11 @@ export default function ManageFolderModal({
       </div>
       {folder.name !== "Unassigned" ? (
         <div className="flex items-center">
-          <button>
+          <button type="button" onClick={() => deleteUserFolder(folder.id)}>
             <IoTrashOutline
               fontSize={20}
               className="cursor-pointer hover:text-red-500"
             />
-            {/* id will need to be attached to identify which folder to delete  */}
           </button>
         </div>
       ) : (

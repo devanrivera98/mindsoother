@@ -1,5 +1,5 @@
 import { UserArticlesType } from "./ArticleSaves/types/UserArticleTypes";
-import getUserFolderList from "./getUserFolderList";
+import getUserFolderList from "./helpers/getUserFolderList";
 import LibraryDashboardClient from "./LibraryDashboardClient";
 
 export default async function SignedInLibraryView({
