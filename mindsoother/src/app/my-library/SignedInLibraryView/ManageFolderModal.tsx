@@ -45,15 +45,19 @@ export default function ManageFolderModal({
           <span>{folder.name}</span>
         </div>
       </div>
-      <div className="flex items-center">
-        <button>
-          <IoTrashOutline
-            fontSize={20}
-            className="cursor-pointer hover:text-red-500"
-          />
-          {/* id will need to be attached to identify which folder to delete  */}
-        </button>
-      </div>
+      {folder.name !== "Unassigned" ? (
+        <div className="flex items-center">
+          <button>
+            <IoTrashOutline
+              fontSize={20}
+              className="cursor-pointer hover:text-red-500"
+            />
+            {/* id will need to be attached to identify which folder to delete  */}
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   ));
 
@@ -92,7 +96,9 @@ export default function ManageFolderModal({
               </div>
             </div>
             <div>
-              <h4 className="text-lg font-medium">Existing Folders (0)</h4>
+              <h4 className="text-lg font-medium">
+                Existing Folders ({userList.length})
+              </h4>
               <div className="pt-2 flex flex-col gap-y-2">{userListMapped}</div>
             </div>
           </div>
