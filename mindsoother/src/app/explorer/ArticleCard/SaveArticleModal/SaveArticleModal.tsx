@@ -113,8 +113,7 @@ export default function SaveArticleModal({
               <div>
                 <h4 className="text-lg font-medium">Article:</h4>
                 <p className="pt-2">
-                  Cognitive Behavioral Therapy for Anxiety Disorders: A
-                  Meta-Analysis
+                  {articleInfo.title}
                 </p>
               </div>
               <div className="flex flex-col gap-y-2">
