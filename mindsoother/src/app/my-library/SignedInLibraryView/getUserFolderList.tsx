@@ -7,11 +7,21 @@ export default async function getUserFolderList() {
     const { data, error } = await supabase.from("folders").select("*");
 
     if (error) {
-      throw new Error(error.message);
+      return {
+        data: [],
+        error: error.message,
+      };
     }
 
-    return data ?? [];
-  } catch (err) {
+    return {
+      data: data ?? [],
+      error: null,
+    };
+  } catch (err: any) {
     console.error(`There was an error getting the user's folder list`, err);
+    return {
+      data: [],
+      error: err.message || "Unknown error",
+    };
   }
 }

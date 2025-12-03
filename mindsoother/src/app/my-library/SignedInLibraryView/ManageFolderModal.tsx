@@ -14,7 +14,12 @@ interface ManageModalInterface {
 export default function ManageFolderModal({
   isModalOpen,
   setIsModalOpen,
-}: ManageModalInterface) {
+  userList,
+}: {
+  isModalOpen: boolean;
+  setIsModalOpen: (boolean: boolean) => void;
+  userList: any[];
+}) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -28,6 +33,29 @@ export default function ManageFolderModal({
       dialog.close();
     }
   }, [isModalOpen]);
+
+  const userListMapped = userList.map((folder, index) => (
+    <div
+      key={index}
+      className="flex items-center justify-between w-full border border-gray-300 p-2 rounded"
+    >
+      <div className="flex items-center">
+        <IoFolderOutline fontSize={20} className="flex-shrink-0" />
+        <div className="px-2">
+          <span>{folder.name}</span>
+        </div>
+      </div>
+      <div className="flex items-center">
+        <button>
+          <IoTrashOutline
+            fontSize={20}
+            className="cursor-pointer hover:text-red-500"
+          />
+          {/* id will need to be attached to identify which folder to delete  */}
+        </button>
+      </div>
+    </div>
+  ));
 
   return (
     <>
@@ -65,52 +93,7 @@ export default function ManageFolderModal({
             </div>
             <div>
               <h4 className="text-lg font-medium">Existing Folders (0)</h4>
-              <div className="pt-2 flex flex-col gap-y-2">
-                <div className="flex items-center justify-between w-full border border-gray-300 p-2 rounded">
-                  <div className="flex items-center">
-                    <IoFolderOutline fontSize={20} />
-                    <div className="px-2">
-                      <span>Placeholder Folder</span>
-                      <span className="text-sm text-gray-500">
-                        {" "}
-                        (0) Articles{" "}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <button>
-                      <IoTrashOutline
-                        fontSize={20}
-                        className="cursor-pointer hover:text-red-500"
-                      />
-                    </button>
-                  </div>
-                </div>
-                {/* second placeholder */}
-
-                <div className="flex items-center justify-between w-full border border-gray-300 p-2 rounded">
-                  <div className="flex items-center">
-                    <IoFolderOutline fontSize={20} className="flex-shrink-0" />
-                    <div className="px-2">
-                      <span>
-                        Here is just a very long placeholder to see what happens
-                      </span>
-                      <span className="text-sm text-gray-500">
-                        {" "}
-                        (0) Articles{" "}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <button>
-                      <IoTrashOutline
-                        fontSize={20}
-                        className="cursor-pointer hover:text-red-500"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <div className="pt-2 flex flex-col gap-y-2">{userListMapped}</div>
             </div>
           </div>
         </div>
