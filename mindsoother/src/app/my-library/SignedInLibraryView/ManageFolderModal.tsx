@@ -41,7 +41,6 @@ export default function ManageFolderModal({
     const result = await removeUserFolder(id);
   }
 
-
   async function handleAddNewFolder(folderName: string) {
     const results = await addNewFolder(folderName);
 
@@ -63,7 +62,11 @@ export default function ManageFolderModal({
       </div>
       {folder.name !== "Unassigned" ? (
         <div className="flex items-center">
-          <button type="button" onClick={() => deleteUserFolder(folder.id)}>
+          <button
+            type="button"
+            onClick={() => deleteUserFolder(folder.id)}
+            aria-label={`Delete folder ${folder.name}`}
+          >
             <IoTrashOutline
               fontSize={20}
               className="cursor-pointer hover:text-red-500"
@@ -81,14 +84,18 @@ export default function ManageFolderModal({
       <dialog
         ref={dialogRef}
         className="fixed w-full h-full m-auto inset-0 bg-black/50 p-4 z-50 max-w-none max-h-none"
+        aria-labelledby="manage-folder-title"
       >
         <div className="flex items-center justify-center h-full px-4">
           <div className="flex flex-col gap-y-5 max-w-lg w-full p-4 sm:p-6 bg-white rounded">
             <div className="flex justify-between">
-              <h3 className="text-2xl font-semibold">Manage Folder</h3>
+              <h3 id="manage-folder-title" className="text-2xl font-semibold">
+                Manage Folder
+              </h3>
               <button
                 className="cursor-pointer"
                 onClick={() => setIsModalOpen(false)}
+                aria-label="Close modal"
               >
                 <AiOutlineClose
                   className="text-black hover:text-gray-500"
@@ -97,9 +104,18 @@ export default function ManageFolderModal({
               </button>
             </div>
             <div className="flex flex-col gap-y-2">
-              <h4 className="text-lg  font-medium">Create New Folder</h4>
+              <h4
+                id="create-new-folder-managed-modal"
+                className="text-lg  font-medium"
+              >
+                Create New Folder
+              </h4>
+              <label htmlFor="create-new-folder" className="sr-only">
+                Create New Folder
+              </label>
               <div className="flex">
                 <input
+                  id="create-new-folder"
                   type="text"
                   placeholder="Folder Name"
                   className="w-full py-0.5 pl-2 mr-2 border border-gray-300 rounded"
@@ -110,6 +126,11 @@ export default function ManageFolderModal({
                   className={`bg-brand-purple hover:bg-hover-purple p-1.5 rounded ${newFolderValue.trim().length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
                   onClick={() => handleAddNewFolder(newFolderValue)}
                   disabled={newFolderValue.trim().length === 0}
+                  aria-label={
+                    newFolderValue.trim().length === 0
+                      ? "Add folder (disabled)"
+                      : `Add ${newFolderValue} folder to your folders`
+                  }
                 >
                   <FaPlus fontSize={18} color="white" />
                 </button>
