@@ -16,11 +16,11 @@ interface ManageModalInterface {
 export default function ManageFolderModal({
   isModalOpen,
   setIsModalOpen,
-  userList,
+  userFolderList,
 }: {
   isModalOpen: boolean;
   setIsModalOpen: (boolean: boolean) => void;
-  userList: any[];
+  userFolderList: any[];
 }) {
   const [newFolderValue, setNewFolderValue] = useState("");
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -39,6 +39,9 @@ export default function ManageFolderModal({
 
   async function deleteUserFolder(id: number) {
     const result = await removeUserFolder(id);
+    // if (result.success) {
+    //   set
+    // }
   }
 
   async function handleAddNewFolder(folderName: string) {
@@ -49,7 +52,7 @@ export default function ManageFolderModal({
     }
   }
 
-  const userListMapped = userList.map((folder, index) => (
+  const userFolderListMapped = userFolderList.map((folder, index) => (
     <div
       key={index}
       className="flex items-center justify-between w-full border border-gray-300 p-2 rounded"
@@ -138,9 +141,9 @@ export default function ManageFolderModal({
             </div>
             <div>
               <h4 className="text-lg font-medium">
-                Existing Folders ({userList.length})
+                Existing Folders ({userFolderList.length})
               </h4>
-              <div className="pt-2 flex flex-col gap-y-2">{userListMapped}</div>
+              <div className="pt-2 flex flex-col gap-y-2">{userFolderListMapped}</div>
             </div>
           </div>
         </div>

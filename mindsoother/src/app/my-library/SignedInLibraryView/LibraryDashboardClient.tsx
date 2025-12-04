@@ -3,17 +3,18 @@ import { IoFolderOutline } from "@/app/components/icons";
 import { useState } from "react";
 import ArticleCollectionView from "./ArticleSaves/ArticleCollectionView";
 import { UserArticlesType } from "./ArticleSaves/types/UserArticleTypes";
-import { userListType } from "./ArticleSaves/types/userListType";
+import { userFolderListType } from "./ArticleSaves/types/userFolderListType";
 import ManageFolderModal from "./ManageFolderModal";
 
 export default function LibraryDashboardClient({
   userArticles,
-  userList,
+  userFolderList,
 }: {
   userArticles: UserArticlesType[] | [];
-  userList: userListType[] | [];
+  userFolderList: userFolderListType[] | [];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [existingFolders, setExistingFolders] = useState(userFolderList)
 
   return (
     <>
@@ -45,7 +46,7 @@ export default function LibraryDashboardClient({
         </div>
       </div>
       <ManageFolderModal
-        userList={userList}
+        userFolderList={userFolderList}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
       />

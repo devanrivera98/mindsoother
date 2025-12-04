@@ -7,8 +7,8 @@ export default async function SignedInLibraryView({
 }: {
   userArticles: UserArticlesType[] | [];
 }) {
-  const userListResults = await getUserFolderList();
-  const userList = userListResults.data;
+  const userFolderListResults = await getUserFolderList();
+  const userFolderList = userFolderListResults.data;
 
   return (
     <div className="z-2">
@@ -18,7 +18,7 @@ export default async function SignedInLibraryView({
           Organize and revisit your saved psychology research
         </p>
       </div>
-      <LibraryDashboardClient userArticles={userArticles} userList={userList} />
+      <LibraryDashboardClient userArticles={userArticles} userFolderList={userFolderList} />
     </div>
   );
 }

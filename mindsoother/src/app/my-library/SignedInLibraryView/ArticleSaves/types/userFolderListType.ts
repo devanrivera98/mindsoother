@@ -1,4 +1,4 @@
-export type userListType = {
+export type userFolderListType = {
   created_at: string;
   id: number;
   name: string;
