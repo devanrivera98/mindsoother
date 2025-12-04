@@ -4,7 +4,8 @@ import {
   IoFolderOutline,
   IoTrashOutline,
 } from "@/app/components/icons";
-import { useEffect, useRef } from "react";
+import addNewFolder from "@/lib/helper/server/addNewFolder";
+import { useEffect, useRef, useState } from "react";
 import removeUserFolder from "./helpers/removeUserFolder";
 
 interface ManageModalInterface {
@@ -21,6 +22,7 @@ export default function ManageFolderModal({
   setIsModalOpen: (boolean: boolean) => void;
   userList: any[];
 }) {
+  const [newFolderValue, setNewFolderValue] = useState("");
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -37,6 +39,15 @@ export default function ManageFolderModal({
 
   async function deleteUserFolder(id: number) {
     const result = await removeUserFolder(id);
+  }
+
+
+  async function handleAddNewFolder(folderName: string) {
+    const results = await addNewFolder(folderName);
+
+    if (results.success) {
+      setNewFolderValue("");
+    }
   }
 
   const userListMapped = userList.map((folder, index) => (
@@ -92,9 +103,14 @@ export default function ManageFolderModal({
                   type="text"
                   placeholder="Folder Name"
                   className="w-full py-0.5 pl-2 mr-2 border border-gray-300 rounded"
+                  value={newFolderValue}
+                  onChange={(e) => setNewFolderValue(e.target.value)}
                 />
                 {/* // if the input has no value blur out button cant just be an empty space  */}
-                <button className="bg-brand-purple hover:bg-hover-purple p-1.5 rounded cursor-pointer">
+                <button
+                  className="bg-brand-purple hover:bg-hover-purple p-1.5 rounded cursor-pointer"
+                  onClick={() => handleAddNewFolder(newFolderValue)}
+                >
                   <FaPlus fontSize={18} color="white" />
                 </button>
               </div>

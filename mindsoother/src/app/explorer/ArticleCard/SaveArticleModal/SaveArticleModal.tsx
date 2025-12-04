@@ -112,9 +112,7 @@ export default function SaveArticleModal({
               </div>
               <div>
                 <h4 className="text-lg font-medium">Article:</h4>
-                <p className="pt-2">
-                  {articleInfo.title}
-                </p>
+                <p className="pt-2">{articleInfo.title}</p>
               </div>
               <div className="flex flex-col gap-y-2">
                 <label className="font-medium" htmlFor="folderSelect">
