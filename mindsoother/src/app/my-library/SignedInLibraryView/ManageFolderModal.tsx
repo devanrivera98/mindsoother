@@ -106,10 +106,10 @@ export default function ManageFolderModal({
                   value={newFolderValue}
                   onChange={(e) => setNewFolderValue(e.target.value)}
                 />
-                {/* // if the input has no value blur out button cant just be an empty space  */}
                 <button
-                  className="bg-brand-purple hover:bg-hover-purple p-1.5 rounded cursor-pointer"
+                  className={`bg-brand-purple hover:bg-hover-purple p-1.5 rounded ${newFolderValue.trim().length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
                   onClick={() => handleAddNewFolder(newFolderValue)}
+                  disabled={newFolderValue.trim().length === 0}
                 >
                   <FaPlus fontSize={18} color="white" />
                 </button>
