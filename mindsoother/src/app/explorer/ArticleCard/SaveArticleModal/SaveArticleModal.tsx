@@ -158,8 +158,9 @@ export default function SaveArticleModal({
                         ></input>
                         <button
                           type="button"
-                          className="bg-brand-purple hover:bg-hover-purple text-white p-2 rounded cursor-pointer"
+                          className={`bg-brand-purple hover:bg-hover-purple text-white p-2 rounded ${newFolderName.trim().length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
                           onClick={() => handleCreateFolder()}
+                          disabled={newFolderName.trim().length === 0}
                         >
                           Create
                         </button>
