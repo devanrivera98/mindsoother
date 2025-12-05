@@ -16,6 +16,8 @@ export default function LibraryDashboardClient({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [existingFolders, setExistingFolders] =
     useState<userFolderListType[]>(userFolderList);
+  const [userArticlesState, setUserArticlesState] =
+    useState<UserArticlesType[]>(userArticles);
 
   return (
     <>
@@ -23,7 +25,7 @@ export default function LibraryDashboardClient({
         <div className="flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between p-5 rounded bg-white shadow-xl">
           <div className="grid grid-cols-1 gap-y-2 md:flex">
             <h2 className="text-xl md:text-2xl font-semibold">
-              {userArticles.length} Saved Techniques
+              {userArticlesState.length} Saved Techniques
             </h2>
             <button
               className="md:ml-5 py-2 md:py-0 px-2 flex items-center hover:bg-gray-100 border border-gray-300 font-medium rounded-md cursor-pointer"
@@ -43,7 +45,11 @@ export default function LibraryDashboardClient({
       </div>
       <div className="my-10 max-w-7xl mx-auto rounded px-4 sm:px-6 lg:px-8">
         <div className="p-5 flex flex-col items-center">
-          <ArticleCollectionView userArticles={userArticles} />
+          <ArticleCollectionView
+            userArticlesState={userArticlesState}
+            setUserArticlesState={setUserArticlesState}
+            existingFolders={existingFolders}
+          />
         </div>
       </div>
       <ManageFolderModal
@@ -51,6 +57,8 @@ export default function LibraryDashboardClient({
         setIsModalOpen={setIsModalOpen}
         existingFolders={existingFolders}
         setExistingFolders={setExistingFolders}
+        userArticlesState={userArticlesState}
+        setUserArticlesState={setUserArticlesState}
       />
     </>
   );

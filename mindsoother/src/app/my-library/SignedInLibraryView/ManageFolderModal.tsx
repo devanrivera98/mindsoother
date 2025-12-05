@@ -6,6 +6,7 @@ import {
 } from "@/app/components/icons";
 import addNewFolder from "@/lib/helper/server/addNewFolder";
 import { useEffect, useRef, useState } from "react";
+import { UserArticlesType } from "./ArticleSaves/types/UserArticleTypes";
 import { userFolderListType } from "./ArticleSaves/types/userFolderListType";
 import removeUserFolder from "./helpers/removeUserFolder";
 
@@ -19,11 +20,15 @@ export default function ManageFolderModal({
   setIsModalOpen,
   existingFolders,
   setExistingFolders,
+  userArticlesState,
+  setUserArticlesState,
 }: {
   isModalOpen: boolean;
   setIsModalOpen: (boolean: boolean) => void;
   existingFolders: userFolderListType[];
   setExistingFolders: (input: userFolderListType[]) => void;
+  userArticlesState: UserArticlesType[] | [];
+  setUserArticlesState: (input: UserArticlesType[]) => void;
 }) {
   const [newFolderValue, setNewFolderValue] = useState("");
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -44,6 +49,11 @@ export default function ManageFolderModal({
     const result = await removeUserFolder(id);
     if (result.success) {
       setExistingFolders(existingFolders.filter((folder) => folder.id !== id));
+      setUserArticlesState(
+        userArticlesState.filter(
+          (savedArticle) => savedArticle.folder_id !== id,
+        ),
+      );
     }
   }
 
