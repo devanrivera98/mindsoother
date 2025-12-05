@@ -13,10 +13,12 @@ export default async function addNewFolder(folderName: string) {
       throw new Error(UserError?.message);
     }
 
-    const { error: insertError } = await supabase
+    const { data: insertData, error: insertError } = await supabase
       .from("folders")
-      .insert({ name: folderName, user_id: user?.id });
+      .insert({ name: folderName, user_id: user?.id })
+      .select();
 
+    const [insertFolder] = insertData ?? [];
     if (insertError) {
       throw new Error(insertError.message);
     }
@@ -25,6 +27,7 @@ export default async function addNewFolder(folderName: string) {
       success: true,
       error: null,
       folderName,
+      data: insertFolder,
     };
   } catch (err) {
     console.error(

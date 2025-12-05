@@ -18,7 +18,10 @@ export default async function SignedInLibraryView({
           Organize and revisit your saved psychology research
         </p>
       </div>
-      <LibraryDashboardClient userArticles={userArticles} userFolderList={userFolderList} />
+      <LibraryDashboardClient
+        userArticles={userArticles}
+        userFolderList={userFolderList}
+      />
     </div>
   );
 }

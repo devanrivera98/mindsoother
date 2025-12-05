@@ -6,6 +6,7 @@ import {
 } from "@/app/components/icons";
 import addNewFolder from "@/lib/helper/server/addNewFolder";
 import { useEffect, useRef, useState } from "react";
+import { userFolderListType } from "./ArticleSaves/types/userFolderListType";
 import removeUserFolder from "./helpers/removeUserFolder";
 
 interface ManageModalInterface {
@@ -16,11 +17,13 @@ interface ManageModalInterface {
 export default function ManageFolderModal({
   isModalOpen,
   setIsModalOpen,
-  userFolderList,
+  existingFolders,
+  setExistingFolders,
 }: {
   isModalOpen: boolean;
   setIsModalOpen: (boolean: boolean) => void;
-  userFolderList: any[];
+  existingFolders: userFolderListType[];
+  setExistingFolders: (input: userFolderListType[]) => void;
 }) {
   const [newFolderValue, setNewFolderValue] = useState("");
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -39,20 +42,21 @@ export default function ManageFolderModal({
 
   async function deleteUserFolder(id: number) {
     const result = await removeUserFolder(id);
-    // if (result.success) {
-    //   set
-    // }
+    if (result.success) {
+      setExistingFolders(existingFolders.filter((folder) => folder.id !== id));
+    }
   }
 
   async function handleAddNewFolder(folderName: string) {
     const results = await addNewFolder(folderName);
 
-    if (results.success) {
+    if (results.success && results.data) {
       setNewFolderValue("");
+      setExistingFolders([...existingFolders, results.data]);
     }
   }
 
-  const userFolderListMapped = userFolderList.map((folder, index) => (
+  const userFolderListMapped = existingFolders.map((folder, index) => (
     <div
       key={index}
       className="flex items-center justify-between w-full border border-gray-300 p-2 rounded"
@@ -141,9 +145,11 @@ export default function ManageFolderModal({
             </div>
             <div>
               <h4 className="text-lg font-medium">
-                Existing Folders ({userFolderList.length})
+                Existing Folders ({existingFolders.length})
               </h4>
-              <div className="pt-2 flex flex-col gap-y-2">{userFolderListMapped}</div>
+              <div className="pt-2 flex flex-col gap-y-2">
+                {userFolderListMapped}
+              </div>
             </div>
           </div>
         </div>

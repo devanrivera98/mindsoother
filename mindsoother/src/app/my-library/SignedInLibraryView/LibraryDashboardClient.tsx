@@ -14,7 +14,8 @@ export default function LibraryDashboardClient({
   userFolderList: userFolderListType[] | [];
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [existingFolders, setExistingFolders] = useState(userFolderList)
+  const [existingFolders, setExistingFolders] =
+    useState<userFolderListType[]>(userFolderList);
 
   return (
     <>
@@ -46,9 +47,10 @@ export default function LibraryDashboardClient({
         </div>
       </div>
       <ManageFolderModal
-        userFolderList={userFolderList}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
+        existingFolders={existingFolders}
+        setExistingFolders={setExistingFolders}
       />
     </>
   );
