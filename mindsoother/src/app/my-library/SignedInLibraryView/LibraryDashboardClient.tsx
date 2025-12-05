@@ -19,6 +19,12 @@ export default function LibraryDashboardClient({
   const [userArticlesState, setUserArticlesState] =
     useState<UserArticlesType[]>(userArticles);
 
+  const existingFoldersOptions = existingFolders.map((folder) => (
+    <option key={folder.id} value={folder.id} title={folder.name}>
+      {folder.name}
+    </option>
+  ));
+
   return (
     <>
       <div className="-mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,9 +42,11 @@ export default function LibraryDashboardClient({
             </button>
           </div>
           <div className="md:flex md:justify-end">
-            <select className="w-full md:w-auto border border-gray-300 rounded-md py-2 md:py-0 pl-2 pr-10 font-medium">
-              <option value="all">All Folders</option>
-              <option value="unsorted">Unsorted</option>
+            <select className="w-full md:max-w-48 border border-gray-300 rounded-md py-2 md:py-0 pl-2 pr-10 font-medium truncate">
+              <option key="all-folders" value="all">
+                All Folders
+              </option>
+              {existingFoldersOptions}
             </select>
           </div>
         </div>
