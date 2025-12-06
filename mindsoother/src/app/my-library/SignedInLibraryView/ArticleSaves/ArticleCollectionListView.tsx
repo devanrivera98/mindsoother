@@ -3,12 +3,28 @@ import { UserArticlesType } from "./types/UserArticleTypes";
 
 export default function ArticleCollectionListView({
   userArticles,
+  setUserArticlesState,
+  folderFilter,
 }: {
   userArticles: UserArticlesType[] | [];
+  setUserArticlesState: (input: UserArticlesType[]) => void;
+  folderFilter: string | number;
 }) {
-  const userArticlesMap = userArticles.map((article, index) => (
+  let folderFilterList;
+  if (folderFilter !== "all") {
+    folderFilterList = userArticles.filter(
+      (folder) => Number(folder.folder_id) === Number(folderFilter),
+    );
+  } else {
+    folderFilterList = userArticles;
+  }
+
+  const userArticlesMap = folderFilterList.map((article, index) => (
     <div key={index}>
-      <SavedArticleCard article={article} />
+      <SavedArticleCard
+        article={article}
+        setUserArticlesState={setUserArticlesState}
+      />
     </div>
   ));
 

@@ -7,6 +7,7 @@ export type articleInfo = {
 
 export type customArticleInfo = {
   folderId: number | null;
+  folderName: string;
   dateAdded: string;
   notes?: string | null;
 };

@@ -1,21 +1,41 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ArticleCollectionEmptyView from "./ArticleCollectionEmptyView";
 import ArticleCollectionListView from "./ArticleCollectionListView";
 import { UserArticlesType } from "./types/UserArticleTypes";
+import { userFolderListType } from "./types/userFolderListType";
 
 export default function ArticleCollectionView({
-  userArticles,
+  userArticlesState,
+  setUserArticlesState,
+  folderFilter,
 }: {
-  userArticles: UserArticlesType[] | [];
+  userArticlesState: UserArticlesType[] | [];
+  setUserArticlesState: (input: UserArticlesType[]) => void;
+  existingFolders: userFolderListType[] | [];
+  folderFilter: string | number;
 }) {
-  const [isViewEmpty, setIsViewEmpty] = useState(false);
+  const [isViewEmpty, setIsViewEmpty] = useState(
+    userArticlesState.length === 0,
+  );
+
+  useEffect(() => {
+    if (userArticlesState.length === 0) {
+      setIsViewEmpty(true);
+    } else {
+      setIsViewEmpty(false);
+    }
+  }, [userArticlesState]);
 
   return (
     <>
       {isViewEmpty ? (
         <ArticleCollectionEmptyView />
       ) : (
-        <ArticleCollectionListView userArticles={userArticles} />
+        <ArticleCollectionListView
+          userArticles={userArticlesState}
+          setUserArticlesState={setUserArticlesState}
+          folderFilter={folderFilter}
+        />
       )}
     </>
   );

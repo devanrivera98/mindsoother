@@ -7,8 +7,15 @@ import { FormEvent } from "react";
 export default async function handleModalSubmit(
   allArticleInfo: allArticleInfo,
 ) {
-  const { title, authors, publishedDate, articleLink, folderId, notes } =
-    allArticleInfo;
+  const {
+    title,
+    authors,
+    publishedDate,
+    articleLink,
+    folderId,
+    folderName,
+    notes,
+  } = allArticleInfo;
 
   const now = new Date();
   const month = now.getMonth() + 1;
@@ -38,6 +45,7 @@ export default async function handleModalSubmit(
         link: articleLink,
         published_date: publishedDate,
         folder_id: folderId,
+        folder_name: folderName,
         user_id: user.id,
         notes,
         added_date: dateSaved,

@@ -4,7 +4,11 @@ import {
   IoFolderOutline,
   IoTrashOutline,
 } from "@/app/components/icons";
-import { useEffect, useRef } from "react";
+import addNewFolder from "@/lib/helper/server/addNewFolder";
+import { useEffect, useRef, useState } from "react";
+import { UserArticlesType } from "./ArticleSaves/types/UserArticleTypes";
+import { userFolderListType } from "./ArticleSaves/types/userFolderListType";
+import removeUserFolder from "./helpers/removeUserFolder";
 
 interface ManageModalInterface {
   isModalOpen: boolean;
@@ -14,7 +18,19 @@ interface ManageModalInterface {
 export default function ManageFolderModal({
   isModalOpen,
   setIsModalOpen,
-}: ManageModalInterface) {
+  existingFolders,
+  setExistingFolders,
+  userArticlesState,
+  setUserArticlesState,
+}: {
+  isModalOpen: boolean;
+  setIsModalOpen: (boolean: boolean) => void;
+  existingFolders: userFolderListType[];
+  setExistingFolders: (input: userFolderListType[]) => void;
+  userArticlesState: UserArticlesType[] | [];
+  setUserArticlesState: (input: UserArticlesType[]) => void;
+}) {
+  const [newFolderValue, setNewFolderValue] = useState("");
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -29,19 +45,74 @@ export default function ManageFolderModal({
     }
   }, [isModalOpen]);
 
+  async function deleteUserFolder(id: number) {
+    const result = await removeUserFolder(id);
+    if (result.success) {
+      setExistingFolders(existingFolders.filter((folder) => folder.id !== id));
+      setUserArticlesState(
+        userArticlesState.filter(
+          (savedArticle) => savedArticle.folder_id !== id,
+        ),
+      );
+    }
+  }
+
+  async function handleAddNewFolder(folderName: string) {
+    const results = await addNewFolder(folderName);
+
+    if (results.success && results.data) {
+      setNewFolderValue("");
+      setExistingFolders([...existingFolders, results.data]);
+    }
+  }
+
+  const userFolderListMapped = existingFolders.map((folder, index) => (
+    <div
+      key={index}
+      className="flex items-center justify-between w-full border border-gray-300 p-2 rounded"
+    >
+      <div className="flex items-center">
+        <IoFolderOutline fontSize={20} className="flex-shrink-0" />
+        <div className="px-2">
+          <span>{folder.name}</span>
+        </div>
+      </div>
+      {folder.name !== "Unassigned" ? (
+        <div className="flex items-center">
+          <button
+            type="button"
+            onClick={() => deleteUserFolder(folder.id)}
+            aria-label={`Delete folder ${folder.name}`}
+          >
+            <IoTrashOutline
+              fontSize={20}
+              className="cursor-pointer hover:text-red-500"
+            />
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
+    </div>
+  ));
+
   return (
     <>
       <dialog
         ref={dialogRef}
         className="fixed w-full h-full m-auto inset-0 bg-black/50 p-4 z-50 max-w-none max-h-none"
+        aria-labelledby="manage-folder-title"
       >
         <div className="flex items-center justify-center h-full px-4">
           <div className="flex flex-col gap-y-5 max-w-lg w-full p-4 sm:p-6 bg-white rounded">
             <div className="flex justify-between">
-              <h3 className="text-2xl font-semibold">Manage Folder</h3>
+              <h3 id="manage-folder-title" className="text-2xl font-semibold">
+                Manage Folder
+              </h3>
               <button
                 className="cursor-pointer"
                 onClick={() => setIsModalOpen(false)}
+                aria-label="Close modal"
               >
                 <AiOutlineClose
                   className="text-black hover:text-gray-500"
@@ -50,66 +121,44 @@ export default function ManageFolderModal({
               </button>
             </div>
             <div className="flex flex-col gap-y-2">
-              <h4 className="text-lg  font-medium">Create New Folder</h4>
+              <h4
+                id="create-new-folder-managed-modal"
+                className="text-lg  font-medium"
+              >
+                Create New Folder
+              </h4>
+              <label htmlFor="create-new-folder" className="sr-only">
+                Create New Folder
+              </label>
               <div className="flex">
                 <input
+                  id="create-new-folder"
                   type="text"
                   placeholder="Folder Name"
                   className="w-full py-0.5 pl-2 mr-2 border border-gray-300 rounded"
+                  value={newFolderValue}
+                  onChange={(e) => setNewFolderValue(e.target.value)}
                 />
-                {/* // if the input has no value blur out button cant just be an empty space  */}
-                <button className="bg-brand-purple hover:bg-hover-purple p-1.5 rounded cursor-pointer">
+                <button
+                  className={`bg-brand-purple hover:bg-hover-purple p-1.5 rounded ${newFolderValue.trim().length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+                  onClick={() => handleAddNewFolder(newFolderValue)}
+                  disabled={newFolderValue.trim().length === 0}
+                  aria-label={
+                    newFolderValue.trim().length === 0
+                      ? "Add folder (disabled)"
+                      : `Add ${newFolderValue} folder to your folders`
+                  }
+                >
                   <FaPlus fontSize={18} color="white" />
                 </button>
               </div>
             </div>
             <div>
-              <h4 className="text-lg font-medium">Existing Folders (0)</h4>
+              <h4 className="text-lg font-medium">
+                Existing Folders ({existingFolders.length})
+              </h4>
               <div className="pt-2 flex flex-col gap-y-2">
-                <div className="flex items-center justify-between w-full border border-gray-300 p-2 rounded">
-                  <div className="flex items-center">
-                    <IoFolderOutline fontSize={20} />
-                    <div className="px-2">
-                      <span>Placeholder Folder</span>
-                      <span className="text-sm text-gray-500">
-                        {" "}
-                        (0) Articles{" "}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <button>
-                      <IoTrashOutline
-                        fontSize={20}
-                        className="cursor-pointer hover:text-red-500"
-                      />
-                    </button>
-                  </div>
-                </div>
-                {/* second placeholder */}
-
-                <div className="flex items-center justify-between w-full border border-gray-300 p-2 rounded">
-                  <div className="flex items-center">
-                    <IoFolderOutline fontSize={20} className="flex-shrink-0" />
-                    <div className="px-2">
-                      <span>
-                        Here is just a very long placeholder to see what happens
-                      </span>
-                      <span className="text-sm text-gray-500">
-                        {" "}
-                        (0) Articles{" "}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center">
-                    <button>
-                      <IoTrashOutline
-                        fontSize={20}
-                        className="cursor-pointer hover:text-red-500"
-                      />
-                    </button>
-                  </div>
-                </div>
+                {userFolderListMapped}
               </div>
             </div>
           </div>

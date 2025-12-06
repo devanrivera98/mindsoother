@@ -14,6 +14,7 @@ export default function SaveArticleModal({
   articleInfo,
 }: any) {
   const [showNewFolderForm, setShowNewFolderForm] = useState(false);
+  const [textCounter, setTextCounter] = useState(0);
   const [newFolderName, setNewFolderName] = useState("");
   const [newFolderError, setNewFolderError] = useState("");
 
@@ -25,6 +26,7 @@ export default function SaveArticleModal({
     publishedDate,
     articleLink,
     folderId: folders[0].id,
+    folderName: folders[0].name,
     dateAdded: "",
     notes: null,
   });
@@ -74,7 +76,7 @@ export default function SaveArticleModal({
   };
 
   const folderMap = folders?.map((folder: any, index: any) => (
-    <option key={index} value={folder.id}>
+    <option key={index} value={folder.id} data-name={folder.name}>
       {folder.name}
     </option>
   ));
@@ -110,10 +112,7 @@ export default function SaveArticleModal({
               </div>
               <div>
                 <h4 className="text-lg font-medium">Article:</h4>
-                <p className="pt-2">
-                  Cognitive Behavioral Therapy for Anxiety Disorders: A
-                  Meta-Analysis
-                </p>
+                <p className="pt-2">{articleInfo.title}</p>
               </div>
               <div className="flex flex-col gap-y-2">
                 <label className="font-medium" htmlFor="folderSelect">
@@ -122,14 +121,17 @@ export default function SaveArticleModal({
                 <select
                   id="folderSelect"
                   className="w-full py-2 px-2 border border-gray-300 rounded font-semibold"
-                  onChange={(e) =>
+                  onChange={(e) => {
+                    const selectedOption = e.target.selectedOptions[0];
+                    const folderName =
+                      selectedOption.getAttribute("data-name") || " ";
                     setModalForm((prev) => ({
                       ...prev,
                       folderId: Number(e.target.value),
-                    }))
-                  }
+                      folderName: folderName,
+                    }));
+                  }}
                 >
-                  {/* first option will need to be provided folder id value  */}
                   {folderMap}
                 </select>
                 <button
@@ -156,8 +158,9 @@ export default function SaveArticleModal({
                         ></input>
                         <button
                           type="button"
-                          className="bg-brand-purple hover:bg-hover-purple text-white p-2 rounded cursor-pointer"
+                          className={`bg-brand-purple hover:bg-hover-purple text-white p-2 rounded ${newFolderName.trim().length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
                           onClick={() => handleCreateFolder()}
+                          disabled={newFolderName.trim().length === 0}
                         >
                           Create
                         </button>
@@ -182,15 +185,23 @@ export default function SaveArticleModal({
                   rows={4}
                   placeholder="Add your notes about this article..."
                   maxLength={400}
-                  onChange={(e) =>
-                    setModalForm((prev) => ({ ...prev, notes: e.target.value }))
-                  }
+                  onChange={(e) => {
+                    setTextCounter(e.target.value.length);
+                    setModalForm((prev) => ({
+                      ...prev,
+                      notes: e.target.value,
+                    }));
+                  }}
                 ></textarea>
+                <span className="text-end text-gray-500 pt-2">
+                  {textCounter} / 400
+                </span>
               </div>
               <div className="flex justify-end gap-x-5 font-semibold">
                 <button
                   className="py-2 px-4 bg-gray-200 hover:bg-gray-300 cursor-pointer rounded"
                   type="button"
+                  onClick={() => setIsModalOpen(false)}
                 >
                   Cancel
                 </button>
