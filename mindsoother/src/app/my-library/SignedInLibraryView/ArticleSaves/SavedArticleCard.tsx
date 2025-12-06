@@ -9,13 +9,16 @@ import {
 import { ChangeEvent, useState } from "react";
 import DeleteSavedArticleModal from "./DeleteSavedArticleModal";
 import { UserArticlesType } from "./types/UserArticleTypes";
+import { userFolderListType } from "./types/userFolderListType";
 
 export default function SavedArticleCard({
   article,
   setUserArticlesState,
+  existingFolders
 }: {
   article: UserArticlesType;
   setUserArticlesState: (input: UserArticlesType[]) => void;
+  existingFolders: userFolderListType[] | [];
 }) {
   const [isManaged, setIsManaged] = useState(false);
   const [hasNotes, setHasNotes] = useState(true);
@@ -39,6 +42,10 @@ export default function SavedArticleCard({
   function manageTextChange(e: ChangeEvent<HTMLTextAreaElement>) {
     setTextCounter(e.target.value.length);
   }
+
+  const folderOptionMapped = existingFolders.map((folder) => (
+    <option key={folder.id} value={folder.id} title={folder.name}>{folder.name}</option>
+  ))
 
   return (
     <article className="w-full h-full flex flex-col gap-y-3 shadow-lg hover:shadow-xl border border-gray-100 p-3 rounded-lg bg-white">
@@ -84,7 +91,7 @@ export default function SavedArticleCard({
             <label className="pb-1 font-medium">Folder</label>
             <select className="border border-gray-300 rounded-md py-1 pl-2 font-medium">
               <option value="all folders">All Folders</option>
-              <option value="unsorted">Unsorted</option>
+              {folderOptionMapped}
             </select>
           </div>
           <div className="flex flex-col">
