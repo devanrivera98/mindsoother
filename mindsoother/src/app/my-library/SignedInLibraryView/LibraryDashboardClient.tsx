@@ -18,6 +18,7 @@ export default function LibraryDashboardClient({
     useState<userFolderListType[]>(userFolderList);
   const [userArticlesState, setUserArticlesState] =
     useState<UserArticlesType[]>(userArticles);
+  const [folderFilter, setFolderFilter] = useState<string | number>("all");
 
   const existingFoldersOptions = existingFolders.map((folder) => (
     <option key={folder.id} value={folder.id} title={folder.name}>
@@ -25,13 +26,23 @@ export default function LibraryDashboardClient({
     </option>
   ));
 
+  let savedArticleAmount = userArticlesState.length;
+
+  if (folderFilter !== "all") {
+    savedArticleAmount = userArticles.filter(
+      (folder) => Number(folder.folder_id) === Number(folderFilter),
+    ).length;
+  } else {
+    userArticlesState.length;
+  }
+
   return (
     <>
       <div className="-mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row gap-y-5 md:gap-y-0 justify-between p-5 rounded bg-white shadow-xl">
           <div className="grid grid-cols-1 gap-y-2 md:flex">
             <h2 className="text-xl md:text-2xl font-semibold">
-              {userArticlesState.length} Saved Techniques
+              {savedArticleAmount} Saved Techniques
             </h2>
             <button
               className="md:ml-5 py-2 md:py-0 px-2 flex items-center hover:bg-gray-100 border border-gray-300 font-medium rounded-md cursor-pointer"
@@ -42,7 +53,10 @@ export default function LibraryDashboardClient({
             </button>
           </div>
           <div className="md:flex md:justify-end">
-            <select className="w-full md:max-w-48 border border-gray-300 rounded-md py-2 md:py-0 pl-2 pr-10 font-medium truncate">
+            <select
+              className="w-full md:max-w-48 border border-gray-300 rounded-md py-2 md:py-0 pl-2 pr-10 font-medium truncate"
+              onChange={(e) => setFolderFilter(e.target.value)}
+            >
               <option key="all-folders" value="all">
                 All Folders
               </option>
@@ -57,6 +71,7 @@ export default function LibraryDashboardClient({
             userArticlesState={userArticlesState}
             setUserArticlesState={setUserArticlesState}
             existingFolders={existingFolders}
+            folderFilter={folderFilter}
           />
         </div>
       </div>

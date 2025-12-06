@@ -7,13 +7,13 @@ import { userFolderListType } from "./types/userFolderListType";
 export default function ArticleCollectionView({
   userArticlesState,
   setUserArticlesState,
+  folderFilter,
 }: {
   userArticlesState: UserArticlesType[] | [];
   setUserArticlesState: (input: UserArticlesType[]) => void;
   existingFolders: userFolderListType[] | [];
+  folderFilter: string | number;
 }) {
-  // const [userArticlesState, setUserArticlesState] =
-  //   useState<UserArticlesType[]>(userArticles);
   const [isViewEmpty, setIsViewEmpty] = useState(
     userArticlesState.length === 0,
   );
@@ -34,6 +34,7 @@ export default function ArticleCollectionView({
         <ArticleCollectionListView
           userArticles={userArticlesState}
           setUserArticlesState={setUserArticlesState}
+          folderFilter={folderFilter}
         />
       )}
     </>
