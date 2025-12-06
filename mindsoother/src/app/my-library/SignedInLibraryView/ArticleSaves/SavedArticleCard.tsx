@@ -36,8 +36,13 @@ export default function SavedArticleCard({
 
   const [isManaged, setIsManaged] = useState(false);
   const [hasNotes, setHasNotes] = useState(false);
-  const [currentNotes, setCurrentNotes] = useState(notes ?? "");
-  const [textCounter, setTextCounter] = useState(0);
+  const [updateArticleForm, setUpdateArticleForm] = useState({
+    folder_id: folder_id,
+    notes: notes,
+  });
+  const [textCounter, setTextCounter] = useState(
+    updateArticleForm.notes?.length ?? 0,
+  );
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   useEffect(() => {
@@ -46,9 +51,28 @@ export default function SavedArticleCard({
     }
   }, []);
 
+  function handleArticleFormUpdate() {
+    // setCurrentFolderName & setCurrentFolderId &
+    //setCurrentNotes should only be updated on successful submits
+    // instead you should update setUpdateArticleForm and display updateArticleForm.notes for the edit version part of the notes so that if the user cancels it reflect the original copy of the notes
+  }
+
+  function handleManageArticleClick() {
+    setIsManaged(!isManaged);
+
+    if (!isManaged) {
+      console.log("hitting?");
+      setUpdateArticleForm({
+        folder_id: folder_id,
+        notes: notes,
+      });
+      setTextCounter(notes?.length || 0);
+    }
+  }
+
   function manageTextChange(e: ChangeEvent<HTMLTextAreaElement>) {
     setTextCounter(e.target.value.length);
-    setCurrentNotes(e.target.value);
+    setUpdateArticleForm({ ...updateArticleForm, notes: e.target.value });
   }
 
   const folderOptionMapped = existingFolders.map((folder) => (
@@ -63,7 +87,7 @@ export default function SavedArticleCard({
         <button
           aria-label="Move article to folder"
           className="cursor-pointer hover:text-brand-purple"
-          onClick={() => setIsManaged(!isManaged)}
+          onClick={() => handleManageArticleClick()}
         >
           <IoFolderOutline fontSize={18} />
         </button>
@@ -99,8 +123,16 @@ export default function SavedArticleCard({
         <>
           <div className="flex flex-col">
             <label className="pb-1 font-medium">Folder</label>
-            <select className="border border-gray-300 rounded-md py-1 pl-2 font-medium">
-              <option value="all folders">All Folders</option>
+            <select
+              className="border border-gray-300 rounded-md py-1 pl-2 font-medium"
+              value={updateArticleForm.folder_id}
+              onChange={(e) =>
+                setUpdateArticleForm({
+                  ...updateArticleForm,
+                  folder_id: Number(e.target.value),
+                })
+              }
+            >
               {folderOptionMapped}
             </select>
           </div>
@@ -112,7 +144,7 @@ export default function SavedArticleCard({
               placeholder="Add your notes about this article..."
               maxLength={400}
               onChange={(e) => manageTextChange(e)}
-              value={currentNotes}
+              value={updateArticleForm.notes ?? ""}
             ></textarea>
             <div className="flex justify-end">
               <span className="text-gray-500">{textCounter} / 400</span>
