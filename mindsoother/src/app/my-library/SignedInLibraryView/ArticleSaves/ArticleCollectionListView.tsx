@@ -6,7 +6,7 @@ export default function ArticleCollectionListView({
   userArticles,
   setUserArticlesState,
   folderFilter,
-  existingFolders
+  existingFolders,
 }: {
   userArticles: UserArticlesType[] | [];
   setUserArticlesState: (input: UserArticlesType[]) => void;

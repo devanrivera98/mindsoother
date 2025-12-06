@@ -6,7 +6,7 @@ import {
   LuSave,
   TfiNewWindow,
 } from "@/app/components/icons";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import DeleteSavedArticleModal from "./DeleteSavedArticleModal";
 import { UserArticlesType } from "./types/UserArticleTypes";
 import { userFolderListType } from "./types/userFolderListType";
@@ -14,17 +14,12 @@ import { userFolderListType } from "./types/userFolderListType";
 export default function SavedArticleCard({
   article,
   setUserArticlesState,
-  existingFolders
+  existingFolders,
 }: {
   article: UserArticlesType;
   setUserArticlesState: (input: UserArticlesType[]) => void;
   existingFolders: userFolderListType[] | [];
 }) {
-  const [isManaged, setIsManaged] = useState(false);
-  const [hasNotes, setHasNotes] = useState(true);
-  const [textCounter, setTextCounter] = useState(0);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
   const {
     id,
     added_date,
@@ -39,13 +34,28 @@ export default function SavedArticleCard({
     user_id,
   } = article;
 
+  const [isManaged, setIsManaged] = useState(false);
+  const [hasNotes, setHasNotes] = useState(false);
+  const [currentNotes, setCurrentNotes] = useState(notes ?? "");
+  const [textCounter, setTextCounter] = useState(0);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (notes) {
+      setHasNotes(true);
+    }
+  }, []);
+
   function manageTextChange(e: ChangeEvent<HTMLTextAreaElement>) {
     setTextCounter(e.target.value.length);
+    setCurrentNotes(e.target.value);
   }
 
   const folderOptionMapped = existingFolders.map((folder) => (
-    <option key={folder.id} value={folder.id} title={folder.name}>{folder.name}</option>
-  ))
+    <option key={folder.id} value={folder.id} title={folder.name}>
+      {folder.name}
+    </option>
+  ));
 
   return (
     <article className="w-full h-full flex flex-col gap-y-3 shadow-lg hover:shadow-xl border border-gray-100 p-3 rounded-lg bg-white">
@@ -102,6 +112,7 @@ export default function SavedArticleCard({
               placeholder="Add your notes about this article..."
               maxLength={400}
               onChange={(e) => manageTextChange(e)}
+              value={currentNotes}
             ></textarea>
             <div className="flex justify-end">
               <span className="text-gray-500">{textCounter} / 400</span>
@@ -116,7 +127,7 @@ export default function SavedArticleCard({
         </>
       ) : (
         <>
-          {hasNotes ? (
+          {hasNotes || notes ? (
             <>
               <label className="font-medium">Notes</label>
               <span>{notes}</span>
