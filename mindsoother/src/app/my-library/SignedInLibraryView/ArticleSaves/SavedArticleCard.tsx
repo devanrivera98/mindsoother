@@ -8,6 +8,7 @@ import {
 } from "@/app/components/icons";
 import { ChangeEvent, useEffect, useState } from "react";
 import DeleteSavedArticleModal from "./DeleteSavedArticleModal";
+import updateUserSavedArticle from "./helpers/updateUserSavedArticle";
 import { UserArticlesType } from "./types/UserArticleTypes";
 import { userFolderListType } from "./types/userFolderListType";
 
@@ -38,6 +39,7 @@ export default function SavedArticleCard({
   const [hasNotes, setHasNotes] = useState(false);
   const [updateArticleForm, setUpdateArticleForm] = useState({
     folder_id: folder_id,
+    folder_name: folder_name,
     notes: notes,
   });
   const [textCounter, setTextCounter] = useState(
@@ -51,19 +53,23 @@ export default function SavedArticleCard({
     }
   }, []);
 
-  function handleArticleFormUpdate() {
-    // setCurrentFolderName & setCurrentFolderId &
-    //setCurrentNotes should only be updated on successful submits
-    // instead you should update setUpdateArticleForm and display updateArticleForm.notes for the edit version part of the notes so that if the user cancels it reflect the original copy of the notes
+  async function handleArticleFormUpdate() {
+    if (
+      updateArticleForm.folder_id !== folder_id ||
+      updateArticleForm.notes !== notes
+    ) {
+      const updatedResult = await updateUserSavedArticle(id, updateArticleForm);
+      console.log(updatedResult);
+    }
   }
 
   function handleManageArticleClick() {
     setIsManaged(!isManaged);
 
     if (!isManaged) {
-      console.log("hitting?");
       setUpdateArticleForm({
         folder_id: folder_id,
+        folder_name: folder_name,
         notes: notes,
       });
       setTextCounter(notes?.length || 0);
@@ -126,12 +132,14 @@ export default function SavedArticleCard({
             <select
               className="border border-gray-300 rounded-md py-1 pl-2 font-medium"
               value={updateArticleForm.folder_id}
-              onChange={(e) =>
+              onChange={(e) => {
+                const selectedOption = e.target.selectedOptions[0];
                 setUpdateArticleForm({
                   ...updateArticleForm,
                   folder_id: Number(e.target.value),
-                })
-              }
+                  folder_name: selectedOption.title,
+                });
+              }}
             >
               {folderOptionMapped}
             </select>
@@ -151,7 +159,10 @@ export default function SavedArticleCard({
             </div>
           </div>
           <div>
-            <button className="flex items-center bg-brand-purple hover:bg-hover-purple p-2 rounded-lg text-white font-semibold cursor-pointer">
+            <button
+              className="flex items-center bg-brand-purple hover:bg-hover-purple p-2 rounded-lg text-white font-semibold cursor-pointer"
+              onClick={() => handleArticleFormUpdate()}
+            >
               <span>Save Changes</span>
               <LuSave className="ml-1" fontSize={18} />
             </button>

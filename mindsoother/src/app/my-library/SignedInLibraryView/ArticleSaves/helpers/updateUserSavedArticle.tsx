@@ -4,7 +4,11 @@ import { createServerClient } from "@/lib/supabase/server";
 
 export default async function updateUserSavedArticle(
   articleId: number,
-  updateArticleForm: { folder_id: number; notes: string },
+  updateArticleForm: {
+    folder_id: number;
+    folder_name: string;
+    notes: string | null;
+  },
 ) {
   try {
     const supabase = await createServerClient();
@@ -13,11 +17,11 @@ export default async function updateUserSavedArticle(
       .from("articles")
       .update({
         folder_id: updateArticleForm.folder_id,
+        folder_name: updateArticleForm.folder_name,
         notes: updateArticleForm.notes,
       })
       .eq("id", articleId)
-      .select()
-      .single();
+      .select();
 
     if (error) {
       throw new Error(error.message ?? "Unknown error from supabase");
