@@ -45,12 +45,23 @@ export default function ArticleCard({
   return (
     <article className="p-5 bg-white shadow-lg rounded flex flex-col">
       <div className="flex justify-end">
-        <BookmarkButton
-          folders={folders}
-          setFolders={setFolders}
-          isThereUser={isThereUser}
-          articleInfo={articleInfo}
-        />
+        {isThereUser ? (
+          <BookmarkButton
+            folders={folders}
+            setFolders={setFolders}
+            isThereUser={isThereUser}
+            articleInfo={articleInfo}
+          />
+        ) : (
+          <>
+            <button type="button" disabled={true}>
+              <LuBookmark
+                fontSize={22}
+                className={`cursor-pointer ${isThereUser ? "hover:text-brand-purple" : "text-gray-400 hover:cursor-not-allowed"}`}
+              />
+            </button>
+          </>
+        )}
       </div>
       <h3 className="font-semibold text-xl pr-5">{title}</h3>
       <div className="flex pt-3  gap-x-4 font-medium text-gray-700">

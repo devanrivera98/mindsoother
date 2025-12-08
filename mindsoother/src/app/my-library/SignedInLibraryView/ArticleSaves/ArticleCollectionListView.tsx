@@ -1,14 +1,17 @@
 import SavedArticleCard from "./SavedArticleCard";
 import { UserArticlesType } from "./types/UserArticleTypes";
+import { userFolderListType } from "./types/userFolderListType";
 
 export default function ArticleCollectionListView({
   userArticles,
   setUserArticlesState,
   folderFilter,
+  existingFolders,
 }: {
   userArticles: UserArticlesType[] | [];
   setUserArticlesState: (input: UserArticlesType[]) => void;
   folderFilter: string | number;
+  existingFolders: userFolderListType[] | [];
 }) {
   let folderFilterList;
   if (folderFilter !== "all") {
@@ -23,7 +26,9 @@ export default function ArticleCollectionListView({
     <div key={index}>
       <SavedArticleCard
         article={article}
+        userArticles={userArticles}
         setUserArticlesState={setUserArticlesState}
+        existingFolders={existingFolders}
       />
     </div>
   ));

@@ -8,6 +8,7 @@ export default function ArticleCollectionView({
   userArticlesState,
   setUserArticlesState,
   folderFilter,
+  existingFolders,
 }: {
   userArticlesState: UserArticlesType[] | [];
   setUserArticlesState: (input: UserArticlesType[]) => void;
@@ -35,6 +36,7 @@ export default function ArticleCollectionView({
           userArticles={userArticlesState}
           setUserArticlesState={setUserArticlesState}
           folderFilter={folderFilter}
+          existingFolders={existingFolders}
         />
       )}
     </>
