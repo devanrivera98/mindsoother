@@ -14,10 +14,12 @@ import { userFolderListType } from "./types/userFolderListType";
 
 export default function SavedArticleCard({
   article,
+  userArticles,
   setUserArticlesState,
   existingFolders,
 }: {
   article: UserArticlesType;
+  userArticles: UserArticlesType[] | [];
   setUserArticlesState: (input: UserArticlesType[]) => void;
   existingFolders: userFolderListType[] | [];
 }) {
@@ -59,7 +61,15 @@ export default function SavedArticleCard({
       updateArticleForm.notes !== notes
     ) {
       const updatedResult = await updateUserSavedArticle(id, updateArticleForm);
-      console.log(updatedResult);
+
+      if (updatedResult.success && updatedResult.updatedArticle) {
+        setUserArticlesState(
+          userArticles.map((article) =>
+            article.id === id ? updatedResult.updatedArticle : article,
+          ),
+        );
+        setIsManaged(false);
+      }
     }
   }
 

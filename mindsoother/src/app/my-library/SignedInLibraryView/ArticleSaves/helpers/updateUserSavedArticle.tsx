@@ -1,6 +1,7 @@
 "use server";
 
 import { createServerClient } from "@/lib/supabase/server";
+import { UserArticlesType } from "../types/UserArticleTypes";
 
 export default async function updateUserSavedArticle(
   articleId: number,
@@ -21,7 +22,8 @@ export default async function updateUserSavedArticle(
         notes: updateArticleForm.notes,
       })
       .eq("id", articleId)
-      .select();
+      .select()
+      .single();
 
     if (error) {
       throw new Error(error.message ?? "Unknown error from supabase");
@@ -29,7 +31,7 @@ export default async function updateUserSavedArticle(
 
     return {
       success: true,
-      updatedArticle: data,
+      updatedArticle: data as UserArticlesType,
     };
   } catch (err) {
     console.error("There was an issue updating user saved article", err);

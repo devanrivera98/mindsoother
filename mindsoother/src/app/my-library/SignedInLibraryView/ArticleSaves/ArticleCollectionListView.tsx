@@ -26,6 +26,7 @@ export default function ArticleCollectionListView({
     <div key={index}>
       <SavedArticleCard
         article={article}
+        userArticles={userArticles}
         setUserArticlesState={setUserArticlesState}
         existingFolders={existingFolders}
       />
