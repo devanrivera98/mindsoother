@@ -140,7 +140,7 @@ export default function ManageFolderModal({
                   onChange={(e) => setNewFolderValue(e.target.value)}
                 />
                 <button
-                  className={`bg-brand-purple hover:bg-hover-purple p-1.5 rounded ${newFolderValue.trim().length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+                  className={`bg-brand-green hover:bg-hover-green p-1.5 rounded ${newFolderValue.trim().length === 0 ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
                   onClick={() => handleAddNewFolder(newFolderValue)}
                   disabled={newFolderValue.trim().length === 0}
                   aria-label={

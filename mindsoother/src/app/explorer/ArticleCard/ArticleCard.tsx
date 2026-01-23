@@ -57,7 +57,7 @@ export default function ArticleCard({
             <button type="button" disabled={true}>
               <LuBookmark
                 fontSize={22}
-                className={`cursor-pointer ${isThereUser ? "hover:text-brand-purple" : "text-gray-400 hover:cursor-not-allowed"}`}
+                className={`cursor-pointer ${isThereUser ? "hover:text-brand-green" : "text-gray-400 hover:cursor-not-allowed"}`}
               />
             </button>
           </>
@@ -83,7 +83,7 @@ export default function ArticleCard({
             : abstract}{" "}
         </p>
       </div>
-      <div className="text-brand-purple">
+      <div className="text-brand-green">
         <a href={url} target="_blank" className="flex items-center gap-x-1">
           Read Full Article
           <TfiNewWindow fontSize={15} className="-translate-y-px" />

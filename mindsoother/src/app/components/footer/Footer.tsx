@@ -3,17 +3,17 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0F172A] text-gray-300 px-6 py-12">
+    <footer className="bg-[#066d56] text-gray-300 px-6 py-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <div className="flex items-center mb-4">
             <Link href="/" className="flex items-center gap-2">
               <LuBrain
-                className="text-indigo-400"
+                className="text-brand-green"
                 fontSize={25}
                 aria-hidden="true"
               />
-              <span className="text-white hover:text-indigo-400 text-xl font-bold cursor-pointer">
+              <span className="text-white hover:text-green-400 text-xl font-bold cursor-pointer">
                 MindSoother
               </span>
             </Link>
@@ -27,25 +27,25 @@ export default function Footer() {
           <h2 className="text-white font-semibold mb-3 text-md">Navigation</h2>
           <ul className="space-y-2 ">
             <li>
-              <Link href="/" className="hover:text-indigo-400 text-md">
+              <Link href="/" className="hover:text-green-400 text-md">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/explorer" className="hover:text-indigo-400 text-md">
+              <Link href="/explorer" className="hover:text-green-400 text-md">
                 Technique Explorer
               </Link>
             </li>
             <li>
               <Link
                 href="/saved-technique"
-                className="hover:text-indigo-400 text-md"
+                className="hover:text-green-400 text-md"
               >
                 Saved Techniques
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:text-indigo-400 text-md">
+              <Link href="/about" className="hover:text-green-400 text-md">
                 About Us
               </Link>
             </li>
@@ -56,7 +56,7 @@ export default function Footer() {
           <div>
             <Link
               href="/about#disclaimer"
-              className="flex items-center hover:text-indigo-400"
+              className="flex items-center hover:text-green-400"
             >
               <InformationCircle className="mr-1" />
               <span>Disclaimer</span>

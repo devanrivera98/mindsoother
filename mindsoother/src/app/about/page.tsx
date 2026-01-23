@@ -4,9 +4,9 @@ import Link from "next/link";
 export default function About() {
   return (
     <section className="bg-gray-50 min-h-screen">
-      <div className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-center text-white">
+      <div className="py-20 bg-gradient-to-r from-teal-600 to-emerald-600 text-center text-white">
         <h1 className="text-3xl font-bold">About MindSoother Explorer</h1>
-        <p className="mt-4 text-xl text-indigo-100">
+        <p className="mt-4 text-xl text-">
           AI-powered research discovery for psychology enthusiast
         </p>
       </div>
@@ -122,7 +122,7 @@ export default function About() {
             <div className="mt-10 text-center">
               <Link
                 href="/explorer"
-                className="p-4 bg-indigo-600 hover:bg-indigo-700 rounded-lg text-white text-lg font-semibold duration-300 focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 focus:ring-offset-white"
+                className="p-4 bg-brand-green hover:bg-hover-dark-green rounded-lg text-white text-lg font-semibold duration-300 focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-white"
               >
                 Try the Explorer
               </Link>

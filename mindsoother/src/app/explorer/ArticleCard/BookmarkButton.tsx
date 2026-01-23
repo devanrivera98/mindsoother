@@ -37,7 +37,7 @@ export default function BookmarkButton({
       >
         <LuBookmark
           fontSize={22}
-          className={`cursor-pointer ${isThereUser ? "hover:text-brand-purple" : "text-gray-400 hover:cursor-not-allowed"}`}
+          className={`cursor-pointer ${isThereUser ? "hover:text-brand-green" : "text-gray-400 hover:cursor-not-allowed"}`}
         />
       </button>
       <SaveArticleModal

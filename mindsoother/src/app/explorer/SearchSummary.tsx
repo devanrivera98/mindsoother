@@ -16,7 +16,7 @@ export default function SearchSummary({
         <div className="pt-5">
           <a
             href="/about#disclaimer"
-            className="inline-flex gap-x-2 hover:underline-100 text-brand-purple hover:text-hover-purple hover:underline hover:underline-offset-1"
+            className="inline-flex gap-x-2 hover:underline-100 text-brand-green hover:text-hover-green hover:underline hover:underline-offset-1"
           >
             <span className="flex items-center gap-x-2">
               <InformationCircle />

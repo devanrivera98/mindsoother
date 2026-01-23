@@ -13,7 +13,7 @@ export default function MobileMenu({
 
   return (
     <button
-      className={`lg:hidden cursor-pointer p-2 rounded-md border hover:bg-gray-50 ${isFocused ? "border-brand-purple" : "border-transparent"}`}
+      className={`lg:hidden cursor-pointer p-2 rounded-md border hover:bg-gray-50 ${isFocused ? "border-brand-green" : "border-transparent"}`}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       onClick={() => setIsMenuOpen(!isMenuOpen)}
