@@ -20,7 +20,7 @@ export default function TryTheExplorer() {
           >
             Try the Explorer
             <IoArrowForwardSharp
-              className="ml-2 text-indigo-900"
+              className="ml-2 text-green-900"
               fontSize={20}
             />
           </a>

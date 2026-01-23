@@ -206,7 +206,7 @@ export default function SaveArticleModal({
                   Cancel
                 </button>
                 <button
-                  className="py-2 px-4 bg-brand-green hover:bg-hover-green text-white rounded cursor-pointer"
+                  className="py-2 px-4 bg-brand-green hover:bg-hover-dark-green text-white rounded cursor-pointer"
                   type="submit"
                 >
                   Save Article

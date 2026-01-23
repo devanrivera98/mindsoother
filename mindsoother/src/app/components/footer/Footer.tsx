@@ -52,7 +52,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="text-sm text-gray-400 flex flex-col gap-y-4">
-          <p>&copy; 2025 Devan Rivera. All rights reserved.</p>
+          <p>&copy; 2026 Devan Rivera. All rights reserved.</p>
           <div>
             <Link
               href="/about#disclaimer"

@@ -39,7 +39,7 @@ export default function IntroHome() {
               <div className="relative my-auto mx-auto md:mx-0 md:ml-auto w-full md:w-[90%] h-full min-h-[300px] overflow-hidden rounded-lg">
                 <Image
                   className="object-cover"
-                  src="/images/squid-smile.jpg"
+                  src="/images/mental.avif"
                   alt="Illustration of brain power "
                   fill
                 />
