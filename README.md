@@ -1,5 +1,4 @@
-# PsychSearch  
-*(Prototype formerly named Mindsoother)*
+# PsychSearch  *(Prototype formerly named Mindsoother)*
 
 <img width="1495" height="751" alt="PsychSearch Screenshot" src="https://github.com/user-attachments/assets/11501f80-ea2f-44ce-87e5-d77072f72547" />
 
@@ -25,11 +24,6 @@ PsychSearch is a full-stack research platform that helps academic researchers qu
 - **AI Integration:** ChatGPT API (query summarization)
 - **Deployment:** Render with CI/CD pipeline
 
-## Getting Started
-
-### Prerequisites
-- Node.js
-- npm or yarn
 
 ## Getting Started
 How to run it locally.
