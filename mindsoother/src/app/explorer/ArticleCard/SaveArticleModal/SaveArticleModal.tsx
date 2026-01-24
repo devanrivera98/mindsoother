@@ -135,7 +135,7 @@ export default function SaveArticleModal({
                   {folderMap}
                 </select>
                 <button
-                  className="flex items-center text-brand-purple hover:text-hover-purple cursor-pointer"
+                  className="flex items-center text-brand-green hover:text-hover-green cursor-pointer"
                   type="button"
                   onClick={() => {
                     setShowNewFolderForm(!showNewFolderForm);
@@ -158,7 +158,7 @@ export default function SaveArticleModal({
                         ></input>
                         <button
                           type="button"
-                          className={`bg-brand-purple hover:bg-hover-purple text-white p-2 rounded ${newFolderName.trim().length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
+                          className={`bg-brand-green hover:bg-hover-green text-white p-2 rounded ${newFolderName.trim().length === 0 ? "cursor-not-allowed opacity-50" : "cursor-pointer"}`}
                           onClick={() => handleCreateFolder()}
                           disabled={newFolderName.trim().length === 0}
                         >
@@ -206,7 +206,7 @@ export default function SaveArticleModal({
                   Cancel
                 </button>
                 <button
-                  className="py-2 px-4 bg-brand-purple hover:bg-hover-purple text-white rounded cursor-pointer"
+                  className="py-2 px-4 bg-brand-green hover:bg-hover-dark-green text-white rounded cursor-pointer"
                   type="submit"
                 >
                   Save Article

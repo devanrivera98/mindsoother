@@ -102,7 +102,7 @@ export default function SavedArticleCard({
       <div className="flex justify-end gap-x-2">
         <button
           aria-label="Move article to folder"
-          className="cursor-pointer hover:text-brand-purple"
+          className="cursor-pointer hover:text-brand-green"
           onClick={() => handleManageArticleClick()}
         >
           <IoFolderOutline fontSize={18} />
@@ -170,7 +170,7 @@ export default function SavedArticleCard({
           </div>
           <div>
             <button
-              className="flex items-center bg-brand-purple hover:bg-hover-purple p-2 rounded-lg text-white font-semibold cursor-pointer"
+              className="flex items-center bg-brand-green hover:bg-hover-green p-2 rounded-lg text-white font-semibold cursor-pointer"
               onClick={() => handleArticleFormUpdate()}
             >
               <span>Save Changes</span>
@@ -190,7 +190,7 @@ export default function SavedArticleCard({
           )}
           <div className="flex items-center mt-auto">
             <a
-              className="flex items-center text-brand-purple hover:underline underline-offset-2 cursor-pointer"
+              className="flex items-center text-brand-green hover:underline underline-offset-2 cursor-pointer"
               target="_blank"
               href={link}
             >

@@ -61,7 +61,7 @@ export default function SignUpPage() {
           Already have an account?{" "}
           <a
             href="/sign-in"
-            className="text-brand-purple hover:text-hover-purple hover:cursor-pointer"
+            className="text-brand-green hover:text-hover-green hover:cursor-pointer"
           >
             Sign In
           </a>
@@ -132,7 +132,7 @@ export default function SignUpPage() {
             )}
             <button
               type="submit"
-              className="bg-brand-purple hover:bg-hover-purple text-white rounded flex justify-center items-center py-2 transition-all duration-200 ease-in-out gap-x-2 hover:gap-x-4"
+              className="bg-brand-green hover:bg-hover-dark-green text-white rounded flex cursor-pointer justify-center items-center py-2 transition-all duration-200 ease-in-out gap-x-2 hover:gap-x-4"
             >
               <span>Create account</span>
               <IoArrowForwardSharp />

@@ -80,11 +80,11 @@ export default function MobileNavMenu({
       <div className="mx-2 pt-2 pb-4 flex items-center grid grid-cols-1 gap-y-4">
         {user !== "Sign In" ? (
           <>
-            <div className="flex justify-center w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md">
+            <div className="flex justify-center w-full cursor-pointer bg-brand-green hover:bg-hover-dark-green text-white py-2 rounded-md">
               <span>{user}</span>
             </div>
             <button
-              className="flex justify-center w-full cursor-pointer bg-red-500 hover:bg-hover-purple text-white py-2 rounded-md"
+              className="flex justify-center w-full cursor-pointer bg-red-500 hover:bg-hover-dark-green text-white py-2 rounded-md"
               onClick={() => handleMobileSignOut()}
             >
               Sign Out
@@ -92,7 +92,7 @@ export default function MobileNavMenu({
           </>
         ) : (
           <Link
-            className="flex justify-center w-full cursor-pointer bg-brand-purple hover:bg-hover-purple text-white py-2 rounded-md"
+            className="flex justify-center w-full cursor-pointer bg-brand-green hover:bg-hover-dark-green text-white py-2 rounded-md"
             href="/sign-in"
             onClick={handleMobileNavClick}
           >

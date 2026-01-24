@@ -55,8 +55,6 @@ export default function SignInForm() {
     } else if (result.success) {
       onSignUpSubmit(result, router);
 
-      router.push("/");
-      router.refresh();
     }
   };
 
@@ -91,7 +89,7 @@ export default function SignInForm() {
           />
           <button
             type="submit"
-            className="bg-brand-purple hover:bg-hover-purple text-white rounded flex justify-center items-center py-2 transition-all duration-200 ease-in-out gap-x-2 hover:gap-x-4"
+            className="bg-brand-green hover:bg-hover-dark-green cursor-pointer text-white rounded flex justify-center items-center py-2 transition-all duration-200 ease-in-out gap-x-2 hover:gap-x-4"
           >
             <span>Sign In</span>
             <IoArrowForwardSharp />

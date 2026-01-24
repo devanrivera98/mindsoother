@@ -5,7 +5,8 @@ import { IoArrowForwardSharp } from "../components/icons";
 export default function IntroHome() {
   return (
     <>
-      <section className="bg-gradient-to-r from-indigo-600 to-purple-600 min-h-36 w-full">
+      <section className="bg-gradient-to-r from-teal-600 to-emerald-600
+ min-h-36 w-full">
         <div className="max-w-7xl mx-auto lg:px-8 sm:px-6 px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 py-20 md:py-30 items-stretch">
             <div className="pr-5 flex flex-col flex-grow order-2 md:order-1">
@@ -27,7 +28,7 @@ export default function IntroHome() {
                 </Link>
                 <Link
                   href="/about"
-                  className="hover:bg-indigo-600 border border-white text-white rounded-lg px-6 py-3 cursor-pointer text-center"
+                  className="hover:bg-hover-dark-green border border-white text-white rounded-lg px-6 py-3 cursor-pointer text-center"
                   type="button"
                 >
                   Learn More
@@ -38,7 +39,7 @@ export default function IntroHome() {
               <div className="relative my-auto mx-auto md:mx-0 md:ml-auto w-full md:w-[90%] h-full min-h-[300px] overflow-hidden rounded-lg">
                 <Image
                   className="object-cover"
-                  src="/images/squid-smile.jpg"
+                  src="/images/mental.avif"
                   alt="Illustration of brain power "
                   fill
                 />

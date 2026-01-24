@@ -29,7 +29,7 @@ export default function DesktopUserMenu({
   if (!isMounted || user === null) {
     return (
       <>
-        <div className="bg-brand-purple px-1 py-1 rounded-md border-2 border-transparent">
+        <div className="bg-brand-green px-1 py-1 rounded-md border-2 border-transparent">
           <div className="bg-gray-200 text-transparent px-4 py-1 rounded-md animate-pulse">
             Loading
           </div>
@@ -42,7 +42,7 @@ export default function DesktopUserMenu({
     return (
       <div className="relative" ref={accountMenuRef}>
         <button
-          className="bg-brand-purple hover:bg-hover-purple cursor-pointer text-white px-4 py-2 rounded-md"
+          className="bg-brand-green hover:bg-hover-dark-green cursor-pointer text-white px-4 py-2 rounded-md"
           aria-label="Open account menu"
           onClick={() => setIsAccountMenuOpen(!isAccountMenuOpen)}
         >
@@ -69,9 +69,9 @@ export default function DesktopUserMenu({
   }
 
   return (
-    <div className="px-1 py-2.5 rounded-md border-2 border-transparent focus-within:border-brand-purple">
+    <div className="px-1 py-2.5 rounded-md border-2 border-transparent focus-within:border-brand-green">
       <Link
-        className="bg-brand-purple hover:bg-hover-purple cursor-pointer text-white px-4 py-2 rounded-md"
+        className="bg-brand-green hover:bg-hover-dark-green cursor-pointer text-white px-4 py-2 rounded-md"
         href="/sign-in"
       >
         Sign In

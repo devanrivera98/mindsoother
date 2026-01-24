@@ -9,18 +9,18 @@ export default function SignedOutLibraryView() {
   return (
     <>
       <div>
-        <div className="py-20 bg-linear-to-r from-indigo-600 to-purple-600 text-center">
+        <div className="py-20 bg-linear-to-r from-teal-600 to-emerald-600 text-center">
           <h1 className="text-3xl font-bold text-white">Research Library</h1>
-          <p className="mt-4 text-xl text-indigo-100">
+          <p className="mt-4 text-xl text-hover-text-green">
             Organize and revisit your saved psychology research
           </p>
         </div>
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="rounded bg-white -mt-8 shadow-xl p-5 max-w-7xl mx-auto text-center">
-            <div className="inline-flex bg-indigo-50 p-5 rounded-full justify-center text-center mb-2">
+            <div className="inline-flex bg-green-50 p-5 rounded-full justify-center text-center mb-2">
               <IoLockClosedOutline
                 fontSize={30}
-                className="text-brand-purple"
+                className="text-brand-green"
               />
             </div>
             <h2 className="text-2xl font-bold">
@@ -34,7 +34,7 @@ export default function SignedOutLibraryView() {
               <div>
                 <Link
                   href="/sign-up"
-                  className="bg-brand-purple hover:bg-hover-purple rounded p-4 text-white font-semibold inline-flex items-center gap-x-2"
+                  className="bg-brand-green hover:bg-hover-green rounded p-4 text-white font-semibold inline-flex items-center gap-x-2"
                 >
                   <IoPersonAddOutline fontSize={20} />
                   Create Account
@@ -46,7 +46,7 @@ export default function SignedOutLibraryView() {
                   Already have an account?{" "}
                   <Link
                     href="/sign-in"
-                    className="text-brand-purple font-semibold hover:underline underline-offset-4 hover:text-hover-purple"
+                    className="text-brand-green font-semibold hover:underline underline-offset-4 hover:text-hover-green"
                   >
                     Sign in here
                   </Link>

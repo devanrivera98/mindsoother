@@ -32,8 +32,8 @@ export default function Navbar({
     <nav className="flex justify-between mx-auto max-w-7xl lg:px-8 sm:px-6 px-4 py-4 h-full">
       <div className="flex items-center cursor-pointer">
         <Link href="/" className="flex items-center">
-          <LuBrain fontSize={35} color={"#4f45e4"} />
-          <div className="pl-2 font-bold hover:text-hover-purple text-xl">
+          <LuBrain fontSize={35} color={"#099576"} />
+          <div className="pl-2 font-bold hover:text-brand-green text-xl">
             PsychSearch
           </div>
         </Link>

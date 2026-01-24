@@ -23,12 +23,12 @@ export default function NavLink({
   return (
     <Link
       href={href}
-      className={`flex items-center cursor-pointer p-2 rounded hover:text-brand-purple  ${isActive ? "bg-indigo-50 text-brand-purple" : "hover:bg-gray-50"}`}
+      className={`flex items-center cursor-pointer p-2 rounded hover:text-brand-green  ${isActive ? "bg-hover-text-green text-brand-green" : "hover:bg-hover-text-green"}`}
       onClick={onClick}
     >
       <Icon size={fontSize} strokeWidth={strokeWidth} aria-hidden="true" />
       <span
-        className={`pl-2 hover:text-indigo-600 ${isActive ? "text-indigo-600" : ""}`}
+        className={`pl-2 hover:text-brand-green ${isActive ? "text-brand-green" : ""}`}
       >
         {name}
       </span>

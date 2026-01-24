@@ -12,7 +12,7 @@ export default function ArticleCollectionEmptyView() {
       </p>
       <Link
         href="/explorer"
-        className="mt-5 p-4 bg-indigo-600 rounded-lg text-white text-md font-semibold"
+        className="mt-5 p-4 bg-brand-green  hover:bg-hover-dark-green rounded-lg text-white text-md font-semibold"
       >
         Explore Techniques
       </Link>

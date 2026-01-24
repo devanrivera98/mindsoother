@@ -36,7 +36,7 @@ export default function TechniqueExplorer() {
   return (
     <>
       <section className="bg-gray-50 min-h-screen">
-        <div className="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-center">
+        <div className="py-20 bg-gradient-to-r  from-teal-600 to-emerald-600 text-center">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <h1 className="text-white text-[30px] font-bold">
               Psychology Research Explorer
@@ -81,7 +81,7 @@ export default function TechniqueExplorer() {
                 </span>
               </div>
               <button
-                className={`flex items-center justify-center gap-x-2 text-white bg-indigo-600 hover:bg-indigo-700 opacity-70 w-full mt-5 p-2 rounded-md ${textValue === "" ? "cursor-not-allowed" : "cursor-pointer"}`}
+                className={`flex items-center justify-center gap-x-2 text-white bg-brand-green hover:bg-hover-dark-green opacity-70 w-full mt-5 p-2 rounded-md ${textValue === "" ? "cursor-not-allowed" : "cursor-pointer"}`}
                 type="submit"
                 disabled={textValue === ""}
               >
@@ -105,7 +105,7 @@ export default function TechniqueExplorer() {
               <div className="flex flex-wrap gap-x-5 gap-y-2.5">
                 <button
                   data-value="REM sleep"
-                  className="bg-gray-100 text-xs font-semibold rounded-xl py-1.5 px-3 cursor-pointer hover:bg-indigo-100 hover:text-indigo-500"
+                  className="bg-gray-100 text-xs font-semibold rounded-xl py-1.5 px-3 cursor-pointer hover:bg-hover-text-green hover:text-green-500"
                   type="button"
                   onClick={handleRecButton}
                 >
@@ -113,7 +113,7 @@ export default function TechniqueExplorer() {
                 </button>
                 <button
                   data-value="stroke recovery"
-                  className="bg-gray-100 text-xs font-semibold rounded-xl p-1.5 px-3 cursor-pointer hover:bg-indigo-100 hover:text-indigo-500"
+                  className="bg-gray-100 text-xs font-semibold rounded-xl p-1.5 px-3 cursor-pointer hover:bg-hover-text-green hover:text-green-500"
                   type="button"
                   onClick={handleRecButton}
                 >
@@ -121,7 +121,7 @@ export default function TechniqueExplorer() {
                 </button>
                 <button
                   data-value="child development"
-                  className="bg-gray-100 text-xs font-semibold rounded-xl p-1.5 px-3 cursor-pointer hover:bg-indigo-100 hover:text-indigo-500"
+                  className="bg-gray-100 text-xs font-semibold rounded-xl p-1.5 px-3 cursor-pointer hover:bg-hover-text-green hover:text-green-500"
                   type="button"
                   onClick={handleRecButton}
                 >
@@ -129,7 +129,7 @@ export default function TechniqueExplorer() {
                 </button>
                 <button
                   data-value="bipolar disorders"
-                  className="bg-gray-100 text-xs font-semibold rounded-xl p-1.5 px-3 cursor-pointer hover:bg-indigo-100 hover:text-indigo-500"
+                  className="bg-gray-100 text-xs font-semibold rounded-xl p-1.5 px-3 cursor-pointer hover:bg-hover-text-green hover:text-green-500"
                   type="button"
                   onClick={handleRecButton}
                 >
