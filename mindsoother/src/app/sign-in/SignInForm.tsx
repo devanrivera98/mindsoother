@@ -55,8 +55,6 @@ export default function SignInForm() {
     } else if (result.success) {
       onSignUpSubmit(result, router);
 
-      router.push("/");
-      router.refresh();
     }
   };
 
