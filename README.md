@@ -30,5 +30,5 @@ How to run it locally.
 npm run dev 
 
 ## Future Improvements (optional)
--AI-driven content recommendations (e.g., relevant educational videos based on article interactions)
--Built-in citation generation (APA / MLA formats) for saved articles
+- AI-driven content recommendations (e.g., relevant educational videos based on article interactions)
+- Built-in citation generation (APA / MLA formats) for saved articles
