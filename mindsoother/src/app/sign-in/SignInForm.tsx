@@ -95,21 +95,6 @@ export default function SignInForm() {
             <IoArrowForwardSharp />
           </button>
         </form>
-        <div>
-          <div className="flex items-center text-center">
-            <div className="flex-grow border-t border-gray-300"></div>
-            <span className="mx-3 text-gray-500">Or continue with</span>
-            <div className="flex-grow border-t border-gray-300"></div>
-          </div>
-          <div className="flex justify-center py-4">
-            <button className="w-full flex justify-center items-center gap-x-2 py-2 cursor-pointer border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-gray-50">
-              <FcGoogle fontSize={20} aria-hidden="true" focusable="false" />
-              <span aria-label="Continue with Google">
-                Continue with Google
-              </span>
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
